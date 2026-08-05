@@ -59,45 +59,47 @@ export default function Header() {
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-2xl font-black tracking-tight text-blue-950">더 한일트랜스 스토어</span>
+                <span className="text-xl sm:text-2xl font-black tracking-tight text-blue-950">더 한일트랜스 스토어</span>
                 <span className="bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">공식</span>
               </div>
               <span className="text-[11px] text-gray-500 font-bold block">THE HANIL TRANS STORE</span>
             </div>
           </Link>
 
-          {/* Live Search Bar */}
-          <form onSubmit={handleSearch} className="w-full md:flex-1 max-w-xl relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="변압기 용량, 전압(220V➔110V, 380V, 3kVA, AVR, 슬라이닥스) 검색..."
-              className="w-full pl-4 pr-12 py-3 bg-gray-50 border-2 border-blue-600 rounded-xl text-sm focus:outline-none focus:bg-white text-gray-900 placeholder-gray-400 transition-colors"
-            />
-            <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition-colors">
-              <Search className="w-4 h-4" />
-            </button>
-          </form>
+          {/* Search Bar + Cart - mobile: same row, desktop: separate */}
+          <div className="flex w-full md:flex-1 gap-3 items-center">
+            <form onSubmit={handleSearch} className="flex-1 max-w-xl relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="변압기 용량, 전압, AVR, 슬라이닥스 검색..."
+                className="w-full pl-4 pr-12 py-3 bg-gray-50 border-2 border-blue-600 rounded-xl text-sm focus:outline-none focus:bg-white text-gray-900 placeholder-gray-400 transition-colors"
+              />
+              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center transition-colors">
+                <Search className="w-4 h-4" />
+              </button>
+            </form>
 
-          {/* Cart Drawer Trigger */}
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="absolute top-4 right-4 md:static flex items-center gap-2 md:gap-3 p-2 md:px-4 md:py-2.5 bg-blue-50 md:border border-blue-200 text-blue-900 rounded-xl hover:bg-blue-100 transition-colors shrink-0 group"
-          >
-            <div className="relative">
-              <ShoppingBag className="w-6 h-6 text-blue-600" />
-              {totalCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
-                  {totalCount}
-                </span>
-              )}
-            </div>
-            <div className="text-left hidden sm:block">
-              <span className="text-xs text-gray-500 block leading-none">장바구니</span>
-              <span className="text-sm font-black text-blue-900 leading-tight">{totalCount}개 상품</span>
-            </div>
-          </button>
+            {/* Cart Drawer Trigger */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="flex items-center gap-2 md:gap-3 p-2.5 md:px-4 md:py-2.5 bg-blue-50 border border-blue-200 text-blue-900 rounded-xl hover:bg-blue-100 transition-colors shrink-0"
+            >
+              <div className="relative">
+                <ShoppingBag className="w-6 h-6 text-blue-600" />
+                {totalCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
+                    {totalCount}
+                  </span>
+                )}
+              </div>
+              <div className="text-left hidden sm:block">
+                <span className="text-xs text-gray-500 block leading-none">장바구니</span>
+                <span className="text-sm font-black text-blue-900 leading-tight">{totalCount}개 상품</span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 

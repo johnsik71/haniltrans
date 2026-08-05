@@ -141,7 +141,6 @@ export default function CategoryPage({ params }: { params: Promise<{ id: string 
 
         </div>
       </main>
-      <SpecFinderWidget />
       <CartDrawer />
       <Footer />
     </div>
