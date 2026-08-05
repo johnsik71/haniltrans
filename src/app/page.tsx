@@ -1,0 +1,214 @@
+"use client";
+
+import { useState, useEffect } from 'react';
+import Header from '@/components/layout/Header';
+import Sidebar from '@/components/layout/Sidebar';
+
+import Footer from '@/components/layout/Footer';
+import ProductCard from '@/components/shop/ProductCard';
+import CartDrawer from '@/components/shop/CartDrawer';
+import SpecFinderWidget from '@/components/shop/SpecFinderWidget';
+import { Shield, Phone, ChevronRight, Zap, Briefcase } from 'lucide-react';
+import Link from 'next/link';
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState<'single' | 'double' | 'oil' | 'panel' | 'avr'>('single');
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setProducts(data);
+        }
+      })
+      .catch(console.error);
+  }, []);
+
+  // Filter tabbed items for main showcase
+  const tabbedProducts = products.filter((p) => {
+    if (activeTab === 'single') return p.subCategory === '삼상 단권' && p.category === 'industrial';
+    if (activeTab === 'double') return p.subCategory === '삼상 복권' && p.category === 'industrial';
+    if (activeTab === 'oil') return p.category === 'oil';
+    if (activeTab === 'panel') return p.category === 'panel';
+    if (activeTab === 'avr') return p.category === 'avr';
+    return true;
+  });
+
+  const industrialProducts = products.filter((p) => p.category === 'industrial').slice(0, 5);
+  const avrProducts = products.filter((p) => p.category === 'avr').slice(0, 5);
+  const panelProducts = products.filter((p) => p.category === 'panel').slice(0, 10);
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
+      <Header />
+
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full relative">
+        {/* 2-Column Layout (Sidebar + Main Content + Quick Wing) */}
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+          
+          {/* Left Category Sidebar */}
+          <Sidebar />
+
+          {/* Center Main Content Area */}
+          <div className="flex-1 min-w-0 space-y-8">
+
+            
+            {/* Main Hero Slider Banner */}
+            <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg border border-slate-800">
+              <div className="max-w-xl space-y-3 z-10 relative">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white font-bold text-xs rounded-full">
+                  <Shield className="w-3.5 h-3.5" /> KC 안전인증번호 HA06019-12003A
+                </span>
+                <h2 className="text-3xl font-black leading-tight text-white">
+                  AVR 자동 전압 조절기<br />
+                  <span className="text-blue-400">100% 국내 수작업 제조 정품</span>
+                </h2>
+                <p className="text-xs text-slate-300">
+                  산업 현장에서 검증된 최고의 정전압 보정 기술. 불안정한 전압을 ±1% 이내로 실시간 자동 조절합니다.
+                </p>
+                <div className="pt-2">
+                  <Link href="/category/avr" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-6 py-2.5 rounded-xl shadow-lg transition-colors">
+                    추천 상품 보러가기 ➔
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* 3 Sub-Banners matching screenshot */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-bold">
+              <a href="tel:010-5424-7571" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-gray-500 text-[10px]">변압기 견적문의 / 기술상담</div>
+                  <div className="text-base font-black text-gray-900 group-hover:text-blue-600">010.5424.7571</div>
+                  <div className="text-[10px] text-blue-600">johnshin7172@gmail.com</div>
+                </div>
+              </a>
+
+              <Link href="/category/panel" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-gray-900 font-bold text-sm group-hover:text-emerald-600">판넬용트랜스</div>
+                  <div className="text-[11px] text-gray-500 font-normal">모든 전압 맞춤 제작 가능합니다.</div>
+                </div>
+              </Link>
+
+              <Link href="/about" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                  <Briefcase className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-gray-900 font-bold text-sm group-hover:text-amber-600">납품사례 / 고객사</div>
+                  <div className="text-[11px] text-gray-500 font-normal">연구기관, 관공서, 대학교, 병원 검증</div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Section 1: 삼상 공업용변압기 Carousel Header */}
+            <section className="space-y-4 pt-4 border-t border-gray-200">
+              <div className="flex justify-between items-center border-b border-gray-200 pb-3">
+                <h3 className="text-base font-black text-gray-900 flex items-center gap-2">
+                  <span className="w-2 h-4 bg-blue-600 rounded-xs"></span>
+                  삼상 공업용변압기 추천 라인업
+                </h3>
+                <Link href="/category/industrial" className="text-xs text-gray-500 hover:text-blue-600 font-bold flex items-center">
+                  전체보기 <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {industrialProducts.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            </section>
+
+            {/* Section 2: Tabbed Showcase Section matching PDF page 5 */}
+            <section className="space-y-4 pt-4 border-t border-gray-200">
+              <div className="flex flex-wrap gap-1 border-b border-gray-300">
+                {[
+                  { id: 'single', label: '삼상단권변압기' },
+                  { id: 'double', label: '삼상복권변압기' },
+                  { id: 'oil', label: '유입식변압기' },
+                  { id: 'panel', label: '판넬용트랜스' },
+                  { id: 'avr', label: 'AVR 자동전압조정기' },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as any)}
+                    className={`px-5 py-2.5 text-xs font-bold transition-all border-b-2 -mb-[2px] ${
+                      activeTab === tab.id
+                        ? 'border-blue-600 text-blue-600 bg-blue-50/50 font-black'
+                        : 'border-transparent text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
+                {tabbedProducts.slice(0, 10).map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            </section>
+
+            {/* Section 3: AVR 자동전압조정기 Grid */}
+            <section className="space-y-4 pt-4 border-t border-gray-200">
+              <div className="flex justify-between items-center border-b border-gray-200 pb-3">
+                <h3 className="text-base font-black text-gray-900 flex items-center gap-2">
+                  <span className="w-2 h-4 bg-amber-500 rounded-xs"></span>
+                  AVR 자동전압조정기
+                </h3>
+                <Link href="/category/avr" className="text-xs text-gray-500 hover:text-blue-600 font-bold flex items-center">
+                  전체보기 <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {avrProducts.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            </section>
+
+            {/* Section 4: 판넬용 트랜스 Grid */}
+            <section className="space-y-4 pt-4 border-t border-gray-200">
+              <div className="flex justify-between items-center border-b border-gray-200 pb-3">
+                <h3 className="text-base font-black text-gray-900 flex items-center gap-2">
+                  <span className="w-2 h-4 bg-emerald-600 rounded-xs"></span>
+                  판넬용 트랜스
+                </h3>
+                <Link href="/category/panel" className="text-xs text-gray-500 hover:text-blue-600 font-bold flex items-center">
+                  전체보기 <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {panelProducts.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            </section>
+
+          </div>
+
+
+
+        </div>
+      </main>
+
+      {/* Floating Helpers */}
+      <CartDrawer />
+
+      <Footer />
+    </div>
+  );
+}

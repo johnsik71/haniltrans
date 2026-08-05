@@ -1,0 +1,42 @@
+[
+  {
+    "id": "usr-1001",
+    "name": "김철수",
+    "email": "chulsoo.kim@example.com",
+    "provider": "kakao",
+    "createdAt": "2024-03-15T10:30:00Z",
+    "role": "user"
+  },
+  {
+    "id": "usr-1002",
+    "name": "이영희",
+    "email": "younghee.lee@example.com",
+    "provider": "email",
+    "createdAt": "2024-03-18T14:20:00Z",
+    "role": "user"
+  },
+  {
+    "id": "usr-1003",
+    "name": "박민준",
+    "email": "minjun.park@example.com",
+    "provider": "kakao",
+    "createdAt": "2024-03-22T09:15:00Z",
+    "role": "user"
+  },
+  {
+    "id": "usr-1004",
+    "name": "정서연",
+    "email": "seoyeon.jung@example.com",
+    "provider": "naver",
+    "createdAt": "2024-03-25T16:45:00Z",
+    "role": "user"
+  },
+  {
+    "id": "usr-1005",
+    "name": "최지훈",
+    "email": "jihoon.choi@example.com",
+    "provider": "email",
+    "createdAt": "2024-04-01T11:10:00Z",
+    "role": "user"
+  }
+]

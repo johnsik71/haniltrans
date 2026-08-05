@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #ffffff;
+  color: #333333;
+  font-family: 'Nanum Gothic', 'Malgun Gothic', dotum, sans-serif;
+  font-size: 12px;
+}
+
+/* Custom scrollbar & layout helper */
+.custom-border {
+  border-color: #dcdcdc;
+}
+
+@keyframes flip-y {
+  0% { transform: perspective(400px) rotateY(0deg); }
+  50% { transform: perspective(400px) rotateY(180deg); }
+  100% { transform: perspective(400px) rotateY(360deg); }
+}
+
+.animate-3d-spin {
+  animation: flip-y 4s infinite linear;
+  transform-style: preserve-3d;
+}
+
+@keyframes flash-h {
+  0%, 50%, 100% {
+    background-color: rgba(96, 165, 250, 1); /* blue-400 */
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.9);
+  }
+  25%, 75% {
+    background-color: rgba(30, 64, 175, 0.4); /* blue-800/40 */
+    box-shadow: none;
+  }
+}
+
+.animate-flash-h {
+  animation: flash-h 4s infinite linear;
+}

@@ -1,0 +1,98 @@
+export interface HanilProduct {
+  id: string;
+  name: string;
+  category: string;
+  categoryName: string;
+  price: number;
+  image: string;
+  badges?: string[];
+  subCategory?: string;
+  isBest?: boolean;
+  isRecommend?: boolean;
+}
+
+export const CATEGORIES_SIDEBAR = [
+  { id: 'industrial', name: '공업용 변압기' },
+  { id: 'oil', name: '유입식 변압기' },
+  { id: 'avr', name: 'AVR 자동전압기' },
+  { id: 'panel', name: '판넬용 트랜스' },
+  { id: 'slidacs', name: '슬라이닥스' },
+  { id: 'phase-single', name: '삼상단권 변압기' },
+  { id: 'phase-double', name: '삼상복권 변압기' },
+  { id: 'home', name: '가정용 변압기' },
+  { id: 'global', name: '해외용 변압기' },
+  { id: 'inverter', name: '인버터' }
+];
+
+export const PRODUCTS_DATA: HanilProduct[] = [
+  // 공업용 변압기 (Industrial)
+  { id: 'ind-1', name: '용량 - 삼상 5KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 175000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-2', name: '삼상 10 KVA (단권형) 슬림형 신제품', category: 'industrial', categoryName: '공업용 변압기', price: 225000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-3', name: '용량 - 삼상 10 KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 225000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-4', name: '용량 - 삼상 15KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 360000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-5', name: '용량 - 삼상 20KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 415000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', badges: ['추천'], subCategory: '삼상 단권', isRecommend: true },
+  { id: 'ind-6', name: '용량 - 삼상 30KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 535000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', badges: ['베스트'], subCategory: '삼상 단권', isBest: true },
+  { id: 'ind-7', name: '용량 - 삼상 40 KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 658000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-8', name: '용량 - 삼상 50KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 990000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-9', name: '용량 - 삼상 60KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1200000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-10', name: '용량 - 삼상 70KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1450000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-11', name: '용량 - 삼상 80KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1650000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'ind-12', name: '용량 - 삼상 100KVA (단권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1850000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', badges: ['베스트'], subCategory: '삼상 단권', isBest: true },
+  
+  // 복권형 공업용 변압기
+  { id: 'ind-b1', name: '용량 - 삼상 5KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 310000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b2', name: '용량 - 삼상 10KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 410000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b3', name: '용량 - 삼상 15KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 594000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b4', name: '용량 - 삼상 20KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 670000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b5', name: '용량 - 삼상 30KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1210000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', badges: ['추천', '베스트'], subCategory: '삼상 복권', isBest: true },
+  { id: 'ind-b6', name: '용량 - 삼상 40KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1270000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b7', name: '용량 - 삼상 50KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1620000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b8', name: '용량 - 삼상 60KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 1850000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b9', name: '용량 - 삼상 80KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 2420000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', badges: ['추천', '베스트'], subCategory: '삼상 복권' },
+  { id: 'ind-b10', name: '용량 - 삼상 100KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 2970000, image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80', badges: ['추천', '인기'], subCategory: '삼상 복권' },
+  { id: 'ind-b11', name: '용량 - 삼상 150KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 4820000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'ind-b12', name: '용량 - 삼상 200KVA (복권형)', category: 'industrial', categoryName: '공업용 변압기', price: 6270000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', badges: ['추천', '베스트'], subCategory: '삼상 복권' },
+
+  // 유입식 변압기 (Oil)
+  { id: 'oil-1', name: '정격용량 30KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 950000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-2', name: '정격용량 40KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 1050000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-3', name: '정격용량 50KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 1150000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-4', name: '정격용량 60KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 1350000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-5', name: '정격용량 70KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 1600000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-6', name: '정격용량 80KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 1890000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-7', name: '정격용량 100KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 2050000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-8', name: '정격용량 150KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 3200000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+  { id: 'oil-9', name: '정격용량 200KVA (단권형)', category: 'oil', categoryName: '유입식 변압기', price: 4500000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 단권' },
+
+  { id: 'oil-b1', name: '정격용량 30KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 1280000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'oil-b2', name: '정격용량 40KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 1380000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'oil-b3', name: '정격용량 50KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 1540000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'oil-b4', name: '정격용량 60KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 1900000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'oil-b5', name: '정격용량 70KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 2100000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'oil-b6', name: '정격용량 80KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 2490000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+  { id: 'oil-b7', name: '정격용량 100KVA (복권형)', category: 'oil', categoryName: '유입식 변압기', price: 2790000, image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80', subCategory: '삼상 복권' },
+
+  // AVR 자동전압기
+  { id: 'avr-1', name: 'AVR자동트랜스(단상단권) 1.5KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 218000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'avr-2', name: 'AVR자동트랜스(단상단권) 2 KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 332000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'avr-3', name: 'AVR자동트랜스(단상단권) 3 KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 402000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'avr-4', name: 'AVR자동트랜스(단상단권) 5KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 558000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'avr-5', name: 'AVR자동트랜스(단상단권) 7.5KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 637000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'avr-6', name: 'AVR자동트랜스(단상단권) 10 KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 789000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'avr-7', name: 'AVR자동트랜스(단상복권) 1KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 315000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'avr-8', name: 'AVR자동트랜스(단상복권) 2KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 417000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'avr-9', name: 'AVR자동트랜스(단상복권) 3KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 605000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'avr-10', name: 'AVR자동트랜스(단상복권) 5KVA', category: 'avr', categoryName: 'AVR 자동전압기', price: 730000, image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+
+  // 판넬용 트랜스
+  { id: 'p-1', name: '판넬용 트랜스(단상단권) 1KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 85000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'p-2', name: '판넬용 트랜스(단상단권) 2KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 132000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'p-3', name: '판넬용 트랜스(단상단권) 3KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 165000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'p-4', name: '판넬용 트랜스(단상단권) 5KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 219000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'p-5', name: '판넬용 트랜스(단상단권) 10KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 380000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 단권' },
+  { id: 'p-6', name: '판넬용 트랜스(단상복권) 1KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 122000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'p-7', name: '판넬용 트랜스(단상복권) 2KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 165000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'p-8', name: '판넬용 트랜스(단상복권) 3KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 270000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'p-9', name: '판넬용 트랜스(단상복권) 5KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 419000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' },
+  { id: 'p-10', name: '판넬용 트랜스(단상복권) 10KVA', category: 'panel', categoryName: '판넬용 트랜스', price: 650000, image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80', subCategory: '단상 복권' }
+];
