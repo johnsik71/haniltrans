@@ -1,12 +1,13 @@
 "use client";
 
+import { Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { XCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-export default function CheckoutFailPage() {
+function CheckoutFailContent() {
   const searchParams = useSearchParams();
   const errorMessage = searchParams.get('message') || '결제 중 알 수 없는 오류가 발생했습니다.';
 
@@ -34,5 +35,13 @@ export default function CheckoutFailPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function CheckoutFailPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>}>
+      <CheckoutFailContent />
+    </Suspense>
   );
 }
