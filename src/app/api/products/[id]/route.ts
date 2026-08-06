@@ -3,13 +3,23 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import productsData from '@/data/products.json';
 
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
-    const product = await prisma.product.findUnique({
-      where: { id }
-    });
+    let product = null;
+    try {
+      product = await prisma.product.findUnique({
+        where: { id }
+      });
+    } catch (e) {
+      console.warn('Prisma query failed, falling back to JSON data', e);
+    }
+    
+    if (!product) {
+      product = (productsData as any[]).find(p => p.id === id);
+    }
     
     if (!product) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });

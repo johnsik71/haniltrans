@@ -3,10 +3,21 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import productsData from '@/data/products.json';
 
 export async function GET() {
-  try {
-    const products = await prisma.product.findMany();
+    let products = [];
+    try {
+      products = await prisma.product.findMany();
+    } catch (e) {
+      console.warn('Prisma query failed, falling back to JSON data', e);
+    }
+    
+    // SQLite on Netlify Functions fallback
+    if (!products || products.length === 0) {
+      products = productsData as any[];
+    }
+
     const session = await getServerSession(authOptions);
     const isAdmin = session && (session.user as any)?.role === 'admin';
 
