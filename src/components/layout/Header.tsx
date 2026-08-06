@@ -88,6 +88,22 @@ export default function Header() {
               </button>
             </form>
 
+            {/* Certifications - ISO 9001, 14001, KC */}
+            <div className="hidden lg:flex items-center gap-1.5 shrink-0 px-2">
+              <div className="flex flex-col items-center justify-center bg-gray-50 border border-gray-200 rounded-md px-1.5 py-0.5">
+                <span className="text-[9px] text-gray-400 font-bold leading-tight">ISO</span>
+                <span className="text-[10px] text-gray-600 font-black leading-tight">9001</span>
+              </div>
+              <div className="flex flex-col items-center justify-center bg-gray-50 border border-gray-200 rounded-md px-1.5 py-0.5">
+                <span className="text-[9px] text-gray-400 font-bold leading-tight">ISO</span>
+                <span className="text-[10px] text-gray-600 font-black leading-tight">14001</span>
+              </div>
+              <div className="flex flex-col items-center justify-center bg-blue-50 border border-blue-200 rounded-md px-1.5 py-0.5">
+                <span className="text-[9px] text-blue-500 font-bold leading-tight">안전인증</span>
+                <span className="text-[10px] text-blue-700 font-black leading-tight">KC</span>
+              </div>
+            </div>
+
             {/* Cart Drawer Trigger */}
             <button
               onClick={() => setIsCartOpen(true)}
