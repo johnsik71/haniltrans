@@ -37,9 +37,15 @@ export default function Header() {
               <Phone className="w-3.5 h-3.5" /> 032-324-9529
             </a>
             {session ? (
-              <button onClick={() => signOut()} className="hover:text-white transition-colors">로그아웃</button>
+              <>
+                <Link href="/mypage" className="hover:text-white font-bold text-blue-300 transition-colors">마이페이지</Link>
+                <button onClick={() => signOut()} className="hover:text-white transition-colors">로그아웃</button>
+              </>
             ) : (
-              <Link href="/login" className="hover:text-white font-bold transition-colors">로그인 / 회원가입</Link>
+              <>
+                <Link href="/login" className="hover:text-white font-bold transition-colors">로그인 / 회원가입</Link>
+                <Link href="/login" className="hover:text-white transition-colors">마이페이지</Link>
+              </>
             )}
             <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
             <Link href="/qna" className="hover:text-white transition-colors">고객센터 / Q&A</Link>
