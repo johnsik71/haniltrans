@@ -55,7 +55,7 @@ export default function Footer() {
           <span>|</span>
           <Link href="/privacy" className="hover:text-white text-blue-400">개인정보처리방침</Link>
           <span>|</span>
-          <Link href="/delivery" className="hover:text-white">이용안내</Link>
+          <Link href="/guide" className="hover:text-white">이용안내</Link>
           <span>|</span>
           <a href="mailto:johnshin7172@gmail.com" className="hover:text-white">광고/제휴 문의</a>
         </div>

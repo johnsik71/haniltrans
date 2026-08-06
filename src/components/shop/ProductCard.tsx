@@ -78,14 +78,14 @@ export default function ProductCard({ product }: { product: Product | any }) {
         </Link>
 
         {/* Price & Add to Cart Action */}
-        <div className="p-4 pt-3 border-t border-gray-100 mt-2 flex flex-wrap items-end justify-between gap-2">
-          <div className="break-keep flex-1 min-w-0">
+        <div className="p-4 pt-3 border-t border-gray-100 mt-2 flex flex-nowrap items-center justify-between gap-2">
+          <div className="flex-1 min-w-0">
             {product.originalPrice && (
               <span className="text-[11px] text-gray-400 line-through block mb-0.5">
                 {product.originalPrice.toLocaleString()}원
               </span>
             )}
-            <div className="text-lg sm:text-xl font-black text-gray-900 leading-none">
+            <div className="text-base sm:text-lg font-black text-gray-900 leading-none truncate">
               {product.price ? product.price.toLocaleString() : 0}<span className="text-xs sm:text-sm font-bold ml-0.5">원</span>
             </div>
           </div>
