@@ -7,7 +7,7 @@ import productsData from '@/data/products.json';
 
 export async function GET() {
   try {
-    let products = [];
+    let products: any[] = [];
     try {
       products = await prisma.product.findMany();
     } catch (e) {
