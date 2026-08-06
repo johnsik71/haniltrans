@@ -15,7 +15,7 @@ async function main() {
       for (const p of productsData) {
         await prisma.product.upsert({
           where: { id: p.id },
-          update: {},
+          update: { image: p.image || null },
           create: {
             id: p.id,
             name: p.name,

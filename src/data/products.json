@@ -5,7 +5,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 175000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -14,7 +14,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 225000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -23,7 +23,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 225000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -32,7 +32,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 360000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -41,7 +41,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 415000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "추천"
     ],
@@ -54,7 +54,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 535000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "베스트"
     ],
@@ -67,7 +67,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 658000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -76,7 +76,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 990000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -85,7 +85,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1200000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -94,7 +94,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1450000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -103,7 +103,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1650000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -112,7 +112,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1850000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "베스트"
     ],
@@ -125,7 +125,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 310000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -134,7 +134,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 410000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -143,7 +143,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 594000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -152,7 +152,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 670000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -161,7 +161,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1210000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "추천",
       "베스트"
@@ -175,7 +175,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1270000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -184,7 +184,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1620000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -193,7 +193,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 1850000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -202,7 +202,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 2420000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "추천",
       "베스트"
@@ -215,7 +215,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 2970000,
-    "image": "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "추천",
       "인기"
@@ -228,7 +228,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 4820000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -237,7 +237,7 @@
     "category": "industrial",
     "categoryName": "공업용 변압기",
     "price": 6270000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_industrial.jpg",
     "badges": [
       "추천",
       "베스트"
@@ -250,7 +250,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 950000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -259,7 +259,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1050000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -268,7 +268,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1150000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -277,7 +277,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1350000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -286,7 +286,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1600000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -295,7 +295,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1890000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -304,7 +304,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 2050000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -313,7 +313,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 3200000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -322,7 +322,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 4500000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -331,7 +331,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1280000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -340,7 +340,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1380000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -349,7 +349,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1540000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -358,7 +358,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 1900000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -367,7 +367,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 2100000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -376,7 +376,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 2490000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -385,7 +385,7 @@
     "category": "oil",
     "categoryName": "유입식 변압기",
     "price": 2790000,
-    "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_oil.jpg",
     "subCategory": "삼상 복권"
   },
   {
@@ -394,7 +394,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 218000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -403,7 +403,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 332000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -412,7 +412,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 402000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -421,7 +421,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 558000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -430,7 +430,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 637000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -439,7 +439,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 789000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -448,7 +448,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 315000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -457,7 +457,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 417000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -466,7 +466,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 605000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -475,7 +475,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 730000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -484,7 +484,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 85000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -493,7 +493,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 132000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -502,7 +502,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 165000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -511,7 +511,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 219000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -520,7 +520,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 380000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 단권"
   },
   {
@@ -529,7 +529,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 122000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -538,7 +538,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 165000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -547,7 +547,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 270000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -556,7 +556,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 419000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -565,7 +565,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 650000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -574,7 +574,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 950000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -583,7 +583,7 @@
     "category": "avr",
     "categoryName": "AVR 자동전압기",
     "price": 1250000,
-    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "단상 복권"
   },
   {
@@ -592,7 +592,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 115000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -601,7 +601,7 @@
     "category": "panel",
     "categoryName": "판넬용 트랜스",
     "price": 145000,
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_panel.jpg",
     "subCategory": "삼상 단권"
   },
   {
@@ -610,7 +610,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 45000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "강압기"
   },
   {
@@ -619,7 +619,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 55000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "강압기"
   },
   {
@@ -628,7 +628,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 65000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "badges": [
       "베스트"
     ],
@@ -641,7 +641,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 85000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "강압기"
   },
   {
@@ -650,7 +650,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 45000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "승압기"
   },
   {
@@ -659,7 +659,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 55000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "승압기"
   },
   {
@@ -668,7 +668,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 65000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "badges": [
       "추천"
     ],
@@ -681,7 +681,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 85000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "승압기"
   },
   {
@@ -690,7 +690,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 15000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "소형 변압기"
   },
   {
@@ -699,7 +699,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 25000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "소형 변압기"
   },
   {
@@ -708,7 +708,7 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 35000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "subCategory": "소형 변압기"
   },
   {
@@ -717,11 +717,57 @@
     "category": "home",
     "categoryName": "가정용 변압기",
     "price": 120000,
-    "image": "https://images.unsplash.com/photo-1558442074-3c19857bc1dc?w=500&auto=format&fit=crop&q=80",
+    "image": "/images/banner_avr.jpg",
     "badges": [
       "베스트"
     ],
     "subCategory": "프리미엄",
     "isBest": true
+  },
+  {
+    "id": "slidacs-1",
+    "name": "정밀 슬라이닥스 1KVA (단상)",
+    "category": "slidacs",
+    "categoryName": "슬라이닥스",
+    "price": 155000,
+    "image": "/images/banner_slidacs.jpg",
+    "subCategory": "단상 슬라이닥스",
+    "isRecommend": true
+  },
+  {
+    "id": "slidacs-2",
+    "name": "정밀 슬라이닥스 3KVA (단상)",
+    "category": "slidacs",
+    "categoryName": "슬라이닥스",
+    "price": 245000,
+    "image": "/images/banner_slidacs.jpg",
+    "subCategory": "단상 슬라이닥스",
+    "isBest": true,
+    "badges": [
+      "베스트"
+    ]
+  },
+  {
+    "id": "inv-1",
+    "name": "DARDA 차량용 인버터 12V 1000W",
+    "category": "inverter",
+    "categoryName": "인버터",
+    "price": 189000,
+    "image": "/images/banner_inverter.jpg",
+    "subCategory": "차량용 인버터",
+    "isRecommend": true
+  },
+  {
+    "id": "inv-2",
+    "name": "DARDA 차량/산업용 인버터 24V 2000W",
+    "category": "inverter",
+    "categoryName": "인버터",
+    "price": 320000,
+    "image": "/images/banner_inverter.jpg",
+    "subCategory": "산업용 인버터",
+    "isBest": true,
+    "badges": [
+      "추천"
+    ]
   }
 ]
