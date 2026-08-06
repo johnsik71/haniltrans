@@ -25,7 +25,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
-    const session = await getServerSession(authOptions);
+    let session = null;
+    try {
+      session = await getServerSession(authOptions);
+    } catch (authError) {
+      console.warn('Auth session failed, assuming non-admin', authError);
+    }
     const isAdmin = session && (session.user as any)?.role === 'admin';
 
     if (!isAdmin) {

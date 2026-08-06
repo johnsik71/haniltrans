@@ -19,7 +19,12 @@ export async function GET() {
       products = productsData as any[];
     }
 
-    const session = await getServerSession(authOptions);
+    let session = null;
+    try {
+      session = await getServerSession(authOptions);
+    } catch (authError) {
+      console.warn('Auth session failed (possibly missing NEXTAUTH_SECRET), assuming non-admin', authError);
+    }
     const isAdmin = session && (session.user as any)?.role === 'admin';
 
     if (!isAdmin) {
