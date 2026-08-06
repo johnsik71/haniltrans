@@ -102,12 +102,12 @@ export default function Home() {
                     className={`absolute inset-0 p-8 w-full h-full bg-gradient-to-r ${banner.bg} transition-opacity duration-1000 ease-in-out ${idx === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                   >
                     {/* Background Silhouette Image */}
-                    <div className="absolute right-[-20px] md:right-[40px] top-1/2 -translate-y-1/2 opacity-50 pointer-events-none mix-blend-screen">
+                    <div className="absolute right-[-20px] md:right-[60px] top-1/2 -translate-y-1/2 opacity-80 pointer-events-none mix-blend-screen">
                       <img 
                         src={banner.image} 
                         alt="Transformer Background" 
-                        className="w-64 h-64 md:w-96 md:h-96 object-cover grayscale transition-transform duration-[8000ms] ease-out scale-110" 
-                        style={{ maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%)', WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%)' }}
+                        className="w-72 h-72 md:w-[28rem] md:h-[28rem] object-cover grayscale transition-transform duration-[8000ms] ease-out scale-110" 
+                        style={{ maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%)', WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%)' }}
                       />
                     </div>
 
