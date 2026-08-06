@@ -19,7 +19,7 @@ const BANNERS = [
     desc: '산업 현장에서 검증된 최고의 정전압 보정 기술. 불안정한 전압을 ±1% 이내로 실시간 자동 조절합니다.',
     link: '/category/avr',
     bg: 'from-slate-900 via-blue-950 to-slate-900',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80'
+    image: '/images/banner_avr.jpg'
   },
   {
     badge: 'KC 안전인증번호 HA06019-12003A',
@@ -28,7 +28,7 @@ const BANNERS = [
     desc: '공장, 건설현장 등 거친 산업 환경에서도 완벽한 성능을 발휘하는 1등급 공업용 특수 변압기 라인업.',
     link: '/category/industrial',
     bg: 'from-slate-900 via-indigo-950 to-slate-900',
-    image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=800&auto=format&fit=crop&q=80'
+    image: '/images/banner_industrial.jpg'
   },
   {
     badge: 'KC 안전인증번호 HA06019-12003A',
@@ -37,7 +37,7 @@ const BANNERS = [
     desc: '제어반, 배전반 내부에 장착되는 맞춤형 판넬 트랜스. 1대부터 대량까지 완벽하게 맞춤 설계해 드립니다.',
     link: '/request',
     bg: 'from-slate-900 via-emerald-950 to-slate-900',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80'
+    image: '/images/banner_panel.jpg'
   }
 ];
 
