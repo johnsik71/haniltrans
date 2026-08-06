@@ -80,7 +80,7 @@ export default function OptionModal({
                   <button
                     key={opt.id}
                     onClick={() => setSelectedOption(opt)}
-                    className={`w-full p-3 rounded-xl border text-left text-xs font-bold flex justify-between items-center transition-all ${
+                    className={`w-full p-3 min-h-[44px] rounded-xl border text-left text-xs font-bold flex justify-between items-center transition-all ${
                       selectedOption?.id === opt.id
                         ? 'border-blue-600 bg-blue-50/50 text-blue-900 ring-2 ring-blue-600/20'
                         : 'border-gray-200 hover:bg-gray-50 text-gray-700'
