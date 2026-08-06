@@ -162,7 +162,7 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6">
       {/* Tabs */}
-      <div className="flex gap-4 border-b border-gray-200">
+      <div className="flex overflow-x-auto hide-scrollbar whitespace-nowrap gap-4 border-b border-gray-200">
         <button
           onClick={() => setActiveTab('products')}
           className={`pb-3 font-bold flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'products' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-900'}`}
@@ -197,7 +197,7 @@ export default function AdminDashboard() {
               <p className="text-gray-500 text-sm mt-1">총 {products.length}개의 변압기 상품이 등록되어 있습니다.</p>
             </div>
             
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {selectedProductIds.length > 0 && (
                 <>
                   <button 

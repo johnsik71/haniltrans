@@ -26,13 +26,13 @@ export default function Header() {
       <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
           <div className="flex items-center gap-2 sm:gap-4 text-slate-300">
-            <span className="text-yellow-400 font-bold flex items-center gap-1">
+            <span className="text-yellow-400 font-bold flex items-center gap-1 text-[10px] sm:text-xs text-center">
               ★ 더 한일트랜스 스토어 공식 온라인몰
             </span>
             <span className="hidden sm:inline text-slate-500">|</span>
             <span className="hidden sm:inline text-slate-400">오후 4시 전 주문 당일 발송!</span>
           </div>
-          <div className="flex items-center gap-4 text-slate-300 text-[11px]">
+          <div className="flex items-center gap-3 sm:gap-4 text-slate-300 text-[10px] sm:text-[11px] overflow-x-auto whitespace-nowrap hide-scrollbar w-full sm:w-auto justify-center sm:justify-end">
             <a href="tel:032-324-9529" className="flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors">
               <Phone className="w-3.5 h-3.5" /> 032-324-9529
             </a>
@@ -56,29 +56,45 @@ export default function Header() {
       {/* Main Logo & Search Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 self-start md:self-auto">
-            <div className="w-12 h-12 bg-[#0c1e3e] rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/30 border-2 border-blue-900/50 relative overflow-hidden group-hover:scale-105 transition-transform">
-              {/* The 'H' Background */}
-              <div className="absolute inset-0 flex items-center justify-between px-2">
-                <div className="w-2.5 h-8 rounded-sm animate-flash-h"></div>
-                <div className="w-2.5 h-8 rounded-sm animate-flash-h"></div>
+          {/* Logo & Mobile Cart Container */}
+          <div className="flex items-center justify-between w-full md:w-auto">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#0c1e3e] rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/30 border-2 border-blue-900/50 relative overflow-hidden group-hover:scale-105 transition-transform">
+                {/* The 'H' Background */}
+                <div className="absolute inset-0 flex items-center justify-between px-1.5 sm:px-2">
+                  <div className="w-2 sm:w-2.5 h-6 sm:h-8 rounded-sm animate-flash-h"></div>
+                  <div className="w-2 sm:w-2.5 h-6 sm:h-8 rounded-sm animate-flash-h"></div>
+                </div>
+                <div className="absolute w-6 sm:w-8 h-2 sm:h-2.5 rounded-sm animate-flash-h"></div>
+                
+                {/* 3D Spinning Lightning */}
+                <Zap className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-400 fill-current relative z-10 animate-3d-spin drop-shadow-md" />
               </div>
-              <div className="absolute w-8 h-2.5 rounded-sm animate-flash-h"></div>
-              
-              {/* 3D Spinning Lightning */}
-              <Zap className="w-7 h-7 text-yellow-400 fill-current relative z-10 animate-3d-spin drop-shadow-md" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl sm:text-2xl font-black tracking-tight text-blue-950">더 한일트랜스 스토어</span>
-                <span className="bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">공식</span>
+              <div>
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <span className="text-lg sm:text-2xl font-black tracking-tight text-blue-950">더 한일트랜스 스토어</span>
+                  <span className="bg-red-500 text-white text-[9px] sm:text-[10px] font-black px-1 sm:px-1.5 py-0.5 rounded">공식</span>
+                </div>
+                <span className="text-[9px] sm:text-[11px] text-gray-500 font-bold block">THE HANIL TRANS STORE</span>
               </div>
-              <span className="text-[11px] text-gray-500 font-bold block">THE HANIL TRANS STORE</span>
-            </div>
-          </Link>
+            </Link>
 
-          {/* Search Bar + Cart - mobile: same row, desktop: separate */}
+            {/* Mobile Cart Button */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="md:hidden relative p-2 text-blue-900 hover:bg-blue-50 rounded-xl transition-colors"
+            >
+              <ShoppingBag className="w-6 h-6 text-blue-600" />
+              {totalCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-bounce">
+                  {totalCount}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* Search Bar + Desktop Cart */}
           <div className="flex w-full md:flex-1 gap-3 items-center">
             <form onSubmit={handleSearch} className="flex-1 max-w-xl relative">
               <input
@@ -100,10 +116,10 @@ export default function Header() {
               <img src="/images/cert_kc.png" alt="KC 인증" className="h-8 w-auto object-contain bg-white rounded shadow-sm border border-gray-100" />
             </div>
 
-            {/* Cart Drawer Trigger */}
+            {/* Desktop Cart Drawer Trigger */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="flex items-center gap-2 md:gap-3 p-2.5 md:px-4 md:py-2.5 bg-blue-50 border border-blue-200 text-blue-900 rounded-xl hover:bg-blue-100 transition-colors shrink-0"
+              className="hidden md:flex items-center gap-2 md:gap-3 p-2.5 md:px-4 md:py-2.5 bg-blue-50 border border-blue-200 text-blue-900 rounded-xl hover:bg-blue-100 transition-colors shrink-0"
             >
               <div className="relative">
                 <ShoppingBag className="w-6 h-6 text-blue-600" />
@@ -113,7 +129,7 @@ export default function Header() {
                   </span>
                 )}
               </div>
-              <div className="text-left hidden sm:block">
+              <div className="text-left hidden lg:block">
                 <span className="text-xs text-gray-500 block leading-none">장바구니</span>
                 <span className="text-sm font-black text-blue-900 leading-tight">{totalCount}개 상품</span>
               </div>
