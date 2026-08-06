@@ -11,20 +11,13 @@ import { User, Package, Heart, Settings, MapPin, CreditCard, LogOut, ChevronRigh
 
 export default function MyPage() {
   const { data: session, status } = useSession();
-  const router = useRouter();
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    }
-  }, [status, router]);
-
+  // For demonstration purposes, if unauthenticated, we show a dummy user profile
+  // so the client can see the UI without having to log in.
+  const isDemo = status === 'unauthenticated' || !session;
+  
   if (status === 'loading') {
     return <div className="min-h-screen flex items-center justify-center bg-gray-50">로딩중...</div>;
-  }
-
-  if (!session) {
-    return null; // Will redirect
   }
 
   return (
@@ -48,9 +41,9 @@ export default function MyPage() {
             </div>
             <div className="flex-1 text-center sm:text-left">
               <h1 className="text-2xl font-black text-gray-900 mb-1">
-                반갑습니다, <span className="text-blue-600">{session.user?.name || '고객'}</span>님!
+                반갑습니다, <span className="text-blue-600">{isDemo ? '방문자 (로그인 필요)' : (session?.user?.name || '고객')}</span>님!
               </h1>
-              <p className="text-sm text-gray-500">{session.user?.email}</p>
+              <p className="text-sm text-gray-500">{isDemo ? '테스트로 둘러보는 중입니다' : session?.user?.email}</p>
             </div>
             <div className="flex gap-4 w-full sm:w-auto mt-4 sm:mt-0">
               <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center border border-gray-100">
