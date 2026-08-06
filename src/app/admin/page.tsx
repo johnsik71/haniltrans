@@ -15,7 +15,7 @@ export default function AdminDashboard() {
   const [users, setUsers] = useState<any[]>([]);
   const [sales, setSales] = useState<any[]>([]);
   const [requests, setRequests] = useState<any[]>([]);
-
+  const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]);
   const fetchProducts = async () => {
     setLoading(true);
     try {
@@ -100,6 +100,41 @@ export default function AdminDashboard() {
     }
   };
 
+  const toggleSelectProduct = (id: string) => {
+    setSelectedProductIds(prev => 
+      prev.includes(id) ? prev.filter(pid => pid !== id) : [...prev, id]
+    );
+  };
+
+  const toggleSelectAllProducts = () => {
+    if (selectedProductIds.length === filteredProducts.length && filteredProducts.length > 0) {
+      setSelectedProductIds([]);
+    } else {
+      setSelectedProductIds(filteredProducts.map(p => p.id));
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedProductIds.length === 0) return;
+    if (!confirm(`선택한 ${selectedProductIds.length}개의 상품을 정말 삭제하시겠습니까?`)) return;
+    
+    try {
+      const res = await Promise.all(selectedProductIds.map(id => 
+        fetch(`/api/products/${id}`, { method: 'DELETE' })
+      ));
+      
+      const successCount = res.filter(r => r.ok).length;
+      if (successCount < selectedProductIds.length) {
+        alert('일부 상품 삭제 실패');
+      }
+      setSelectedProductIds([]);
+      fetchProducts();
+    } catch (err) {
+      console.error(err);
+      alert('오류 발생');
+    }
+  };
+
   const handleEdit = (product: any) => {
     setEditingProduct(product);
     setIsFormOpen(true);
@@ -159,12 +194,30 @@ export default function AdminDashboard() {
               <p className="text-gray-500 text-sm mt-1">총 {products.length}개의 변압기 상품이 등록되어 있습니다.</p>
             </div>
             
-            <button 
-              onClick={handleAddNew}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-md shadow-blue-600/20"
-            >
-              <Plus className="w-5 h-5" /> 새 상품 등록
-            </button>
+            <div className="flex gap-2">
+              {selectedProductIds.length > 0 && (
+                <>
+                  <button 
+                    onClick={() => setSelectedProductIds([])}
+                    className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2.5 rounded-xl font-bold transition-colors"
+                  >
+                    선택해제
+                  </button>
+                  <button 
+                    onClick={handleBulkDelete}
+                    className="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-4 py-2.5 rounded-xl font-bold transition-colors flex items-center gap-1"
+                  >
+                    <Trash2 className="w-4 h-4" /> 선택 삭제 ({selectedProductIds.length})
+                  </button>
+                </>
+              )}
+              <button 
+                onClick={handleAddNew}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-md shadow-blue-600/20"
+              >
+                <Plus className="w-5 h-5" /> 새 상품 등록
+              </button>
+            </div>
           </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
@@ -185,6 +238,14 @@ export default function AdminDashboard() {
           <table className="w-full text-left text-sm whitespace-nowrap">
             <thead className="bg-slate-50 text-gray-500 border-b border-gray-200">
               <tr>
+                <th className="px-6 py-4 w-10 text-center">
+                  <input 
+                    type="checkbox" 
+                    className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500"
+                    checked={filteredProducts.length > 0 && selectedProductIds.length === filteredProducts.length}
+                    onChange={toggleSelectAllProducts}
+                  />
+                </th>
                 <th className="px-6 py-4 font-bold">상품정보</th>
                 <th className="px-6 py-4 font-bold">카테고리</th>
                 <th className="px-6 py-4 font-bold text-right">판매가</th>
@@ -206,7 +267,15 @@ export default function AdminDashboard() {
                 </tr>
               ) : (
                 filteredProducts.map((p) => (
-                  <tr key={p.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={p.id} className={`hover:bg-slate-50 transition-colors ${selectedProductIds.includes(p.id) ? 'bg-blue-50/50' : ''}`}>
+                    <td className="px-6 py-4 text-center">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500"
+                        checked={selectedProductIds.includes(p.id)}
+                        onChange={() => toggleSelectProduct(p.id)}
+                      />
+                    </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
                         <img src={p.image || 'https://via.placeholder.com/150'} alt="" className="w-12 h-12 rounded-lg object-cover bg-gray-100 border border-gray-200" />
