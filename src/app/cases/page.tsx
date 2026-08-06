@@ -6,38 +6,38 @@ import { Building2, Globe2, ShieldCheck, Factory } from 'lucide-react';
 import Image from 'next/image';
 
 const CLIENTS = [
-  { name: '삼성전자', type: '반도체 라인 설비', logo: 'S' },
-  { name: 'LG화학', type: '공장 자동화 시스템', logo: 'L' },
-  { name: '현대자동차', type: '조립 라인 제어반', logo: 'H' },
-  { name: 'SK하이닉스', type: '정밀 전력 제어기', logo: 'S' },
-  { name: '한국전력공사', type: '산업용 배전반', logo: 'K' },
-  { name: '포스코', type: '고용량 제어 트랜스', logo: 'P' },
-  { name: '한화에어로스페이스', type: '특수 방산 설비', logo: 'H' },
-  { name: '국방과학연구소', type: '연구용 정밀 변압기', logo: 'A' },
+  { name: '한국전자통신연구원', type: '국책 연구기관', logo: 'E' },
+  { name: '국립암센터', type: '공공 의료기관', logo: 'N' },
+  { name: '서울대학교', type: '산학협력단 설비', logo: 'S' },
+  { name: '한국수력원자력', type: '발전소 부대설비', logo: 'K' },
+  { name: '오송첨단의료재단', type: '의료기기 지원센터', logo: 'O' },
+  { name: '한국표준과학연구원', type: '정밀 측정실', logo: 'K' },
+  { name: '연세대학교 세브란스', type: '임상연구센터', logo: 'Y' },
+  { name: '시화공단 산업단지', type: '정밀가공 공장군', logo: 'S' },
 ];
 
 const CASES = [
   {
-    title: '베트남 하노이 제조공장 라인 증설',
-    desc: '삼상 380V -> 220V 공업용 다운트랜스 100kVA 외 15기 납품',
+    title: '서울대학교 공과대학 랩실',
+    desc: '고정밀 연구장비용 무소음/노이즈 차단 복권형 트랜스 30kVA 납품',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
     date: '2023. 11',
   },
   {
-    title: '동탄 반도체 클러스터 R&D 센터',
-    desc: '정밀 측정기기용 AVR(자동전압조정기) 50kVA 납품',
+    title: '한국화학연구원 (KRICT)',
+    desc: '분석기기 안정화를 위한 AVR(자동전압조정기) 50kVA 특수 제작',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800',
     date: '2023. 09',
   },
   {
-    title: '미국 텍사스주 K-푸드 현지 공장',
-    desc: '미국 전압(480V) 대응 맞춤형 삼상 변압기 수출 납품',
+    title: '지방자치단체 정수처리장',
+    desc: '모터 펌프 제어반용 삼상 380V -> 220V 강압 트랜스 100kVA 납품',
     image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=800',
     date: '2023. 05',
   },
   {
-    title: '국내 대학병원 MRI/CT 촬영실',
-    desc: '의료기기 전용 노이즈 차단 복권형 트랜스 30kVA 5기',
+    title: '국립 대학병원 MRI/CT 촬영실',
+    desc: '의료기기 전용 최고등급 절연 강압 트랜스 30kVA 5기 시공',
     image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80&w=800',
     date: '2023. 02',
   },

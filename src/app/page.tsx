@@ -99,7 +99,7 @@ export default function Home() {
                 </div>
               </Link>
 
-              <Link href="/about" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+              <Link href="/cases" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
                 <div className="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors">
                   <Briefcase className="w-5 h-5" />
                 </div>
