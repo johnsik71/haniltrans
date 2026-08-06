@@ -47,7 +47,6 @@ export default function Header() {
                 <Link href="/mypage" className="hover:text-white transition-colors">마이페이지</Link>
               </>
             )}
-            <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
             <Link href="/qna" className="hover:text-white transition-colors">고객센터 / Q&A</Link>
             <Link href="/admin" className="hover:text-white transition-colors font-bold text-slate-400">관리자</Link>
           </div>
