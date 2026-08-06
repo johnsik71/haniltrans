@@ -24,7 +24,8 @@ export default function MyPage() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
       
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex flex-col md:flex-row gap-8">
+      {/* Mobile responsive fix: py-8 -> py-4 md:py-8, gap-8 -> gap-4 md:gap-8 */}
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 w-full flex flex-col md:flex-row gap-4 md:gap-8">
         <Sidebar />
 
         <div className="flex-1 min-w-0">
@@ -35,12 +36,14 @@ export default function MyPage() {
           </div>
 
           {/* Profile Header */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 mb-8 flex flex-col sm:flex-row items-center gap-6">
+          {/* Mobile responsive fix: p-8 -> p-6 md:p-8 */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-200 mb-8 flex flex-col sm:flex-row items-center gap-6">
             <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 shrink-0">
               <User className="w-10 h-10" />
             </div>
             <div className="flex-1 text-center sm:text-left">
-              <h1 className="text-2xl font-black text-gray-900 mb-1">
+              {/* Mobile responsive fix: text-2xl -> text-xl md:text-2xl */}
+              <h1 className="text-xl md:text-2xl font-black text-gray-900 mb-1">
                 반갑습니다, <span className="text-blue-600">{isDemo ? '방문자 (로그인 필요)' : (session?.user?.name || '고객')}</span>님!
               </h1>
               <p className="text-sm text-gray-500">{isDemo ? '테스트로 둘러보는 중입니다' : session?.user?.email}</p>

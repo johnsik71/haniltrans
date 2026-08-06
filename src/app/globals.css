@@ -7,6 +7,10 @@ body {
   color: #333333;
   font-family: 'Nanum Gothic', 'Malgun Gothic', dotum, sans-serif;
   font-size: 12px;
+  /* Mobile responsive fix: prevent iOS auto text zoom & fix word breaking */
+  -webkit-text-size-adjust: 100%;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* Custom scrollbar & layout helper */

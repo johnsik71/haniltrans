@@ -9,10 +9,12 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
       <Header />
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex flex-col md:flex-row gap-8">
+      {/* Mobile responsive fix: container padding and gap adjustments */}
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 w-full flex flex-col md:flex-row gap-4 md:gap-8">
         <Sidebar />
 
-        <div className="flex-1 min-w-0 bg-white border border-gray-200 p-10 rounded-2xl shadow-sm">
+        {/* Mobile responsive fix: content box padding p-10 -> p-6 md:p-10 */}
+        <div className="flex-1 min-w-0 bg-white border border-gray-200 p-6 md:p-10 rounded-2xl shadow-sm">
           {/* Breadcrumb */}
           <div className="text-[11px] text-gray-500 flex items-center gap-1 border-b border-gray-200 pb-3 mb-8">
             <Link href="/" className="hover:underline">HOME</Link>
@@ -28,7 +30,8 @@ export default function AboutPage() {
                 <Zap className="w-8 h-8 fill-current" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight leading-tight">
+                {/* Mobile responsive fix: text-3xl -> text-2xl md:text-4xl */}
+                <h1 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight leading-tight">
                   대한민국 변압기 기술의 표준,<br />
                   <span className="text-blue-600">더 한일트랜스 스토어</span>
                 </h1>

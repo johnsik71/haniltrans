@@ -109,9 +109,9 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
       <Header />
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full relative">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 w-full relative">
         {/* 2-Column Layout (Sidebar + Main Content + Quick Wing) */}
-        <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
           
           {/* Left Category Sidebar */}
           <Sidebar />
@@ -144,7 +144,7 @@ export default function Home() {
                           <Shield className="w-3.5 h-3.5" /> {banner.badge}
                         </span>
                       </div>
-                      <h2 className="text-3xl font-black leading-tight text-white drop-shadow-md">
+                      <h2 className="text-xl md:text-3xl font-black leading-tight text-white drop-shadow-md">
                         {banner.title}<br />
                         <span className="text-blue-400">{banner.subtitle}</span>
                       </h2>
@@ -228,7 +228,8 @@ export default function Home() {
 
             {/* Section 2: Tabbed Showcase Section matching PDF page 5 */}
             <section className="space-y-4 pt-4 border-t border-gray-200">
-              <div className="flex flex-wrap gap-1 border-b border-gray-300">
+              {/* Mobile responsive fix: use flex overflow-x-auto whitespace-nowrap hide-scrollbar for tabs */}
+              <div className="flex overflow-x-auto hide-scrollbar whitespace-nowrap gap-1 border-b border-gray-300">
                 {[
                   { id: 'single', label: '삼상단권변압기' },
                   { id: 'double', label: '삼상복권변압기' },
@@ -239,7 +240,7 @@ export default function Home() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`px-5 py-2.5 text-xs font-bold transition-all border-b-2 -mb-[2px] ${
+                    className={`px-5 py-3 text-[13px] md:text-sm font-bold transition-all border-b-2 -mb-[2px] ${
                       activeTab === tab.id
                         ? 'border-blue-600 text-blue-600 bg-blue-50/50 font-black'
                         : 'border-transparent text-gray-600 hover:text-gray-900'

@@ -141,7 +141,7 @@ export default function Header() {
       {/* Main Category GNB Bar */}
       <nav className="bg-slate-900 border-t border-slate-800 text-white sticky top-0 z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-bold h-12 overflow-x-auto whitespace-nowrap hide-scrollbar">
-          <div className="flex items-center gap-6 sm:gap-8 min-w-max">
+          <div className="flex items-center gap-8 sm:gap-10 min-w-max">
             <Link href="/" className="hover:text-blue-400 transition-colors py-3">메인 홈</Link>
             <Link href="/about" className="hover:text-blue-400 transition-colors py-3">회사소개</Link>
             <Link href="/category/industrial" className="hover:text-blue-400 transition-colors py-3">공업용변압기</Link>

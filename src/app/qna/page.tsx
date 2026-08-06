@@ -71,7 +71,8 @@ function QnaContent() {
           </div>
 
           {/* Modern Tabs */}
-          <div className="flex border-b border-gray-200 mb-8">
+          {/* Mobile responsive fix: use flex overflow-x-auto whitespace-nowrap hide-scrollbar for tabs */}
+          <div className="flex overflow-x-auto hide-scrollbar whitespace-nowrap border-b border-gray-200 mb-8">
             <button
               onClick={() => setActiveTab('faq')}
               className={`pb-4 px-6 font-bold text-sm transition-colors border-b-2 ${

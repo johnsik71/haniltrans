@@ -102,7 +102,8 @@ export default function ProductDetailPage() {
           </div>
 
           {/* Right: Product Info */}
-          <div className="w-full md:w-1/2 p-8 lg:p-12 flex flex-col">
+          {/* Mobile responsive fix: p-4 md:p-8 lg:p-12 to save space on mobile */}
+          <div className="w-full md:w-1/2 p-4 sm:p-6 lg:p-12 flex flex-col">
             <div className="flex justify-between items-start mb-2">
               <span className="text-sm font-bold text-blue-600">{product.categoryName}</span>
               <div className="flex gap-2 text-gray-400">
@@ -111,7 +112,8 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            <h1 className="text-2xl lg:text-3xl font-black text-gray-900 leading-tight mb-4">
+            {/* Mobile responsive fix: scaled down text-3xl to text-xl md:text-2xl lg:text-3xl */}
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-black text-gray-900 leading-tight mb-4">
               {product.name}
             </h1>
 
@@ -134,8 +136,8 @@ export default function ProductDetailPage() {
                       {product.originalPrice.toLocaleString()}원
                     </span>
                   )}
-                  <span className="text-3xl font-black text-gray-900">
-                    {product.price ? product.price.toLocaleString() : 0}<span className="text-xl font-bold ml-1">원</span>
+                  <span className="text-2xl md:text-3xl font-black text-gray-900">
+                    {product.price ? product.price.toLocaleString() : 0}<span className="text-lg md:text-xl font-bold ml-1">원</span>
                   </span>
                 </div>
               </div>
@@ -164,8 +166,9 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            <div className="mt-auto flex gap-3">
-              <div className="flex border border-gray-300 rounded-xl overflow-hidden w-32 shrink-0">
+            {/* Mobile responsive fix: flex-col on mobile to prevent squished buttons */}
+            <div className="mt-auto flex flex-col sm:flex-row gap-3">
+              <div className="flex border border-gray-300 rounded-xl overflow-hidden w-full sm:w-32 shrink-0 h-12 sm:h-auto">
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="flex-1 bg-gray-50 hover:bg-gray-100 font-bold text-gray-600 transition-colors"
@@ -180,13 +183,13 @@ export default function ProductDetailPage() {
               </div>
                 <button 
                   onClick={handleAddToCart}
-                  className="flex-1 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-black text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm"
+                  className="flex-1 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-black text-base md:text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm h-12"
                 >
                   <ShoppingCart className="w-5 h-5" /> 장바구니
                 </button>
                 <button 
                   onClick={handleBuyNow}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-600/30"
+                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black text-base md:text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-600/30 h-12"
                 >
                   바로 구매하기
                 </button>
@@ -203,7 +206,8 @@ export default function ProductDetailPage() {
         {/* Product Details Section with Tabs */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-12">
           {/* Tabs Navigation */}
-          <div className="flex border-b border-gray-200">
+          {/* Mobile responsive fix: use flex overflow-x-auto whitespace-nowrap hide-scrollbar for tabs */}
+          <div className="flex overflow-x-auto hide-scrollbar whitespace-nowrap border-b border-gray-200">
             {[
               { id: 'detail', label: '상세정보' },
               { id: 'review', label: `구매후기 (${product.reviewCount || 0})` },
@@ -213,7 +217,7 @@ export default function ProductDetailPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex-1 py-4 text-sm font-bold transition-all border-b-2 ${
+                className={`flex-1 px-4 py-4 text-[13px] md:text-sm font-bold transition-all border-b-2 ${
                   activeTab === tab.id
                     ? 'border-blue-600 text-blue-600 bg-blue-50/30 font-black'
                     : 'border-transparent text-gray-500 hover:text-gray-900 hover:bg-gray-50'
@@ -225,7 +229,8 @@ export default function ProductDetailPage() {
           </div>
 
           {/* Tab Content */}
-          <div className="p-8 lg:p-12 min-h-[400px]">
+          {/* Mobile responsive fix: p-4 md:p-8 lg:p-12 */}
+          <div className="p-4 sm:p-8 lg:p-12 min-h-[400px]">
             {activeTab === 'detail' && (
               <div className="text-center animate-in fade-in duration-300">
                 <h3 className="text-xl font-black text-gray-900 mb-8 pb-4 border-b border-gray-100">상품 상세 정보</h3>
