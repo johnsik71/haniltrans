@@ -94,7 +94,7 @@ export default function AdminDashboard() {
         fetchProducts();
       } else {
         const errorData = await res.json().catch(() => ({}));
-        alert(`삭제 실패: ${errorData.error || res.status}`);
+        alert(`삭제 실패: ${errorData.error || res.status}${errorData.session ? ' - Session: ' + JSON.stringify(errorData.session) : ''}`);
       }
     } catch (error) {
       alert(`오류 발생: ${error instanceof Error ? error.message : 'Unknown'}`);
