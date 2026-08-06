@@ -31,8 +31,15 @@ export default function Sidebar({ activeCatId }: { activeCatId?: string }) {
               </Link>
             );
           })}
+          <Link
+              href="/cases"
+              className="flex items-center justify-between px-4 py-3 font-black transition-all text-blue-700 bg-blue-50 border-t border-blue-100 hover:bg-blue-100"
+            >
+              <span>💼 주요 납품사례 / 고객사</span>
+              <ChevronRight className="w-4 h-4 text-blue-600" />
+            </Link>
+          </div>
         </div>
-      </div>
 
       {/* CS Center & Bank Box matching screenshot structure */}
       <div className="bg-white border border-gray-200 p-5 rounded-2xl text-xs space-y-4 text-gray-600 shadow-xs">
