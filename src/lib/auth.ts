@@ -3,6 +3,7 @@ import KakaoProvider from "next-auth/providers/kakao";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: AuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET || "fallback_secret_for_demo_purposes_only",
   providers: [
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID || "DUMMY_KAKAO_CLIENT_ID",
