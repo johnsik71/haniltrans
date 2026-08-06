@@ -38,6 +38,33 @@ const BANNERS = [
     link: '/request',
     bg: 'from-slate-900 via-emerald-950 to-slate-900',
     image: '/images/banner_panel.jpg'
+  },
+  {
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '유입식 변압기',
+    subtitle: '최고의 절연 및 냉각 성능',
+    desc: '대용량 전력 수급 및 옥외/옥내 거친 환경에서도 안정적으로 전력을 공급하는 고효율 유입식 변압기.',
+    link: '/category/oil',
+    bg: 'from-slate-900 via-amber-950 to-slate-900',
+    image: '/images/banner_oil.jpg'
+  },
+  {
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '슬라이닥스 (전압조정기)',
+    subtitle: '정밀한 전압 세팅 완벽 지원',
+    desc: '실험실, 연구소, 학교 등 정밀하고 미세한 전압 제어가 필요한 곳을 위한 슬라이닥스(Slidacs) 전압 조정기.',
+    link: '/category/slidacs',
+    bg: 'from-slate-900 via-purple-950 to-slate-900',
+    image: '/images/banner_slidacs.jpg'
+  },
+  {
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '고성능 인버터 (Inverter)',
+    subtitle: '안정적인 정현파 전원 공급',
+    desc: '자동차, 캠핑카, 선박 및 각종 산업 현장에서 배터리(DC)를 교류(AC)로 변환해주는 DARDA 고성능 인버터.',
+    link: '/category/inverter',
+    bg: 'from-slate-900 via-teal-950 to-slate-900',
+    image: '/images/banner_inverter.jpg'
   }
 ];
 
