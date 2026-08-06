@@ -21,7 +21,7 @@ const BANNERS = [
     bg: 'from-slate-900 via-blue-950 to-slate-900'
   },
   {
-    badge: '공업용/산업용 특수 변압기',
+    badge: 'KC 안전인증번호 HA06019-12003A',
     title: '삼상 공업용 변압기',
     subtitle: '완벽한 내구성과 안정성',
     desc: '공장, 건설현장 등 거친 산업 환경에서도 완벽한 성능을 발휘하는 1등급 공업용 특수 변압기 라인업.',
@@ -29,7 +29,7 @@ const BANNERS = [
     bg: 'from-slate-900 via-indigo-950 to-slate-900'
   },
   {
-    badge: '맞춤형 제작 전문',
+    badge: 'KC 안전인증번호 HA06019-12003A',
     title: '판넬용 트랜스',
     subtitle: '원하는 사양 그대로 제작',
     desc: '제어반, 배전반 내부에 장착되는 맞춤형 판넬 트랜스. 1대부터 대량까지 완벽하게 맞춤 설계해 드립니다.',
