@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ShoppingBag, Search, Phone, Zap, ChevronDown } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useSession, signOut } from 'next-auth/react';
 
 export default function Header() {
   const { totalCount, setIsCartOpen } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
+  const { data: session } = useSession();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +36,11 @@ export default function Header() {
             <a href="tel:032-324-9529" className="flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors">
               <Phone className="w-3.5 h-3.5" /> 032-324-9529
             </a>
+            {session ? (
+              <button onClick={() => signOut()} className="hover:text-white transition-colors">로그아웃</button>
+            ) : (
+              <Link href="/login" className="hover:text-white font-bold transition-colors">로그인 / 회원가입</Link>
+            )}
             <Link href="/about" className="hover:text-white transition-colors">회사소개</Link>
             <Link href="/qna" className="hover:text-white transition-colors">고객센터 / Q&A</Link>
             <Link href="/admin" className="hover:text-white transition-colors font-bold text-slate-400">관리자</Link>
