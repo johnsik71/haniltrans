@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2, Search, ExternalLink, Package, Users, BarChart3, TrendingUp, DollarSign, Calendar } from 'lucide-react';
+import { Plus, Edit2, Trash2, Search, ExternalLink, Package, Users, BarChart3, TrendingUp, DollarSign, Calendar, FileText, Printer } from 'lucide-react';
 import ProductForm from '@/components/admin/ProductForm';
 import Link from 'next/link';
 
@@ -11,9 +11,10 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [editingProduct, setEditingProduct] = useState<any | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'products' | 'users' | 'sales'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'users' | 'sales' | 'requests'>('products');
   const [users, setUsers] = useState<any[]>([]);
   const [sales, setSales] = useState<any[]>([]);
+  const [requests, setRequests] = useState<any[]>([]);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -57,10 +58,23 @@ export default function AdminDashboard() {
     }
   };
 
+  const fetchRequests = async () => {
+    try {
+      const res = await fetch('/api/requests');
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setRequests(data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
     fetchUsers();
     fetchSales();
+    fetchRequests();
   }, []);
 
   const today = new Date().toISOString().split('T')[0];
@@ -128,6 +142,12 @@ export default function AdminDashboard() {
           className={`pb-3 font-bold flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'sales' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-900'}`}
         >
           <BarChart3 className="w-5 h-5" /> 판매·마진 관리
+        </button>
+        <button
+          onClick={() => setActiveTab('requests')}
+          className={`pb-3 font-bold flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'requests' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-900'}`}
+        >
+          <FileText className="w-5 h-5" /> 제작 의뢰서
         </button>
       </div>
 
@@ -385,6 +405,133 @@ export default function AdminDashboard() {
           </div>
         </>
       )}
+
+      {activeTab === 'requests' && (
+        <>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h1 className="text-2xl font-black text-gray-900">맞춤 제작 의뢰서 관리</h1>
+              <p className="text-gray-500 text-sm mt-1">고객이 작성한 제작 의뢰서를 순차적으로 확인하고 문서로 출력할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {requests.length === 0 ? (
+              <div className="bg-white p-12 text-center rounded-2xl border border-gray-200">
+                <p className="text-gray-500 font-bold">접수된 제작 의뢰서가 없습니다.</p>
+              </div>
+            ) : (
+              requests.map((req, idx) => (
+                <div key={req.id} className="print-section bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden print:shadow-none print:border-gray-800 print:mb-8">
+                  <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between print:bg-gray-100 print:text-black print:border-b print:border-gray-800">
+                    <div className="flex items-center gap-4">
+                      <span className="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-md print:bg-gray-300 print:text-black">No. {requests.length - idx}</span>
+                      <h2 className="font-bold">접수번호: {req.id}</h2>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-400 print:text-black">
+                        접수일시: {new Date(req.createdAt).toLocaleString('ko-KR')}
+                      </span>
+                      <button 
+                        onClick={() => window.print()}
+                        className="bg-white text-slate-900 p-2 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2 text-sm font-bold print:hidden"
+                      >
+                        <Printer className="w-4 h-4" /> 문서 출력
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6 md:p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* 의뢰인 정보 */}
+                      <div>
+                        <h3 className="text-lg font-black text-gray-900 mb-4 border-b border-gray-200 pb-2">의뢰인 정보</h3>
+                        <table className="w-full text-sm">
+                          <tbody>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500 w-1/3">업체명 (성함)</td>
+                              <td className="py-3 font-bold text-gray-900">{req.company}</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500">담당자</td>
+                              <td className="py-3 font-bold text-gray-900">{req.contactName || '-'}</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500">연락처</td>
+                              <td className="py-3 font-bold text-gray-900">{req.phone}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      {/* 요구 사양 */}
+                      <div>
+                        <h3 className="text-lg font-black text-gray-900 mb-4 border-b border-gray-200 pb-2">제작 요구 사양</h3>
+                        <table className="w-full text-sm">
+                          <tbody>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500 w-1/3">입력 전압 (Input)</td>
+                              <td className="py-3 font-bold text-gray-900 text-blue-600">{req.inputVoltage}</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500">출력 전압 (Output)</td>
+                              <td className="py-3 font-bold text-gray-900 text-red-600">{req.outputVoltage}</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500">요구 용량</td>
+                              <td className="py-3 font-black text-gray-900">{req.capacity}</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 font-bold text-gray-500">제작 수량</td>
+                              <td className="py-3 font-black text-gray-900">{req.quantity}대</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    {/* 특이사항 */}
+                    <div className="mt-8">
+                      <h3 className="text-lg font-black text-gray-900 mb-4 border-b border-gray-200 pb-2">특이사항 및 추가 요청</h3>
+                      <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 min-h-[100px] text-sm text-gray-700 whitespace-pre-wrap print:bg-white print:border-gray-300">
+                        {req.notes || '특이사항 없음'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+          
+          <style dangerouslySetInnerHTML={{__html: `
+            @media print {
+              body * {
+                visibility: hidden;
+              }
+              .print\\:hidden {
+                display: none !important;
+              }
+              .print\\:shadow-none {
+                box-shadow: none !important;
+              }
+              .print-section, .print-section * {
+                visibility: visible;
+              }
+              .print-section {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+              }
+              /* Hide tabs and header when printing */
+              .space-y-6 > div:first-child, .flex.flex-col.sm\\:flex-row {
+                display: none !important;
+              }
+            }
+          `}} />
+        </>
+      )}
+
     </div>
   );
 }
