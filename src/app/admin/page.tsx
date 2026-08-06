@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/products');
+      const res = await fetch('/api/products', { cache: 'no-store' });
       const data = await res.json();
       if (Array.isArray(data)) {
         setProducts(data);
@@ -93,10 +93,11 @@ export default function AdminDashboard() {
       if (res.ok) {
         fetchProducts();
       } else {
-        alert('삭제 실패');
+        const errorData = await res.json().catch(() => ({}));
+        alert(`삭제 실패: ${errorData.error || res.status}`);
       }
     } catch (error) {
-      alert('오류 발생');
+      alert(`오류 발생: ${error instanceof Error ? error.message : 'Unknown'}`);
     }
   };
 
@@ -119,13 +120,15 @@ export default function AdminDashboard() {
     if (!confirm(`선택한 ${selectedProductIds.length}개의 상품을 정말 삭제하시겠습니까?`)) return;
     
     try {
-      const res = await Promise.all(selectedProductIds.map(id => 
-        fetch(`/api/products/${id}`, { method: 'DELETE' })
-      ));
+      const res = await Promise.all(selectedProductIds.map(async (id) => {
+        const r = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+        return { ok: r.ok, status: r.status, id };
+      }));
       
       const successCount = res.filter(r => r.ok).length;
       if (successCount < selectedProductIds.length) {
-        alert('일부 상품 삭제 실패');
+        const failed = res.filter(r => !r.ok);
+        alert(`일부 상품 삭제 실패 (상태 코드: ${failed[0].status})`);
       }
       setSelectedProductIds([]);
       fetchProducts();
