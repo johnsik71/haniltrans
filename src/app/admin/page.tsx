@@ -20,7 +20,12 @@ export default function AdminDashboard() {
     try {
       const res = await fetch('/api/products');
       const data = await res.json();
-      setProducts(data);
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else {
+        setProducts([]);
+        console.error('Products API returned non-array:', data);
+      }
     } catch (err) {
       console.error(err);
     } finally {

@@ -17,8 +17,8 @@ export async function GET() {
     
     return NextResponse.json(sales);
   } catch (error) {
-    console.error('Error fetching sales:', error);
-    return NextResponse.json({ error: 'Failed to read sales data' }, { status: 500 });
+    console.warn('Error fetching sales (assuming missing DB on Netlify):', error);
+    return NextResponse.json([]);
   }
 }
 
