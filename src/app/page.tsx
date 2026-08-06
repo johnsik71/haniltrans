@@ -8,7 +8,7 @@ import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/shop/ProductCard';
 import CartDrawer from '@/components/shop/CartDrawer';
 import SpecFinderWidget from '@/components/shop/SpecFinderWidget';
-import { Shield, Phone, ChevronRight, Zap, Briefcase, Factory } from 'lucide-react';
+import { Shield, Phone, ChevronRight, Zap, Briefcase, Factory, Activity, Cpu } from 'lucide-react';
 import Link from 'next/link';
 
 const BANNERS = [
@@ -18,7 +18,8 @@ const BANNERS = [
     subtitle: '100% 국내 수작업 제조 정품',
     desc: '산업 현장에서 검증된 최고의 정전압 보정 기술. 불안정한 전압을 ±1% 이내로 실시간 자동 조절합니다.',
     link: '/category/avr',
-    bg: 'from-slate-900 via-blue-950 to-slate-900'
+    bg: 'from-slate-900 via-blue-950 to-slate-900',
+    icon: Activity
   },
   {
     badge: 'KC 안전인증번호 HA06019-12003A',
@@ -26,7 +27,8 @@ const BANNERS = [
     subtitle: '완벽한 내구성과 안정성',
     desc: '공장, 건설현장 등 거친 산업 환경에서도 완벽한 성능을 발휘하는 1등급 공업용 특수 변압기 라인업.',
     link: '/category/industrial',
-    bg: 'from-slate-900 via-indigo-950 to-slate-900'
+    bg: 'from-slate-900 via-indigo-950 to-slate-900',
+    icon: Factory
   },
   {
     badge: 'KC 안전인증번호 HA06019-12003A',
@@ -34,7 +36,8 @@ const BANNERS = [
     subtitle: '원하는 사양 그대로 제작',
     desc: '제어반, 배전반 내부에 장착되는 맞춤형 판넬 트랜스. 1대부터 대량까지 완벽하게 맞춤 설계해 드립니다.',
     link: '/request',
-    bg: 'from-slate-900 via-emerald-950 to-slate-900'
+    bg: 'from-slate-900 via-emerald-950 to-slate-900',
+    icon: Cpu
   }
 ];
 
@@ -92,32 +95,40 @@ export default function Home() {
             
             {/* Main Hero Slider Banner */}
             <div className="bg-slate-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg border border-slate-800 h-[260px] md:h-[220px]">
-              {BANNERS.map((banner, idx) => (
-                <div 
-                  key={idx}
-                  className={`absolute inset-0 p-8 w-full h-full bg-gradient-to-r ${banner.bg} transition-opacity duration-1000 ease-in-out ${idx === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                >
-                  <div className="max-w-xl space-y-3 relative z-20 h-full flex flex-col justify-center">
-                    <div>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white font-bold text-xs rounded-full">
-                        {banner.badge}
-                      </span>
+              {BANNERS.map((banner, idx) => {
+                const IconComponent = banner.icon;
+                return (
+                  <div 
+                    key={idx}
+                    className={`absolute inset-0 p-8 w-full h-full bg-gradient-to-r ${banner.bg} transition-opacity duration-1000 ease-in-out ${idx === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                  >
+                    {/* Background Silhouette Icon */}
+                    <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none transform -rotate-12 transition-transform duration-[4000ms] ease-out scale-150">
+                      <IconComponent className="w-64 h-64 md:w-96 md:h-96 text-white" strokeWidth={1} />
                     </div>
-                    <h2 className="text-3xl font-black leading-tight text-white">
-                      {banner.title}<br />
-                      <span className="text-blue-400">{banner.subtitle}</span>
-                    </h2>
-                    <p className="text-xs text-slate-300 line-clamp-2">
-                      {banner.desc}
-                    </p>
-                    <div className="pt-2">
-                      <Link href={banner.link} className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-6 py-2.5 rounded-xl shadow-lg transition-colors">
-                        추천 상품 보러가기 ➔
-                      </Link>
+
+                    <div className="max-w-xl space-y-3 relative z-20 h-full flex flex-col justify-center">
+                      <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white font-bold text-xs rounded-full shadow-md">
+                          <Shield className="w-3.5 h-3.5" /> {banner.badge}
+                        </span>
+                      </div>
+                      <h2 className="text-3xl font-black leading-tight text-white drop-shadow-md">
+                        {banner.title}<br />
+                        <span className="text-blue-400">{banner.subtitle}</span>
+                      </h2>
+                      <p className="text-xs text-slate-300 line-clamp-2 max-w-[400px]">
+                        {banner.desc}
+                      </p>
+                      <div className="pt-2">
+                        <Link href={banner.link} className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-6 py-2.5 rounded-xl shadow-lg transition-colors">
+                          추천 상품 보러가기 ➔
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
               
               {/* Dots indicator */}
               <div className="absolute bottom-4 left-0 w-full flex justify-center gap-2 z-30">
