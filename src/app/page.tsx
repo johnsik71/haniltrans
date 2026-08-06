@@ -19,7 +19,7 @@ const BANNERS = [
     desc: '산업 현장에서 검증된 최고의 정전압 보정 기술. 불안정한 전압을 ±1% 이내로 실시간 자동 조절합니다.',
     link: '/category/avr',
     bg: 'from-slate-900 via-blue-950 to-slate-900',
-    icon: Activity
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80'
   },
   {
     badge: 'KC 안전인증번호 HA06019-12003A',
@@ -28,7 +28,7 @@ const BANNERS = [
     desc: '공장, 건설현장 등 거친 산업 환경에서도 완벽한 성능을 발휘하는 1등급 공업용 특수 변압기 라인업.',
     link: '/category/industrial',
     bg: 'from-slate-900 via-indigo-950 to-slate-900',
-    icon: Factory
+    image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=800&auto=format&fit=crop&q=80'
   },
   {
     badge: 'KC 안전인증번호 HA06019-12003A',
@@ -37,7 +37,7 @@ const BANNERS = [
     desc: '제어반, 배전반 내부에 장착되는 맞춤형 판넬 트랜스. 1대부터 대량까지 완벽하게 맞춤 설계해 드립니다.',
     link: '/request',
     bg: 'from-slate-900 via-emerald-950 to-slate-900',
-    icon: Cpu
+    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80'
   }
 ];
 
@@ -96,15 +96,18 @@ export default function Home() {
             {/* Main Hero Slider Banner */}
             <div className="bg-slate-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg border border-slate-800 h-[260px] md:h-[220px]">
               {BANNERS.map((banner, idx) => {
-                const IconComponent = banner.icon;
                 return (
                   <div 
                     key={idx}
                     className={`absolute inset-0 p-8 w-full h-full bg-gradient-to-r ${banner.bg} transition-opacity duration-1000 ease-in-out ${idx === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                   >
-                    {/* Background Silhouette Icon */}
-                    <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none transform -rotate-12 transition-transform duration-[4000ms] ease-out scale-150">
-                      <IconComponent className="w-64 h-64 md:w-96 md:h-96 text-white" strokeWidth={1} />
+                    {/* Background Silhouette Image */}
+                    <div className="absolute right-[-50px] md:right-[20px] top-1/2 -translate-y-1/2 opacity-20 pointer-events-none mix-blend-overlay">
+                      <img 
+                        src={banner.image} 
+                        alt="Transformer Background" 
+                        className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full grayscale blur-[2px] transition-transform duration-[8000ms] ease-out hover:scale-110" 
+                      />
                     </div>
 
                     <div className="max-w-xl space-y-3 relative z-20 h-full flex flex-col justify-center">
