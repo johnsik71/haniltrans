@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma';
 import productsData from '@/data/products.json';
 
 export async function GET() {
+  try {
     let products = [];
     try {
       products = await prisma.product.findMany();
