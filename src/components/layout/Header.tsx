@@ -5,7 +5,7 @@ import HeaderMobile from './HeaderMobile';
 
 export default function Header() {
   return (
-    <header className="w-full max-w-7xl mx-auto font-sans text-gray-900">
+    <header className="w-full font-sans text-gray-900 shadow-sm border-b border-gray-200">
       <div className="hidden md:block">
         <HeaderDesktop />
       </div>
