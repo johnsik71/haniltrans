@@ -86,42 +86,42 @@ export default function Sidebar({ activeCatId }: { activeCatId?: string }) {
       <SpecFinderWidget />
 
       {/* Animated Vertical Ad Banner (GIF-like) */}
-      <div className="flex-1 flex flex-col min-h-[450px]">
-        <Link href="/qna" className="block w-full flex-1 relative rounded-2xl overflow-hidden group shadow-md border border-gray-200 bg-slate-900">
-          {/* Animated Background Layers */}
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-600 via-purple-700 to-slate-900 opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          {/* Decorative Animated Shapes */}
+      <Link href="/qna" className="flex-1 block w-full relative rounded-2xl group shadow-md border border-gray-200 bg-slate-900 min-h-[450px] mt-2">
+        {/* Animated Background Layers */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-600 via-purple-700 to-slate-900 opacity-80 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+        
+        {/* Decorative Animated Shapes (with their own overflow-hidden wrapper so they don't bleed out) */}
+        <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
           <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-blue-500/30 blur-2xl animate-pulse"></div>
           <div className="absolute bottom-10 left-0 -ml-8 w-24 h-24 rounded-full bg-purple-500/30 blur-xl animate-pulse delay-75"></div>
+        </div>
 
-          {/* Ad Content - Sticky inside the stretched banner */}
-          <div className="sticky top-24 w-full h-[450px] flex flex-col items-center justify-center text-center p-5 z-10">
-            <div className="bg-white/20 backdrop-blur-md p-3 rounded-2xl mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <Zap className="w-10 h-10 text-yellow-300 fill-current" />
-            </div>
-            
-            <div className="space-y-2 mb-8">
-              <span className="inline-block bg-red-500 text-white text-[10px] font-black px-2 py-1 rounded-full animate-bounce">
-                HOT EVENT
-              </span>
-              <h4 className="text-white font-black text-2xl tracking-tighter leading-tight drop-shadow-md">
-                B2B 대량구매<br/>특별 할인전
-              </h4>
-              <p className="text-blue-200 font-bold text-[11px] drop-shadow-sm pt-2">
-                맞춤형 특수사양 변압기<br/>공장직영 최저가 견적
-              </p>
-            </div>
-            
-            <div className="w-full bg-white text-blue-900 font-black text-sm py-3.5 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 group-hover:bg-blue-50 transition-colors">
-              견적 문의하기 <ChevronRight className="w-4 h-4" />
-            </div>
+        {/* Ad Content - Sticky inside the stretched banner */}
+        <div className="sticky top-24 w-full h-[450px] flex flex-col items-center justify-center text-center p-5 z-10">
+          <div className="bg-white/20 backdrop-blur-md p-3 rounded-2xl mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+            <Zap className="w-10 h-10 text-yellow-300 fill-current" />
           </div>
           
-          {/* Scanline overlay for retro/GIF feel */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none"></div>
-        </Link>
-      </div>
+          <div className="space-y-2 mb-8">
+            <span className="inline-block bg-red-500 text-white text-[10px] font-black px-2 py-1 rounded-full animate-bounce">
+              HOT EVENT
+            </span>
+            <h4 className="text-white font-black text-2xl tracking-tighter leading-tight drop-shadow-md">
+              B2B 대량구매<br/>특별 할인전
+            </h4>
+            <p className="text-blue-200 font-bold text-[11px] drop-shadow-sm pt-2">
+              맞춤형 특수사양 변압기<br/>공장직영 최저가 견적
+            </p>
+          </div>
+          
+          <div className="w-full bg-white text-blue-900 font-black text-sm py-3.5 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 group-hover:bg-blue-50 transition-colors pointer-events-auto">
+            견적 문의하기 <ChevronRight className="w-4 h-4" />
+          </div>
+        </div>
+        
+        {/* Scanline overlay for retro/GIF feel */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none rounded-2xl"></div>
+      </Link>
     </aside>
   );
 }
