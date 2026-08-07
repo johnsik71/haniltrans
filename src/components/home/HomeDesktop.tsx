@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import Header from '@/components/layout/Header';
 import Sidebar from '@/components/layout/Sidebar';
 
 import ProductCard from '@/components/shop/ProductCard';
@@ -104,10 +103,8 @@ export default function HomeDesktop() {
   const panelProducts = products.filter((p) => p.category === 'panel').slice(0, 10);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
-      <Header />
-
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 w-full relative">
+    <div className="w-full bg-gray-50 pb-12">
+      <main className="flex flex-col md:flex-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 gap-6 md:gap-8">
         {/* 2-Column Layout (Sidebar + Main Content + Quick Wing) */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
           

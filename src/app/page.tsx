@@ -2,10 +2,12 @@ import HomeDesktop from '@/components/home/HomeDesktop';
 import HomeMobile from '@/components/home/HomeMobile';
 import CartDrawer from '@/components/shop/CartDrawer';
 import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 
 export default function Page() {
   return (
     <>
+      <Header />
       <div className="hidden md:block">
         <HomeDesktop />
       </div>
