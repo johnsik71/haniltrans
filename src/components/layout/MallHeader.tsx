@@ -19,8 +19,8 @@ export default function MallHeader({
       <div className="w-full bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col rounded-xl">
         {/* Top Utility Bar */}
         <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 w-full overflow-hidden">
-          <div className="w-full flex justify-between items-center">
-          <div className="flex items-center gap-4">
+          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+          <div className="flex items-center gap-4 min-w-0 truncate">
             <span className="flex items-center gap-1 text-yellow-400 font-bold">
               <Truck className="w-3.5 h-3.5" /> 오후 4시 이전 주문 시 당일 발송!
             </span>

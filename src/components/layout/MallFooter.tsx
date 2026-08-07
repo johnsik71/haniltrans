@@ -4,7 +4,7 @@ export default function MallFooter() {
   return (
     <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans pb-4 md:pb-6">
       <div className="w-full bg-slate-900 border border-slate-800 text-slate-400 py-12 px-6 sm:px-8 text-xs rounded-xl shadow-sm overflow-hidden">
-        <div className="w-full space-y-8">
+        <div className="w-full space-y-8 break-words break-keep">
         
         {/* Trust Badges */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-slate-800 pb-8 text-slate-200">

@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="h-full antialiased">
+    <html lang="ko" className="h-full antialiased overflow-x-hidden w-full max-w-[100vw]">
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900 font-sans overflow-x-hidden w-full max-w-[100vw]">
         <AuthProvider>
           <CartProvider>
