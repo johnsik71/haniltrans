@@ -21,10 +21,11 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 font-sans text-gray-900">
-      {/* Top Utility Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 max-w-full overflow-hidden">
+    <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-900">
+      <div className="w-full bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col rounded-b-xl">
+        {/* Top Utility Bar */}
+        <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 w-full">
+          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
           <div className="flex items-center gap-2 sm:gap-4 text-slate-300">
             <span className="text-yellow-400 font-bold flex items-center gap-1 text-[10px] sm:text-xs text-center">
               ★ 더 한일트랜스 스토어 공식 온라인몰
@@ -53,11 +54,11 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Logo & Search Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full overflow-hidden">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 w-full">
-          {/* Logo & Mobile Cart Container */}
-          <div className="flex items-center justify-between w-full md:w-auto">
+        {/* Main Logo & Search Bar */}
+        <div className="w-full px-4 sm:px-6 py-4 overflow-hidden bg-white">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 w-full">
+            {/* Logo & Mobile Cart Container */}
+            <div className="flex items-center justify-between w-full md:w-auto">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#0c1e3e] rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/30 border-2 border-blue-900/50 relative overflow-hidden group-hover:scale-105 transition-transform">
@@ -138,9 +139,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Category GNB Bar */}
-      <nav className="bg-slate-900 border-t border-slate-800 text-white sticky top-0 z-50 shadow-md w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-bold h-12 overflow-x-auto whitespace-nowrap hide-scrollbar w-full">
+        {/* Main Category GNB Bar */}
+        <nav className="bg-slate-900 border-t border-slate-800 text-white w-full">
+          <div className="w-full px-4 sm:px-6 flex items-center justify-between text-xs font-bold h-12 overflow-x-auto whitespace-nowrap hide-scrollbar">
           <div className="flex items-center gap-8 sm:gap-10 min-w-max">
             <Link href="/" className="hover:text-blue-400 transition-colors py-3">메인 홈</Link>
             <Link href="/about" className="hover:text-blue-400 transition-colors py-3">회사소개</Link>
@@ -157,8 +158,9 @@ export default function Header() {
               📞 견적/기술문의: 032-324-9529
             </Link>
           </div>
-        </div>
-      </nav>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }

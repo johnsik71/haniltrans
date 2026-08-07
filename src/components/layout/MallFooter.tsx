@@ -2,8 +2,9 @@ import { Phone, ShieldCheck, Truck, Clock } from 'lucide-react';
 
 export default function MallFooter() {
   return (
-    <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-12 text-xs w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 w-full">
+    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans pb-4 md:pb-6">
+      <div className="w-full bg-slate-900 border border-slate-800 text-slate-400 py-12 px-6 sm:px-8 text-xs rounded-xl shadow-sm overflow-hidden">
+        <div className="w-full space-y-8">
         
         {/* Trust Badges */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-slate-800 pb-8 text-slate-200">
@@ -67,6 +68,7 @@ export default function MallFooter() {
 
         <div className="border-t border-slate-950 pt-6 text-center text-slate-500">
           Copyright © 2026 주식회사 한일트랜스샵 All Rights Reserved.
+        </div>
         </div>
       </div>
     </footer>

@@ -2,8 +2,9 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-12 text-xs font-sans w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 w-full">
+    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans pb-4 md:pb-6">
+      <div className="w-full bg-slate-900 border border-slate-800 text-slate-400 py-12 px-6 sm:px-8 text-xs rounded-xl shadow-sm overflow-hidden">
+        <div className="w-full space-y-8">
         
         {/* 4 Columns matching screenshot */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-slate-800 pb-8 text-slate-300">
@@ -72,6 +73,7 @@ export default function Footer() {
 
         <div className="text-[10px] text-slate-600 text-center pt-4 border-t border-slate-950">
           Copyright © 2026 더 한일트랜스 스토어. All rights reserved.
+        </div>
         </div>
       </div>
     </footer>

@@ -15,10 +15,11 @@ export default function MallHeader({
   const { totalCount, setIsCartOpen } = useCart();
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-xs text-gray-900">
-      {/* Top Utility Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 w-full overflow-hidden">
-        <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
+    <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-900 sticky top-0 z-40 pt-4">
+      <div className="w-full bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col rounded-xl">
+        {/* Top Utility Bar */}
+        <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 w-full overflow-hidden">
+          <div className="w-full flex justify-between items-center">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-yellow-400 font-bold">
               <Truck className="w-3.5 h-3.5" /> 오후 4시 이전 주문 시 당일 발송!
@@ -36,9 +37,9 @@ export default function MallHeader({
         </div>
       </div>
 
-      {/* Main Brand Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full overflow-hidden">
-        <div className="flex items-center justify-between gap-4 w-full">
+        {/* Main Brand Header */}
+        <div className="w-full px-4 sm:px-6 py-4 overflow-hidden">
+          <div className="flex items-center justify-between gap-4 w-full">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div className="w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-blue-600/30">
@@ -85,6 +86,7 @@ export default function MallHeader({
               <span className="text-sm font-black text-blue-900 leading-tight">{totalCount}개 상품</span>
             </div>
           </button>
+          </div>
         </div>
       </div>
     </header>
