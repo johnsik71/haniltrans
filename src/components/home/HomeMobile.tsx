@@ -8,25 +8,58 @@ import SpecFinderWidget from '@/components/shop/SpecFinderWidget';
 
 const BANNERS = [
   {
-    image: '/images/banner1.jpg',
-    title: '안전한 공업용 다운트랜스',
-    subtitle: '최대 100KVA 용량',
-    desc: '공장, 건설 현장에서 검증된 강력한 내구성과 안정성',
-    link: '/category/industrial'
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: 'AVR 자동 전압 조절기',
+    subtitle: '100% 국내 수작업 제조 정품',
+    desc: '산업 현장에서 검증된 최고의 정전압 보정 기술. 불안정한 전압을 ±1% 이내로 실시간 자동 조절합니다.',
+    link: '/category/avr',
+    bg: 'from-slate-900 via-blue-950 to-slate-900',
+    image: '/images/banner_avr.jpg'
   },
   {
-    image: '/images/banner2.jpg',
-    title: '프리미엄 가정용 변압기',
-    subtitle: '소음제로 무소음',
-    desc: '해외직구 가전제품을 고장 없이 안전하게 사용하세요',
-    link: '/category/home'
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '삼상 공업용 변압기',
+    subtitle: '완벽한 내구성과 안정성',
+    desc: '공장, 건설현장 등 거친 산업 환경에서도 완벽한 성능을 발휘하는 1등급 공업용 특수 변압기 라인업.',
+    link: '/category/industrial',
+    bg: 'from-slate-900 via-indigo-950 to-slate-900',
+    image: '/images/banner_industrial.jpg'
   },
   {
-    image: '/images/banner3.jpg',
-    title: '정밀 AVR 자동전압조정기',
-    subtitle: '1% 정밀도 보장',
-    desc: '의료기기, 연구장비 등 민감한 장비의 필수품',
-    link: '/category/avr'
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '판넬용 트랜스',
+    subtitle: '원하는 사양 그대로 제작',
+    desc: '제어반, 배전반 내부에 장착되는 맞춤형 판넬 트랜스. 1대부터 대량까지 완벽하게 맞춤 설계해 드립니다.',
+    link: '/request',
+    bg: 'from-slate-900 via-emerald-950 to-slate-900',
+    image: '/images/banner_panel.jpg'
+  },
+  {
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '유입식 변압기',
+    subtitle: '최고의 절연 및 냉각 성능',
+    desc: '대용량 전력 수급 및 옥외/옥내 거친 환경에서도 안정적으로 전력을 공급하는 고효율 유입식 변압기.',
+    link: '/category/oil',
+    bg: 'from-slate-900 via-amber-950 to-slate-900',
+    image: '/images/banner_oil.jpg'
+  },
+  {
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '슬라이닥스 (전압조정기)',
+    subtitle: '정밀한 전압 세팅 완벽 지원',
+    desc: '실험실, 연구소, 학교 등 정밀하고 미세한 전압 제어가 필요한 곳을 위한 슬라이닥스(Slidacs) 전압 조정기.',
+    link: '/category/slidacs',
+    bg: 'from-slate-900 via-purple-950 to-slate-900',
+    image: '/images/banner_slidacs.jpg'
+  },
+  {
+    badge: 'KC 안전인증번호 HA06019-12003A',
+    title: '고성능 인버터 (Inverter)',
+    subtitle: '안정적인 정현파 전원 공급',
+    desc: '자동차, 캠핑카, 선박 및 각종 산업 현장에서 배터리(DC)를 교류(AC)로 변환해주는 DARDA 고성능 인버터.',
+    link: '/category/inverter',
+    bg: 'from-slate-900 via-teal-950 to-slate-900',
+    image: '/images/banner_inverter.jpg'
   }
 ];
 
@@ -84,7 +117,7 @@ export default function HomeMobile() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-transparent" />
             <div className="absolute bottom-8 left-4 right-4 text-white">
-              <span className="inline-block px-2 py-1 bg-blue-600 rounded text-[10px] font-bold mb-2">기획전</span>
+              <span className="inline-block px-2 py-1 bg-blue-600 rounded text-[10px] font-bold mb-2">{banner.badge || '기획전'}</span>
               <h2 className="text-2xl font-black leading-tight mb-1">
                 {banner.title}
               </h2>
