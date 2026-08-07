@@ -1,29 +1,10 @@
 "use client";
 
-import { useState } from 'react';
 import { Product } from '@/types/mall';
-import { Star, ShoppingCart, Check, Zap } from 'lucide-react';
-import { useCart } from '@/context/CartContext';
-import OptionModal from './OptionModal';
+import { Star, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ProductCard({ product }: { product: Product | any }) {
-  const { addToCart } = useCart();
-  const [isOptionModalOpen, setIsOptionModalOpen] = useState(false);
-  const [addedToast, setAddedToast] = useState(false);
-
-  const handleQuickAdd = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (product.options && product.options.length > 0) {
-      setIsOptionModalOpen(true);
-    } else {
-      addToCart(product);
-      setAddedToast(true);
-      setTimeout(() => setAddedToast(false), 2000);
-    }
-  };
-
   return (
     <>
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group relative">
@@ -77,41 +58,18 @@ export default function ProductCard({ product }: { product: Product | any }) {
           </div>
         </Link>
 
-        {/* Price & Add to Cart Action */}
-        <div className="p-4 pt-3 border-t border-gray-100 mt-2 flex flex-nowrap items-center justify-between gap-2">
-          <div className="flex-1 min-w-0">
-            {product.originalPrice && (
-              <span className="text-[11px] text-gray-400 line-through block mb-0.5">
-                {product.originalPrice.toLocaleString()}원
-              </span>
-            )}
-            <div className="text-base sm:text-lg font-black text-gray-900 leading-none truncate">
-              {product.price ? product.price.toLocaleString() : 0}<span className="text-xs sm:text-sm font-bold ml-0.5">원</span>
-            </div>
+        {/* Price Area */}
+        <div className="p-4 pt-3 border-t border-gray-100 mt-2">
+          {product.originalPrice && (
+            <span className="text-[11px] text-gray-400 line-through block mb-0.5">
+              {product.originalPrice.toLocaleString()}원
+            </span>
+          )}
+          <div className="text-base sm:text-lg font-black text-gray-900 leading-tight">
+            {product.price ? product.price.toLocaleString() : '0'}<span className="text-xs sm:text-sm font-bold ml-0.5">원</span>
           </div>
-
-          <button
-            onClick={handleQuickAdd}
-            title="장바구니 담기"
-            className={`shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all ${
-              addedToast
-                ? 'bg-emerald-600 text-white shadow-sm'
-                : 'bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-100 shadow-sm hover:shadow-md'
-            }`}
-          >
-            {addedToast ? (
-              <Check className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-            ) : (
-              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-            )}
-          </button>
         </div>
       </div>
-
-      {/* Option Modal */}
-      {isOptionModalOpen && (
-        <OptionModal product={product} onClose={() => setIsOptionModalOpen(false)} />
-      )}
     </>
   );
 }
