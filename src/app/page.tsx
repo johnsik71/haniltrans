@@ -117,42 +117,42 @@ export default function Home() {
           <Sidebar />
 
           {/* Center Main Content Area */}
-          <div className="flex-1 min-w-0 space-y-8">
+          <div className="flex-1 min-w-0 space-y-4 md:space-y-8">
 
             
             {/* Main Hero Slider Banner */}
-            <div className="bg-slate-900 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg border border-slate-800 h-[260px] md:h-[220px]">
+            <div className="bg-slate-900 rounded-2xl p-5 md:p-8 text-white relative overflow-hidden shadow-lg border border-slate-800 h-[220px] md:h-[260px]">
               {BANNERS.map((banner, idx) => {
                 return (
                   <div 
                     key={idx}
-                    className={`absolute inset-0 p-8 w-full h-full bg-gradient-to-r ${banner.bg} transition-opacity duration-1000 ease-in-out ${idx === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                    className={`absolute inset-0 p-5 md:p-8 w-full h-full bg-gradient-to-r ${banner.bg} transition-opacity duration-1000 ease-in-out ${idx === currentBannerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                   >
                     {/* Background Silhouette Image */}
                     <div className="absolute right-[-20px] md:right-[60px] top-1/2 -translate-y-1/2 opacity-80 pointer-events-none mix-blend-screen">
                       <img 
                         src={banner.image} 
                         alt="Transformer Background" 
-                        className="w-72 h-72 md:w-[28rem] md:h-[28rem] object-cover grayscale transition-transform duration-[8000ms] ease-out scale-110" 
+                        className="w-48 h-48 md:w-[28rem] md:h-[28rem] object-cover grayscale transition-transform duration-[8000ms] ease-out scale-110" 
                         style={{ maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%)', WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%)' }}
                       />
                     </div>
 
-                    <div className="max-w-xl space-y-3 relative z-20 h-full flex flex-col justify-center">
+                    <div className="max-w-xl space-y-2 md:space-y-3 relative z-20 h-full flex flex-col justify-center">
                       <div>
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white font-bold text-xs rounded-full shadow-md">
                           <Shield className="w-3.5 h-3.5" /> {banner.badge}
                         </span>
                       </div>
-                      <h2 className="text-xl md:text-3xl font-black leading-tight text-white drop-shadow-md">
+                      <h2 className="text-lg md:text-3xl font-black leading-tight text-white drop-shadow-md">
                         {banner.title}<br />
                         <span className="text-blue-400">{banner.subtitle}</span>
                       </h2>
-                      <p className="text-xs text-slate-300 line-clamp-2 max-w-[400px]">
+                      <p className="text-[11px] md:text-xs text-slate-300 line-clamp-2 max-w-[400px]">
                         {banner.desc}
                       </p>
-                      <div className="pt-2">
-                        <Link href={banner.link} className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-6 py-2.5 rounded-xl shadow-lg transition-colors">
+                      <div className="pt-1 md:pt-2">
+                        <Link href={banner.link} className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px] md:text-sm px-4 md:px-6 py-2 md:py-2.5 rounded-xl shadow-lg transition-colors">
                           추천 상품 보러가기 ➔
                         </Link>
                       </div>
@@ -174,35 +174,35 @@ export default function Home() {
             </div>
 
             {/* 3 Sub-Banners matching screenshot */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-bold">
-              <a href="tel:010-5424-7571" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
-                <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <Phone className="w-5 h-5" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-[11px] md:text-xs font-bold">
+              <a href="tel:010-5424-7571" className="bg-white p-3 md:p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div>
-                  <div className="text-gray-500 text-[10px]">변압기 견적문의 / 기술상담</div>
-                  <div className="text-base font-black text-gray-900 group-hover:text-blue-600">010.5424.7571</div>
-                  <div className="text-[10px] text-blue-600">johnshin7172@gmail.com</div>
+                  <div className="text-gray-500 text-[9px] md:text-[10px]">변압기 견적문의 / 기술상담</div>
+                  <div className="text-sm md:text-base font-black text-gray-900 group-hover:text-blue-600">010.5424.7571</div>
+                  <div className="text-[9px] md:text-[10px] text-blue-600">johnshin7172@gmail.com</div>
                 </div>
               </a>
 
-              <Link href="/request" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
-                <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                  <Zap className="w-5 h-5" />
+              <Link href="/request" className="bg-white p-3 md:p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                  <Zap className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div>
-                  <div className="text-gray-900 font-bold text-sm group-hover:text-emerald-600">제작 의뢰서 작성</div>
-                  <div className="text-[11px] text-gray-500 font-normal">판넬용 맞춤 트랜스 견적/제작</div>
+                  <div className="text-gray-900 font-bold text-xs md:text-sm group-hover:text-emerald-600">제작 의뢰서 작성</div>
+                  <div className="text-[10px] md:text-[11px] text-gray-500 font-normal">판넬용 맞춤 트랜스 견적/제작</div>
                 </div>
               </Link>
 
-              <Link href="/cases" className="bg-white p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
-                <div className="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors">
-                  <Briefcase className="w-5 h-5" />
+              <Link href="/cases" className="bg-white p-3 md:p-4 rounded-xl border border-gray-200 shadow-2xs flex items-center gap-3 hover:shadow-md transition-shadow group">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                  <Briefcase className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div>
-                  <div className="text-gray-900 font-bold text-sm group-hover:text-amber-600">납품사례 / 고객사</div>
-                  <div className="text-[11px] text-gray-500 font-normal">연구기관, 관공서, 대학교, 병원 검증</div>
+                  <div className="text-gray-900 font-bold text-xs md:text-sm group-hover:text-amber-600">납품사례 / 고객사</div>
+                  <div className="text-[10px] md:text-[11px] text-gray-500 font-normal">연구기관, 관공서, 대학교, 병원 검증</div>
                 </div>
               </Link>
             </div>
@@ -240,7 +240,7 @@ export default function Home() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`px-5 py-3 text-[13px] md:text-sm font-bold transition-all border-b-2 -mb-[2px] ${
+                    className={`px-4 py-2.5 md:px-5 md:py-3 text-[12px] md:text-sm font-bold transition-all border-b-2 -mb-[2px] ${
                       activeTab === tab.id
                         ? 'border-blue-600 text-blue-600 bg-blue-50/50 font-black'
                         : 'border-transparent text-gray-600 hover:text-gray-900'
