@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-12 text-xs font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-12 text-xs font-sans w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 w-full">
         
         {/* 4 Columns matching screenshot */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-slate-800 pb-8 text-slate-300">

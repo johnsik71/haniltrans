@@ -54,8 +54,8 @@ export default function Header() {
       </div>
 
       {/* Main Logo & Search Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 w-full">
           {/* Logo & Mobile Cart Container */}
           <div className="flex items-center justify-between w-full md:w-auto">
             {/* Logo */}
@@ -139,8 +139,8 @@ export default function Header() {
       </div>
 
       {/* Main Category GNB Bar */}
-      <nav className="bg-slate-900 border-t border-slate-800 text-white sticky top-0 z-50 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-bold h-12 overflow-x-auto whitespace-nowrap hide-scrollbar">
+      <nav className="bg-slate-900 border-t border-slate-800 text-white sticky top-0 z-50 shadow-md w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-bold h-12 overflow-x-auto whitespace-nowrap hide-scrollbar w-full">
           <div className="flex items-center gap-8 sm:gap-10 min-w-max">
             <Link href="/" className="hover:text-blue-400 transition-colors py-3">메인 홈</Link>
             <Link href="/about" className="hover:text-blue-400 transition-colors py-3">회사소개</Link>

@@ -17,8 +17,8 @@ export default function MallHeader({
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-xs text-gray-900">
       {/* Top Utility Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-yellow-400 font-bold">
               <Truck className="w-3.5 h-3.5" /> 오후 4시 이전 주문 시 당일 발송!
@@ -37,8 +37,8 @@ export default function MallHeader({
       </div>
 
       {/* Main Brand Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full overflow-hidden">
+        <div className="flex items-center justify-between gap-4 w-full">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div className="w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-blue-600/30">
