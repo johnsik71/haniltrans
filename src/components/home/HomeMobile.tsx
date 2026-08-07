@@ -99,10 +99,42 @@ export default function HomeMobile() {
     return true;
   });
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      setCurrentBannerIndex((prev) => (prev + 1) % BANNERS.length);
+    } else if (isRightSwipe) {
+      setCurrentBannerIndex((prev) => (prev - 1 + BANNERS.length) % BANNERS.length);
+    }
+  };
+
   return (
     <div className="w-full bg-gray-50 pb-8">
       {/* 1. Hero Swipeable Banner */}
-      <div className="relative w-full h-[280px] bg-slate-900 overflow-hidden">
+      <div 
+        className="relative w-full h-[280px] bg-slate-900 overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {BANNERS.map((banner, idx) => (
           <div
             key={idx}
@@ -115,7 +147,7 @@ export default function HomeMobile() {
               backgroundPosition: 'center',
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-transparent pointer-events-none" />
             <div className="absolute bottom-8 left-4 right-4 text-white">
               <span className="inline-block px-2 py-1 bg-blue-600 rounded text-[10px] font-bold mb-2">{banner.badge || '기획전'}</span>
               <h2 className="text-2xl font-black leading-tight mb-1">
@@ -123,7 +155,7 @@ export default function HomeMobile() {
               </h2>
               <p className="text-blue-300 font-bold text-sm mb-2">{banner.subtitle}</p>
               <p className="text-xs text-slate-300 line-clamp-1 mb-4">{banner.desc}</p>
-              <Link href={banner.link} className="inline-block w-full text-center bg-white text-slate-900 font-bold text-sm py-3 rounded-xl shadow-lg">
+              <Link href={banner.link} className="inline-block w-full text-center bg-white text-slate-900 font-bold text-sm py-3 rounded-xl shadow-lg relative z-20">
                 자세히 보기
               </Link>
             </div>
