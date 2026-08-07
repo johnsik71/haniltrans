@@ -86,7 +86,7 @@ export default function HomeMobile() {
       .catch(console.error);
   }, []);
 
-  const downProducts = products.filter(p => p.category === 'down').slice(0, 4);
+  const homeProducts = products.filter(p => p.category === 'home').slice(0, 4);
   const industrialProducts = products.filter(p => p.category === 'industrial').slice(0, 4);
   const avrProducts = products.filter(p => p.category === 'avr').slice(0, 4);
   
@@ -157,7 +157,7 @@ export default function HomeMobile() {
             </div>
             <span className="text-[11px] font-bold text-gray-700 text-center">주문제작<br/>특수사양</span>
           </Link>
-          <Link href="/b2b" className="flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow-sm border border-gray-100 gap-2">
+          <Link href="/qna" className="flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow-sm border border-gray-100 gap-2">
             <div className="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center">
               <Briefcase className="w-5 h-5" />
             </div>
@@ -172,12 +172,12 @@ export default function HomeMobile() {
         <section className="pt-2">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-lg font-black text-gray-900">단상 다운트랜스 베스트</h3>
-            <Link href="/category/down" className="text-xs font-bold text-blue-600 flex items-center">
+            <Link href="/category/home" className="text-xs font-bold text-blue-600 flex items-center">
               더보기 <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
           <div className="flex overflow-x-auto snap-x hide-scrollbar gap-4 pb-4 -mx-4 px-4">
-            {downProducts.map((p) => (
+            {homeProducts.map((p) => (
               <div key={p.id} className="min-w-[160px] max-w-[160px] snap-start">
                 <ProductCard product={p} />
               </div>
