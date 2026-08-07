@@ -31,13 +31,13 @@ export default function FooterMobile() {
             onClick={() => setIsOpen(!isOpen)}
             className="w-full flex items-center justify-between text-[10px] font-bold text-gray-700 hover:text-gray-900"
           >
-            (주)가상브랜드 사업자 정보
+            더 한일트랜스 스토어 사업자 정보
             {isOpen ? <ChevronUp className="w-3 h-3 text-gray-500" /> : <ChevronDown className="w-3 h-3 text-gray-500" />}
           </button>
           
           {isOpen && (
             <div className="text-[9px] text-gray-500 mt-2 space-y-0.5">
-              <p>상호명: (주)가상브랜드 | 대표: 홍길동</p>
+              <p>상호명: 더 한일트랜스 스토어 | 대표: 홍길동</p>
               <p>주소: 서울특별시 가상구 가상로 123</p>
               <p>사업자등록번호: 123-45-67890 | 통신판매업: 2024-서울가상-0123호</p>
               <p>개인정보관리책임자: 홍길동 (privacy@example.com)</p>
@@ -46,7 +46,7 @@ export default function FooterMobile() {
         </div>
 
         <div className="text-[9px] text-gray-400 text-center pt-2">
-          Copyright © 주식회사 한일트랜스몰 All rights reserved.
+          Copyright © 2026 더 한일트랜스 스토어 All rights reserved.
         </div>
       </div>
     </footer>
