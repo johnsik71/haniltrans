@@ -77,7 +77,7 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex flex-col md:flex-row gap-8">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex flex-col md:flex-row gap-8 items-stretch">
         <Sidebar />
         <Suspense fallback={
           <div className="flex-1 min-w-0 bg-white border border-gray-200 p-8 rounded-sm shadow-sm flex items-center justify-center">

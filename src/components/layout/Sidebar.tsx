@@ -5,7 +5,7 @@ import SpecFinderWidget from '@/components/shop/SpecFinderWidget';
 
 export default function Sidebar({ activeCatId }: { activeCatId?: string }) {
   return (
-    <aside className="hidden md:block w-60 shrink-0 space-y-5 font-sans">
+    <aside className="hidden md:flex flex-col w-60 shrink-0 gap-5 font-sans">
       {/* Category Menu Box */}
       <div className="bg-white border border-gray-200 rounded-2xl shadow-xs overflow-hidden">
         <div className="bg-slate-900 text-white font-extrabold text-xs px-4 py-3 border-b border-slate-800 flex items-center justify-between">
@@ -86,8 +86,8 @@ export default function Sidebar({ activeCatId }: { activeCatId?: string }) {
       <SpecFinderWidget />
 
       {/* Animated Vertical Ad Banner (GIF-like) */}
-      <div className="sticky top-4 mt-6">
-        <Link href="/qna" className="block w-full h-[450px] relative rounded-2xl overflow-hidden group shadow-md border border-gray-200 bg-slate-900">
+      <div className="flex-1 flex flex-col min-h-[450px]">
+        <Link href="/qna" className="block w-full flex-1 relative rounded-2xl overflow-hidden group shadow-md border border-gray-200 bg-slate-900">
           {/* Animated Background Layers */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-600 via-purple-700 to-slate-900 opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
           
@@ -95,8 +95,8 @@ export default function Sidebar({ activeCatId }: { activeCatId?: string }) {
           <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-blue-500/30 blur-2xl animate-pulse"></div>
           <div className="absolute bottom-10 left-0 -ml-8 w-24 h-24 rounded-full bg-purple-500/30 blur-xl animate-pulse delay-75"></div>
 
-          {/* Ad Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-5 z-10">
+          {/* Ad Content - Sticky inside the stretched banner */}
+          <div className="sticky top-24 w-full h-[450px] flex flex-col items-center justify-center text-center p-5 z-10">
             <div className="bg-white/20 backdrop-blur-md p-3 rounded-2xl mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <Zap className="w-10 h-10 text-yellow-300 fill-current" />
             </div>
