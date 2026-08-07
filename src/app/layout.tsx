@@ -1,12 +1,8 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import QuickWing from "@/components/layout/QuickWing";
 import AuthProvider from "@/components/providers/AuthProvider";
-
-export const viewport: Viewport = {
-  width: 1280,
-};
 
 export const metadata: Metadata = {
   title: "더 한일트랜스 스토어 | 프리미엄 변압기 공식 온라인몰",
