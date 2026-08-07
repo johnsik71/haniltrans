@@ -196,9 +196,11 @@ export default function ProductDetailPage() {
               </div>
               <button 
                 onClick={handleNaverPay}
-                className="w-full mt-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-black text-lg py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm"
+                className="w-full mt-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-black text-lg py-3.5 rounded-xl flex items-center justify-center transition-all shadow-sm"
               >
-                <span className="font-extrabold text-xl italic pr-1">N</span> Pay 구매
+                <span className="font-black text-2xl tracking-tighter mr-0.5">N</span>
+                <span className="font-bold text-2xl tracking-tight mr-1.5">Pay</span>
+                <span>구매</span>
               </button>
             </div>
           </div>

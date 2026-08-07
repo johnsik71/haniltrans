@@ -22,8 +22,8 @@ export default function FooterDesktop() {
         {/* Compact Bottom Row */}
         <div className="flex justify-between items-end text-[9px] text-slate-500">
           <div className="space-y-1">
-            <p>상호: 더 한일트랜스 스토어 | 대표: [대표자명] | 사업자등록번호: 000-00-00000 | 통신판매업신고: 202X-[지역]-0000</p>
-            <p>주소: [추후 사업장 주소 기재 예정] | 개인정보관리책임자: johnshin7172@gmail.com | 팩스: 0504-001-7571</p>
+            <p>상호명: (주)가상브랜드 | 대표: 홍길동 | 사업자등록번호: 123-45-67890 | 통신판매업신고: 2024-서울가상-0123호</p>
+            <p>주소: 서울특별시 가상구 가상로 123 | 개인정보관리책임자: 홍길동 (privacy@example.com) | 팩스: 02-123-4567</p>
           </div>
           <div className="text-right">
             <p className="mb-1">근무시간: 평일 08:30~19:00 / 점심 12:00~13:00 / 토 09:00~12:00 (일요일 휴무)</p>
