@@ -24,7 +24,7 @@ export default function Header() {
     <header className="bg-white border-b border-gray-200 font-sans text-gray-900">
       {/* Top Utility Bar */}
       <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 max-w-full overflow-hidden">
           <div className="flex items-center gap-2 sm:gap-4 text-slate-300">
             <span className="text-yellow-400 font-bold flex items-center gap-1 text-[10px] sm:text-xs text-center">
               ★ 더 한일트랜스 스토어 공식 온라인몰
@@ -32,8 +32,8 @@ export default function Header() {
             <span className="hidden sm:inline text-slate-500">|</span>
             <span className="hidden sm:inline text-slate-400">오후 4시 전 주문 당일 발송!</span>
           </div>
-          <div className="flex items-center gap-3 sm:gap-4 text-slate-300 text-[10px] sm:text-[11px] overflow-x-auto whitespace-nowrap hide-scrollbar w-full sm:w-auto justify-center sm:justify-end">
-            <a href="tel:032-324-9529" className="flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors">
+          <div className="flex items-center gap-3 sm:gap-4 text-slate-300 text-[10px] sm:text-[11px] overflow-x-auto whitespace-nowrap hide-scrollbar w-full max-w-full sm:w-auto justify-start sm:justify-end">
+            <a href="tel:032-324-9529" className="flex items-center gap-1 font-bold text-blue-400 hover:text-blue-300 transition-colors shrink-0">
               <Phone className="w-3.5 h-3.5" /> 032-324-9529
             </a>
             {session ? (
