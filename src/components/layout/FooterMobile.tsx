@@ -31,7 +31,7 @@ export default function FooterMobile() {
             onClick={() => setIsOpen(!isOpen)}
             className="w-full flex items-center justify-between text-[10px] font-bold text-gray-700 hover:text-gray-900"
           >
-            더 한일트랜스 스토어 사업자 정보
+            사업자정보
             {isOpen ? <ChevronUp className="w-3 h-3 text-gray-500" /> : <ChevronDown className="w-3 h-3 text-gray-500" />}
           </button>
           
