@@ -8,29 +8,29 @@ export default function FooterMobile() {
   const [isCompanyInfoOpen, setIsCompanyInfoOpen] = useState(false);
 
   return (
-    <footer className="w-full bg-slate-900 text-slate-400 font-sans pb-24">
+    <footer className="w-full bg-slate-900 text-slate-400 font-sans pb-6">
       {/* Mobile Footer Links */}
       <div className="flex border-b border-slate-800">
-        <Link href="/about" className="flex-1 text-center py-4 text-xs font-bold hover:text-white transition-colors border-r border-slate-800">
+        <Link href="/about" className="flex-1 text-center py-2 text-xs font-bold hover:text-white transition-colors border-r border-slate-800">
           회사소개
         </Link>
-        <Link href="/guide" className="flex-1 text-center py-4 text-xs font-bold hover:text-white transition-colors border-r border-slate-800">
+        <Link href="/guide" className="flex-1 text-center py-2 text-xs font-bold hover:text-white transition-colors border-r border-slate-800">
           이용안내
         </Link>
-        <Link href="/privacy" className="flex-1 text-center py-4 text-xs font-bold text-slate-300 hover:text-white transition-colors border-r border-slate-800">
-          개인정보처리방침
+        <Link href="/privacy" className="flex-1 text-center py-2 text-xs font-bold text-slate-300 hover:text-white transition-colors border-r border-slate-800">
+          개인정보방침
         </Link>
-        <Link href="/terms" className="flex-1 text-center py-4 text-xs font-bold hover:text-white transition-colors">
+        <Link href="/terms" className="flex-1 text-center py-2 text-xs font-bold hover:text-white transition-colors">
           이용약관
         </Link>
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="p-4 space-y-4">
         {/* Customer Center */}
         <div>
           <h4 className="font-extrabold text-xs text-white mb-2 uppercase">고객센터</h4>
-          <p className="text-3xl font-black text-blue-400 mb-2">032-324-9529</p>
-          <div className="text-xs space-y-1 text-slate-500">
+          <p className="text-2xl font-black text-blue-400 mb-2">032-324-9529</p>
+          <div className="text-[11px] space-y-1 text-slate-500">
             <p>평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00)</p>
             <p>토/일/공휴일 휴무</p>
           </div>

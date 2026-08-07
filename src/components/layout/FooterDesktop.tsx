@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 export default function FooterDesktop() {
   return (
-    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans pb-4 md:pb-6">
-      <div className="w-full bg-slate-900 border border-slate-800 text-slate-400 py-12 px-6 sm:px-8 text-xs rounded-xl shadow-sm overflow-hidden">
-        <div className="w-full space-y-8 break-words break-keep">
+    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans pb-4">
+      <div className="w-full bg-slate-900 border border-slate-800 text-slate-400 py-6 px-4 sm:px-6 text-xs rounded-xl shadow-sm overflow-hidden">
+        <div className="w-full space-y-4 break-words break-keep">
         
         {/* 4 Columns matching screenshot */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-slate-800 pb-8 text-slate-300">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 border-b border-slate-800 pb-4 text-slate-300">
           <div>
             <h4 className="font-extrabold text-sm text-white mb-2 uppercase tracking-wider">CS CENTER</h4>
             <p className="text-2xl font-black text-blue-400 mb-1"><a href="tel:032-324-9529" className="hover:text-blue-300 transition-colors">032-324-9529</a></p>
