@@ -119,7 +119,7 @@ export default function CategoryPage({ params }: { params: Promise<{ id: string 
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <span onClick={() => setSortBy('recommend')} className={`cursor-pointer hover:underline ${sortBy === 'recommend' ? 'text-red-600 font-bold' : ''}`}>✓ 추천순</span>
+                  <span onClick={() => setSortBy('recommend')} className={`cursor-pointer hover:underline ${sortBy === 'recommend' ? 'text-red-600 font-bold' : ''}`}>추천순</span>
                   <span>|</span>
                   <span onClick={() => setSortBy('popular')} className={`cursor-pointer hover:underline ${sortBy === 'popular' ? 'text-red-600 font-bold' : ''}`}>판매인기순</span>
                   <span>|</span>
