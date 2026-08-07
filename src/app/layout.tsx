@@ -3,6 +3,7 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import QuickWing from "@/components/layout/QuickWing";
 import AuthProvider from "@/components/providers/AuthProvider";
+import LeftWing from "@/components/layout/LeftWing";
 
 export const metadata: Metadata = {
   title: "더 한일트랜스 스토어 | 프리미엄 변압기 공식 온라인몰",
@@ -21,6 +22,7 @@ export default function RootLayout({
           <CartProvider>
             {children}
             <QuickWing />
+            <LeftWing />
           </CartProvider>
         </AuthProvider>
       </body>
