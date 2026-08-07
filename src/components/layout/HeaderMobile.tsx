@@ -25,11 +25,22 @@ export default function HeaderMobile() {
       
       {/* 1. Main Logo & Icons */}
       <div className="w-full px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#0c1e3e] rounded-lg flex items-center justify-center shadow-md">
-            <Zap className="w-4 h-4 text-yellow-400 fill-current" />
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <div className="w-10 h-10 bg-[#0c1e3e] rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/30 border-2 border-blue-900/50 relative overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-between px-1.5">
+              <div className="w-2 h-6 rounded-sm animate-flash-h"></div>
+              <div className="w-2 h-6 rounded-sm animate-flash-h"></div>
+            </div>
+            <div className="absolute w-6 h-2 rounded-sm animate-flash-h"></div>
+            <Zap className="w-5 h-5 text-yellow-400 fill-current relative z-10 animate-3d-spin drop-shadow-md" />
           </div>
-          <span className="text-lg font-black tracking-tight text-blue-950">한일트랜스 스토어</span>
+          <div>
+            <div className="flex items-center gap-1">
+              <span className="text-lg font-black tracking-tight text-blue-950">더 한일트랜스 스토어</span>
+              <span className="bg-red-500 text-white text-[9px] font-black px-1 py-0.5 rounded">공식</span>
+            </div>
+            <span className="text-[9px] text-gray-500 font-bold block">THE HANIL TRANS STORE</span>
+          </div>
         </Link>
 
         <div className="flex items-center gap-2">
