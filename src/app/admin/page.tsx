@@ -737,8 +737,8 @@ export default function AdminDashboard() {
     {isFormOpen && (
       <ProductForm 
         onClose={() => setIsFormOpen(false)} 
-        onSuccess={fetchProducts}
-        initialData={editingProduct}
+        onSave={fetchProducts}
+        product={editingProduct}
       />
     )}
 
