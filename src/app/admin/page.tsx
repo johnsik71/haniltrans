@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2, Search, ExternalLink, Package, Users, BarChart3, TrendingUp, DollarSign, Calendar, FileText, Printer } from 'lucide-react';
+import { Plus, Edit2, Trash2, Search, ExternalLink, Package, Users, BarChart3, TrendingUp, DollarSign, Calendar, FileText, Printer, Image as ImageIcon } from 'lucide-react';
 import ProductForm from '@/components/admin/ProductForm';
+import BannerForm from '@/components/admin/BannerForm';
 import Link from 'next/link';
 
 export default function AdminDashboard() {
@@ -11,11 +12,15 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [editingProduct, setEditingProduct] = useState<any | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'products' | 'users' | 'sales' | 'requests'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'users' | 'sales' | 'requests' | 'banners'>('products');
   const [users, setUsers] = useState<any[]>([]);
   const [sales, setSales] = useState<any[]>([]);
   const [requests, setRequests] = useState<any[]>([]);
+  const [banners, setBanners] = useState<any[]>([]);
   const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]);
+  const [isBannerFormOpen, setIsBannerFormOpen] = useState(false);
+  const [editingBanner, setEditingBanner] = useState<any | null>(null);
+
   const fetchProducts = async () => {
     setLoading(true);
     try {
@@ -70,11 +75,24 @@ export default function AdminDashboard() {
     }
   };
 
+  const fetchBanners = async () => {
+    try {
+      const res = await fetch('/api/banners', { cache: 'no-store' });
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setBanners(data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
     fetchUsers();
     fetchSales();
     fetchRequests();
+    fetchBanners();
   }, []);
 
   const today = new Date().toISOString().split('T')[0];
@@ -98,6 +116,29 @@ export default function AdminDashboard() {
       }
     } catch (error) {
       alert(`오류 발생: ${error instanceof Error ? error.message : 'Unknown'}`);
+    }
+  };
+
+  const handleDeleteBanner = async (id: string) => {
+    if (!confirm('배너를 정말 삭제하시겠습니까?')) return;
+    try {
+      const res = await fetch(`/api/banners/${id}`, { method: 'DELETE' });
+      if (res.ok) fetchBanners();
+    } catch (error) {
+      alert('오류 발생');
+    }
+  };
+
+  const toggleBannerStatus = async (banner: any) => {
+    try {
+      const res = await fetch(`/api/banners/${banner.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...banner, isActive: !banner.isActive })
+      });
+      if (res.ok) fetchBanners();
+    } catch (error) {
+      alert('오류 발생');
     }
   };
 
@@ -160,7 +201,8 @@ export default function AdminDashboard() {
   );
 
   return (
-    <div className="space-y-6">
+    <>
+      <div className="space-y-6">
       {/* Tabs */}
       <div className="flex overflow-x-auto hide-scrollbar whitespace-nowrap gap-4 border-b border-gray-200">
         <button
@@ -186,6 +228,12 @@ export default function AdminDashboard() {
           className={`pb-3 font-bold flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'requests' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-900'}`}
         >
           <FileText className="w-5 h-5" /> 제작 의뢰서
+        </button>
+        <button
+          onClick={() => setActiveTab('banners')}
+          className={`pb-3 font-bold flex items-center gap-2 border-b-2 transition-colors ${activeTab === 'banners' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-900'}`}
+        >
+          <ImageIcon className="w-5 h-5" /> 배너 관리
         </button>
       </div>
 
@@ -258,13 +306,13 @@ export default function AdminDashboard() {
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={4} className="px-6 py-12 text-center text-gray-400">
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-400">
                     로딩 중...
                   </td>
                 </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-6 py-12 text-center text-gray-400">
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-400">
                     검색 결과가 없습니다.
                   </td>
                 </tr>
@@ -604,6 +652,103 @@ export default function AdminDashboard() {
         </>
       )}
 
+      {activeTab === 'banners' && (
+        <div className="space-y-6">
+          <div className="flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
+              <ImageIcon className="w-5 h-5 text-blue-600" />
+              사이드바 배너 광고 관리
+            </h3>
+            <button 
+              onClick={() => { setEditingBanner(null); setIsBannerFormOpen(true); }}
+              className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md"
+            >
+              <Plus className="w-5 h-5" />
+              새 배너 등록
+            </button>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[800px]">
+                <thead className="bg-gray-50 border-b border-gray-100">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">상태</th>
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">타이틀</th>
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">뱃지</th>
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">링크</th>
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase">등록일</th>
+                    <th className="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase">관리</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {banners.length === 0 ? (
+                    <tr>
+                      <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
+                        등록된 배너가 없습니다.
+                      </td>
+                    </tr>
+                  ) : (
+                    banners.map((banner) => (
+                      <tr key={banner.id} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-6 py-4">
+                          <button 
+                            onClick={() => toggleBannerStatus(banner)}
+                            className={`px-3 py-1 rounded-full text-xs font-bold ${banner.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}
+                          >
+                            {banner.isActive ? '노출중' : '숨김'}
+                          </button>
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="font-bold text-gray-900 whitespace-pre-wrap">{banner.title}</div>
+                          <div className="text-xs text-gray-500 whitespace-pre-wrap mt-1">{banner.subtitle}</div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {banner.badge && <span className="inline-block bg-red-50 text-red-600 text-[10px] font-bold px-2 py-1 rounded">{banner.badge}</span>}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-blue-600 font-medium">
+                          <a href={banner.link} target="_blank" rel="noreferrer" className="hover:underline">{banner.link}</a>
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-500">
+                          {new Date(banner.createdAt).toLocaleDateString()}
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <button onClick={() => { setEditingBanner(banner); setIsBannerFormOpen(true); }} className="p-2 text-gray-400 hover:text-blue-600 bg-white rounded-lg border border-gray-200 hover:border-blue-200 transition-colors">
+                              <Edit2 className="w-4 h-4" />
+                            </button>
+                            <button onClick={() => handleDeleteBanner(banner.id)} className="p-2 text-gray-400 hover:text-red-600 bg-white rounded-lg border border-gray-200 hover:border-red-200 transition-colors">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
+    
+    {isFormOpen && (
+      <ProductForm 
+        onClose={() => setIsFormOpen(false)} 
+        onSuccess={fetchProducts}
+        initialData={editingProduct}
+      />
+    )}
+
+    {isBannerFormOpen && (
+      <BannerForm 
+        onClose={() => setIsBannerFormOpen(false)} 
+        onSuccess={fetchBanners}
+        initialData={editingBanner}
+      />
+    )}
+  </>
   );
 }

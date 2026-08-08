@@ -48,3 +48,14 @@ model Sale {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model BannerAd {
+  id        String   @id @default(uuid())
+  badge     String?
+  title     String
+  subtitle  String?
+  link      String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
