@@ -82,11 +82,12 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
       if (res.ok) {
         onSave();
       } else {
-        alert('저장에 실패했습니다.');
+        const errorData = await res.json().catch(() => ({}));
+        alert(`저장에 실패했습니다: ${errorData.error || errorData.details || res.status}`);
       }
     } catch (error) {
       console.error(error);
-      alert('저장 중 오류 발생');
+      alert(`저장 중 오류 발생: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsSaving(false);
     }

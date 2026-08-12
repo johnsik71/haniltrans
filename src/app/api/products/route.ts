@@ -4,18 +4,19 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import productsData from '@/data/products.json';
+import { ensureProductsSeeded } from '@/lib/seed';
 
 export async function GET() {
   try {
+    await ensureProductsSeeded();
+
     let products: any[] = [];
     try {
-      products = await prisma.product.findMany();
+      products = await prisma.product.findMany({
+        orderBy: { createdAt: 'desc' }
+      });
     } catch (e) {
       console.warn('Prisma query failed, falling back to JSON data', e);
-    }
-    
-    // SQLite on Netlify Functions fallback
-    if (!products || products.length === 0) {
       products = productsData as any[];
     }
 
@@ -23,7 +24,7 @@ export async function GET() {
     try {
       session = await getServerSession(authOptions);
     } catch (authError) {
-      console.warn('Auth session failed (possibly missing NEXTAUTH_SECRET), assuming non-admin', authError);
+      console.warn('Auth session failed, assuming non-admin', authError);
     }
     const isAdmin = session && (session.user as any)?.role === 'admin';
 
@@ -49,29 +50,36 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    await ensureProductsSeeded();
     const body = await request.json();
+
+    if (!body.name || !body.category || !body.categoryName || body.price === undefined || body.price === null) {
+      return NextResponse.json({ error: '필수 항목(상품명, 카테고리, 분류명, 판매가)이 누락되었습니다.' }, { status: 400 });
+    }
+
+    const productId = (body.id && typeof body.id === 'string' && body.id.trim() !== '') ? body.id.trim() : undefined;
     
     const newProduct = await prisma.product.create({
       data: {
-        id: body.id || undefined,
-        name: body.name,
-        category: body.category,
-        categoryName: body.categoryName,
-        subCategory: body.subCategory || null,
-        price: body.price,
-        originalPrice: body.originalPrice || null,
-        costPrice: body.costPrice || null,
-        image: body.image || null,
-        inputVoltage: body.inputVoltage || null,
-        outputVoltage: body.outputVoltage || null,
-        capacity: body.capacity || null,
-        description: body.description || null,
+        id: productId,
+        name: String(body.name),
+        category: String(body.category),
+        categoryName: String(body.categoryName),
+        subCategory: body.subCategory ? String(body.subCategory) : null,
+        price: Number(body.price) || 0,
+        originalPrice: body.originalPrice !== undefined && body.originalPrice !== null && body.originalPrice !== '' ? Number(body.originalPrice) : null,
+        costPrice: body.costPrice !== undefined && body.costPrice !== null && body.costPrice !== '' ? Number(body.costPrice) : null,
+        image: body.image ? String(body.image) : null,
+        inputVoltage: body.inputVoltage ? String(body.inputVoltage) : null,
+        outputVoltage: body.outputVoltage ? String(body.outputVoltage) : null,
+        capacity: body.capacity ? String(body.capacity) : null,
+        description: body.description ? String(body.description) : null,
       }
     });
     
     return NextResponse.json(newProduct, { status: 201 });
   } catch (error) {
     console.error('Error creating product:', error);
-    return NextResponse.json({ error: 'Failed to create product' }, { status: 500 });
+    return NextResponse.json({ error: '상품 등록에 실패했습니다.', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
