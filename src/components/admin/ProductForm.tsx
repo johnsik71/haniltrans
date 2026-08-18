@@ -95,6 +95,20 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.name?.trim()) {
+      alert("상품명을 입력해주세요.");
+      return;
+    }
+    if (!formData.categoryName?.trim()) {
+      alert("카테고리 분류명(표시용)을 입력해주세요.");
+      return;
+    }
+    if (formData.price === undefined || formData.price === null) {
+      alert("판매가를 입력해주세요.");
+      return;
+    }
+
     setIsSaving(true);
     
     const isEdit = !!product?.id;
@@ -180,11 +194,11 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">상품명 *</label>
-                <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">카테고리 분류명 * (표시용)</label>
-                <input required type="text" name="categoryName" value={formData.categoryName} onChange={handleChange} placeholder="예: 공업용 변압기" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="text" name="categoryName" value={formData.categoryName} onChange={handleChange} placeholder="예: 공업용 변압기" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               
               <div className="space-y-1">
@@ -205,7 +219,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
 
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">판매가 *</label>
-                <input required type="number" name="price" value={formData.price} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="number" name="price" value={formData.price} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               <div className="space-y-1 flex gap-2">
                 <div className="flex-1 space-y-1">
