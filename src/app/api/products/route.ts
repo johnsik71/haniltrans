@@ -54,11 +54,18 @@ export async function POST(request: Request) {
     const body = await request.json();
     console.log("==== [DEBUG] Received POST body ====", JSON.stringify(body, null, 2));
 
-    // Fallback for weird browser bugs where inputs are sent empty
-    if (!body.name) body.name = "이름 누락 (시스템 수신 실패)";
-    if (!body.category) body.category = "industrial";
-    if (!body.categoryName) body.categoryName = "분류명 누락";
-    if (body.price === undefined || body.price === null || body.price === "") body.price = 0;
+    const missing = [];
+    if (!body.name) missing.push('name');
+    if (!body.category) missing.push('category');
+    if (!body.categoryName) missing.push('categoryName');
+    if (body.price === undefined || body.price === null || body.price === '') missing.push('price');
+
+    if (missing.length > 0) {
+      return NextResponse.json({ 
+        error: `필수 항목 누락: ${missing.join(', ')}`,
+        receivedBody: body 
+      }, { status: 400 });
+    }
 
     const productId = (body.id && typeof body.id === 'string' && body.id.trim() !== '') ? body.id.trim() : undefined;
     
