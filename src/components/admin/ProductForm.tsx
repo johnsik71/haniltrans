@@ -98,6 +98,27 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
     
     setIsSaving(true);
     
+    const formElement = document.getElementById('productForm') as HTMLFormElement;
+    let payload = { ...formData };
+    
+    if (formElement) {
+      const domFormData = new FormData(formElement);
+      payload = {
+        ...formData,
+        name: (domFormData.get('name') as string) || formData.name,
+        category: (domFormData.get('category') as string) || formData.category,
+        categoryName: (domFormData.get('categoryName') as string) || formData.categoryName,
+        subCategory: (domFormData.get('subCategory') as string) || formData.subCategory,
+        price: Number(domFormData.get('price')) || formData.price,
+        originalPrice: Number(domFormData.get('originalPrice')) || formData.originalPrice,
+        costPrice: Number(domFormData.get('costPrice')) || formData.costPrice,
+        inputVoltage: (domFormData.get('inputVoltage') as string) || formData.inputVoltage,
+        outputVoltage: (domFormData.get('outputVoltage') as string) || formData.outputVoltage,
+        capacity: (domFormData.get('capacity') as string) || formData.capacity,
+        description: (domFormData.get('description') as string) || formData.description,
+      };
+    }
+    
     const isEdit = !!product?.id;
     const url = isEdit ? `/api/products/${product.id}` : '/api/products';
     const method = isEdit ? 'PUT' : 'POST';
@@ -106,7 +127,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
       
       if (res.ok) {
