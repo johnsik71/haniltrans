@@ -113,7 +113,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
         onSave();
       } else {
         const errorData = await res.json().catch(() => ({}));
-        alert(`저장에 실패했습니다: ${errorData.error || errorData.details || res.status}`);
+        alert(`저장에 실패했습니다: ${errorData.error || errorData.details || res.status}\n\n전송된 데이터: ${JSON.stringify(errorData.receivedBody || formData)}`);
       }
     } catch (error) {
       console.error(error);

@@ -52,6 +52,7 @@ export async function POST(request: Request) {
 
     await ensureProductsSeeded();
     const body = await request.json();
+    console.log("==== [DEBUG] Received POST body ====", JSON.stringify(body, null, 2));
 
     const missing = [];
     if (!body.name) missing.push('name');
