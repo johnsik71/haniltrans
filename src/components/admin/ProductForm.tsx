@@ -98,26 +98,35 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
     setIsSaving(true);
     
-    const formElement = document.getElementById('productForm') as HTMLFormElement;
-    let payload = { ...formDataRef.current };
+    const formElement = e.currentTarget;
+    const domFormData = new FormData(formElement);
     
-    if (formElement) {
-      const inputs = formElement.querySelectorAll('input, select, textarea');
-      inputs.forEach((input: any) => {
-        if (input.name) {
-          if (['price', 'originalPrice', 'costPrice'].includes(input.name)) {
-            (payload as any)[input.name] = Number(input.value) || 0;
-          } else {
-            (payload as any)[input.name] = input.value || '';
-          }
-        }
-      });
-    }
+    // Fallback directly to DOM elements if FormData behaves weirdly
+    const getVal = (name: string) => {
+      const el = formElement.querySelector(`[name="${name}"]`) as HTMLInputElement;
+      return el ? el.value : '';
+    };
+
+    const payload = {
+      id: product?.id || '',
+      name: domFormData.get('name') as string || getVal('name') || '',
+      category: domFormData.get('category') as string || getVal('category') || 'industrial',
+      categoryName: domFormData.get('categoryName') as string || getVal('categoryName') || '공업용 변압기',
+      subCategory: domFormData.get('subCategory') as string || getVal('subCategory') || '',
+      price: Number(domFormData.get('price') || getVal('price')) || 0,
+      originalPrice: Number(domFormData.get('originalPrice') || getVal('originalPrice')) || 0,
+      costPrice: Number(domFormData.get('costPrice') || getVal('costPrice')) || 0,
+      image: domFormData.get('image') as string || getVal('image') || '',
+      detailImage: domFormData.get('detailImage') as string || getVal('detailImage') || '',
+      inputVoltage: domFormData.get('inputVoltage') as string || getVal('inputVoltage') || '',
+      outputVoltage: domFormData.get('outputVoltage') as string || getVal('outputVoltage') || '',
+      capacity: domFormData.get('capacity') as string || getVal('capacity') || '',
+      description: domFormData.get('description') as string || getVal('description') || '',
+    };
     
     const isEdit = !!product?.id;
     const url = isEdit ? `/api/products/${product.id}` : '/api/products';
@@ -156,8 +165,8 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
           </button>
         </div>
         
-        <div className="p-6 overflow-y-auto flex-1">
-          <form id="productForm" onSubmit={handleSubmit} className="space-y-6">
+        <form id="productForm" onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+          <div className="p-6 overflow-y-auto flex-1 space-y-6">
             
             {/* Image Upload Area */}
             <div className="space-y-2">
@@ -190,7 +199,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
                   <input
                     type="text"
                     name="image"
-                    value={formData.image}
+                    defaultValue={formData.image}
                     onChange={handleChange}
                     placeholder="https://..."
                     className="w-full p-2 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
@@ -292,7 +301,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
                   <input
                     type="text"
                     name="detailImage"
-                    value={formData.detailImage}
+                    defaultValue={formData.detailImage}
                     onChange={handleChange}
                     placeholder="https://..."
                     className="w-full p-2 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
@@ -300,18 +309,18 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
 
-        <div className="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-end gap-3">
-          <button type="button" onClick={onClose} className="px-6 py-2.5 rounded-xl font-bold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 transition-colors">
-            취소
-          </button>
-          <button type="submit" form="productForm" disabled={isSaving} className="px-6 py-2.5 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 flex items-center gap-2 transition-all shadow-md disabled:opacity-50">
-            {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-            {isSaving ? '저장 중...' : '저장하기'}
-          </button>
-        </div>
+          <div className="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-end gap-3 shrink-0">
+            <button type="button" onClick={onClose} className="px-6 py-2.5 rounded-xl font-bold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 transition-colors">
+              취소
+            </button>
+            <button type="submit" disabled={isSaving} className="px-6 py-2.5 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 flex items-center gap-2 transition-all shadow-md disabled:opacity-50">
+              {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+              {isSaving ? '저장 중...' : '저장하기'}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
