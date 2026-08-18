@@ -57,6 +57,19 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     await ensureProductsSeeded();
     const { id } = await params;
     const body = await request.json();
+
+    const missing = [];
+    if (!body.name) missing.push('name');
+    if (!body.category) missing.push('category');
+    if (!body.categoryName) missing.push('categoryName');
+    if (body.price === undefined || body.price === null) missing.push('price');
+
+    if (missing.length > 0) {
+      return NextResponse.json({ 
+        error: `필수 항목 누락: ${missing.join(', ')}`,
+        receivedBody: body 
+      }, { status: 400 });
+    }
     
     const updatedProduct = await prisma.product.update({
       where: { id },

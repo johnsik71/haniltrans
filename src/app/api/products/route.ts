@@ -53,8 +53,17 @@ export async function POST(request: Request) {
     await ensureProductsSeeded();
     const body = await request.json();
 
-    if (!body.name || !body.category || !body.categoryName || body.price === undefined || body.price === null) {
-      return NextResponse.json({ error: '필수 항목(상품명, 카테고리, 분류명, 판매가)이 누락되었습니다.' }, { status: 400 });
+    const missing = [];
+    if (!body.name) missing.push('name');
+    if (!body.category) missing.push('category');
+    if (!body.categoryName) missing.push('categoryName');
+    if (body.price === undefined || body.price === null) missing.push('price');
+
+    if (missing.length > 0) {
+      return NextResponse.json({ 
+        error: `필수 항목 누락: ${missing.join(', ')}`,
+        receivedBody: body 
+      }, { status: 400 });
     }
 
     const productId = (body.id && typeof body.id === 'string' && body.id.trim() !== '') ? body.id.trim() : undefined;
