@@ -96,19 +96,6 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name?.trim()) {
-      alert("상품명을 입력해주세요.");
-      return;
-    }
-    if (!formData.categoryName?.trim()) {
-      alert("카테고리 분류명(표시용)을 입력해주세요.");
-      return;
-    }
-    if (formData.price === undefined || formData.price === null) {
-      alert("판매가를 입력해주세요.");
-      return;
-    }
-
     setIsSaving(true);
     
     const isEdit = !!product?.id;
