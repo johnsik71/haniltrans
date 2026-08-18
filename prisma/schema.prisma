@@ -17,6 +17,7 @@ model Product {
   originalPrice Int?
   costPrice     Int?
   image         String?
+  detailImage   String?
   inputVoltage  String?
   outputVoltage String?
   capacity      String?

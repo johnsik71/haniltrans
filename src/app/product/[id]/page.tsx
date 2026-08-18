@@ -239,10 +239,16 @@ export default function ProductDetailPage() {
                 <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
                   {product.description || '이 변압기는 산업 및 가정 환경에서 안정적인 전압 공급을 위해 설계된 제품입니다. 100% 국내 수작업 제조로 뛰어난 내구성과 품질을 자랑합니다.'}
                 </p>
-                <div className="mt-12 bg-gray-100/80 rounded-xl h-80 flex flex-col items-center justify-center text-gray-400 font-bold border border-gray-200">
-                  <span className="text-lg text-gray-500 mb-2">상세 페이지 이미지 영역</span>
-                  <span className="text-sm font-normal">관리자 모드에서 상세 이미지를 업로드할 수 있습니다.</span>
-                </div>
+                {product.detailImage ? (
+                  <div className="mt-12 w-full text-center">
+                    <img src={product.detailImage} alt="상세 설명" className="max-w-full mx-auto" />
+                  </div>
+                ) : (
+                  <div className="mt-12 bg-gray-100/80 rounded-xl h-80 flex flex-col items-center justify-center text-gray-400 font-bold border border-gray-200">
+                    <span className="text-lg text-gray-500 mb-2">상세 페이지 이미지 영역</span>
+                    <span className="text-sm font-normal">관리자 모드에서 상세 이미지를 업로드할 수 있습니다.</span>
+                  </div>
+                )}
               </div>
             )}
 

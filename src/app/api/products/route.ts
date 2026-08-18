@@ -70,6 +70,7 @@ export async function POST(request: Request) {
         originalPrice: body.originalPrice !== undefined && body.originalPrice !== null && body.originalPrice !== '' ? Number(body.originalPrice) : null,
         costPrice: body.costPrice !== undefined && body.costPrice !== null && body.costPrice !== '' ? Number(body.costPrice) : null,
         image: body.image ? String(body.image) : null,
+        detailImage: body.detailImage ? String(body.detailImage) : null,
         inputVoltage: body.inputVoltage ? String(body.inputVoltage) : null,
         outputVoltage: body.outputVoltage ? String(body.outputVoltage) : null,
         capacity: body.capacity ? String(body.capacity) : null,

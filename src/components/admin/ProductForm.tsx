@@ -24,9 +24,11 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
     capacity: product?.capacity || '',
     description: product?.description || '',
     costPrice: product?.costPrice || 0,
+    detailImage: product?.detailImage || '',
   });
 
   const [isUploading, setIsUploading] = useState(false);
+  const [isUploadingDetail, setIsUploadingDetail] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -61,6 +63,33 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
       alert('업로드 중 오류 발생');
     } finally {
       setIsUploading(false);
+    }
+  };
+
+  const handleDetailImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    
+    setIsUploadingDetail(true);
+    const file = e.target.files[0];
+    const data = new FormData();
+    data.append('file', file);
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: data,
+      });
+      const result = await res.json();
+      if (result.url) {
+        setFormData(prev => ({ ...prev, detailImage: result.url }));
+      } else {
+        alert('업로드 실패');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('업로드 중 오류 발생');
+    } finally {
+      setIsUploadingDetail(false);
     }
   };
 
@@ -160,7 +189,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
               
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">카테고리 ID *</label>
-                <select required name="category" value={formData.category} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                <select name="category" value={formData.category} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
                   <option value="industrial">industrial (공업용)</option>
                   <option value="oil">oil (유입식)</option>
                   <option value="avr">avr (AVR자동전압기)</option>
@@ -208,6 +237,46 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
             <div className="space-y-1">
               <label className="block text-sm font-bold text-gray-700">상세 설명</label>
               <textarea name="description" value={formData.description} onChange={handleChange} rows={4} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none" placeholder="제품에 대한 상세한 설명을 입력하세요..."></textarea>
+            </div>
+
+            {/* Detail Image Upload Area */}
+            <div className="space-y-2">
+              <label className="block text-sm font-bold text-gray-700">상세 설명 이미지</label>
+              <div className="flex gap-4 items-start">
+                <div className="w-32 h-32 bg-gray-100 rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden shrink-0 relative group">
+                  {formData.detailImage ? (
+                    <img src={formData.detailImage} alt="Detail Preview" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="text-center text-gray-400 p-2">
+                      <Upload className="w-6 h-6 mx-auto mb-1 opacity-50" />
+                      <span className="text-[10px] font-bold">이미지 없음</span>
+                    </div>
+                  )}
+                  {isUploadingDetail && (
+                    <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
+                      <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1 space-y-2">
+                  <label className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg cursor-pointer transition-colors w-fit text-sm font-bold">
+                    <Upload className="w-4 h-4" /> PC에서 상세 이미지 선택
+                    <input type="file" accept="image/*" onChange={handleDetailImageUpload} className="hidden" />
+                  </label>
+                  <p className="text-xs text-gray-500">
+                    권장: 가로 800px 이상의 세로로 긴 이미지<br/>
+                    또는 이미지 URL 직접 입력:
+                  </p>
+                  <input
+                    type="text"
+                    name="detailImage"
+                    value={formData.detailImage}
+                    onChange={handleChange}
+                    placeholder="https://..."
+                    className="w-full p-2 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
             </div>
           </form>
         </div>

@@ -15,6 +15,7 @@ export async function ensureProductsSeeded() {
         originalPrice: p.originalPrice ? Number(p.originalPrice) : null,
         costPrice: p.costPrice ? Number(p.costPrice) : null,
         image: p.image ? String(p.image) : null,
+        detailImage: p.detailImage ? String(p.detailImage) : null,
         inputVoltage: p.inputVoltage ? String(p.inputVoltage) : null,
         outputVoltage: p.outputVoltage ? String(p.outputVoltage) : null,
         capacity: p.capacity ? String(p.capacity) : null,
