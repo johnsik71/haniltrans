@@ -136,18 +136,12 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
              안전보다 중요한 것은 없습니다. 국내외 공인 기관으로부터 검증받은 까다로운 안전 규격을 통과하고 각종 품질 인증서를 보유하고 있습니다.
            </p>
            
-           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-16 opacity-70">
-              <div className="flex flex-col items-center gap-3 p-4 hover:opacity-100 transition-opacity">
-                <img src="/images/cert_iso9001.jpg" alt="ISO 9001" className="h-14 md:h-16 object-contain mix-blend-multiply" onError={(e) => e.currentTarget.style.display = 'none'} />
-                <span className="font-bold text-xs md:text-sm text-gray-600">ISO 9001 품질경영</span>
+           <div className="flex flex-col gap-8 md:gap-12 w-full max-w-4xl mx-auto px-4">
+              <div className="bg-gray-50 rounded-2xl p-4 md:p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+                <img src="/images/detail/cert_group_2.png" alt="품질경영 및 부품전문기업 인증서" className="w-full h-auto object-contain mix-blend-multiply" />
               </div>
-              <div className="flex flex-col items-center gap-3 p-4 hover:opacity-100 transition-opacity">
-                <img src="/images/cert_iso14001.png" alt="ISO 14001" className="h-14 md:h-16 object-contain mix-blend-multiply" onError={(e) => e.currentTarget.style.display = 'none'} />
-                <span className="font-bold text-xs md:text-sm text-gray-600">ISO 14001 환경경영</span>
-              </div>
-              <div className="flex flex-col items-center gap-3 p-4 hover:opacity-100 transition-opacity">
-                <img src="/images/cert_kc.png" alt="KC 인증" className="h-14 md:h-16 object-contain mix-blend-multiply" onError={(e) => e.currentTarget.style.display = 'none'} />
-                <span className="font-bold text-xs md:text-sm text-gray-600">KC 안전확인신고 인증</span>
+              <div className="bg-gray-50 rounded-2xl p-4 md:p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+                <img src="/images/detail/cert_group_1.jpg" alt="환경경영 및 품질경영 인증서" className="w-full h-auto object-contain mix-blend-multiply" />
               </div>
            </div>
            
