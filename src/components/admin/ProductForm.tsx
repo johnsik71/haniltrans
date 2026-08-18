@@ -279,9 +279,8 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
                   {formData.detailImage ? (
                     <img src={formData.detailImage} alt="Detail Preview" className="w-full h-full object-cover" />
                   ) : (
-                    <div className="text-center text-gray-400 p-2">
-                      <Upload className="w-6 h-6 mx-auto mb-1 opacity-50" />
-                      <span className="text-[10px] font-bold">이미지 없음</span>
+                    <div className="text-center text-blue-500 p-2">
+                      <div className="font-black text-[11px] bg-blue-100 text-blue-700 px-2 py-1 rounded mb-1 mx-1 leading-tight">AI 프리미엄<br/>템플릿 적용됨</div>
                     </div>
                   )}
                   {isUploadingDetail && (
@@ -295,8 +294,9 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
                     <Upload className="w-4 h-4" /> PC에서 상세 이미지 선택
                     <input type="file" accept="image/*" onChange={handleDetailImageUpload} className="hidden" />
                   </label>
-                  <p className="text-xs text-gray-500">
-                    권장: 가로 800px 이상의 세로로 긴 이미지<br/>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    <span className="text-blue-600 font-bold">💡 이미지를 등록하지 않으면 고품질 프리미엄 템플릿이 자동 적용됩니다!</span><br/>
+                    직접 등록 권장 사이즈: 가로 800px 이상<br/>
                     또는 이미지 URL 직접 입력:
                   </p>
                   <input
@@ -304,7 +304,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
                     name="detailImage"
                     defaultValue={formData.detailImage}
                     onChange={handleChange}
-                    placeholder="https://..."
+                    placeholder="https://... (비워두면 프리미엄 템플릿 적용)"
                     className="w-full p-2 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
                   />
                 </div>
