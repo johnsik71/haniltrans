@@ -27,6 +27,11 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
     detailImage: product?.detailImage || '',
   });
 
+  const formDataRef = React.useRef(formData);
+  React.useEffect(() => {
+    formDataRef.current = formData;
+  }, [formData]);
+
   const [isUploading, setIsUploading] = useState(false);
   const [isUploadingDetail, setIsUploadingDetail] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -99,24 +104,19 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
     setIsSaving(true);
     
     const formElement = document.getElementById('productForm') as HTMLFormElement;
-    let payload = { ...formData };
+    let payload = { ...formDataRef.current };
     
     if (formElement) {
-      const domFormData = new FormData(formElement);
-      payload = {
-        ...formData,
-        name: (domFormData.get('name') as string) || formData.name,
-        category: (domFormData.get('category') as string) || formData.category,
-        categoryName: (domFormData.get('categoryName') as string) || formData.categoryName,
-        subCategory: (domFormData.get('subCategory') as string) || formData.subCategory,
-        price: Number(domFormData.get('price')) || formData.price,
-        originalPrice: Number(domFormData.get('originalPrice')) || formData.originalPrice,
-        costPrice: Number(domFormData.get('costPrice')) || formData.costPrice,
-        inputVoltage: (domFormData.get('inputVoltage') as string) || formData.inputVoltage,
-        outputVoltage: (domFormData.get('outputVoltage') as string) || formData.outputVoltage,
-        capacity: (domFormData.get('capacity') as string) || formData.capacity,
-        description: (domFormData.get('description') as string) || formData.description,
-      };
+      const inputs = formElement.querySelectorAll('input, select, textarea');
+      inputs.forEach((input: any) => {
+        if (input.name) {
+          if (['price', 'originalPrice', 'costPrice'].includes(input.name)) {
+            (payload as any)[input.name] = Number(input.value) || 0;
+          } else {
+            (payload as any)[input.name] = input.value || '';
+          }
+        }
+      });
     }
     
     const isEdit = !!product?.id;
@@ -134,7 +134,7 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
         onSave();
       } else {
         const errorData = await res.json().catch(() => ({}));
-        alert(`저장에 실패했습니다: ${errorData.error || errorData.details || res.status}\n\n전송된 데이터: ${JSON.stringify(errorData.receivedBody || formData)}`);
+        alert(`저장에 실패했습니다: ${errorData.error || errorData.details || res.status}\n\n전송된 데이터: ${JSON.stringify(errorData.receivedBody || payload)}`);
       }
     } catch (error) {
       console.error(error);
@@ -202,16 +202,16 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">상품명 *</label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="text" name="name" defaultValue={formData.name} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">카테고리 분류명 * (표시용)</label>
-                <input type="text" name="categoryName" value={formData.categoryName} onChange={handleChange} placeholder="예: 공업용 변압기" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="text" name="categoryName" defaultValue={formData.categoryName} onChange={handleChange} placeholder="예: 공업용 변압기" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">카테고리 ID *</label>
-                <select name="category" value={formData.category} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                <select name="category" defaultValue={formData.category} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
                   <option value="industrial">industrial (공업용)</option>
                   <option value="oil">oil (유입식)</option>
                   <option value="avr">avr (AVR자동전압기)</option>
@@ -222,43 +222,43 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
               </div>
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">서브 카테고리</label>
-                <input type="text" name="subCategory" value={formData.subCategory} onChange={handleChange} placeholder="예: 삼상 단권" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="text" name="subCategory" defaultValue={formData.subCategory} onChange={handleChange} placeholder="예: 삼상 단권" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
 
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">판매가 *</label>
-                <input type="number" name="price" value={formData.price} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="number" name="price" defaultValue={formData.price} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               <div className="space-y-1 flex gap-2">
                 <div className="flex-1 space-y-1">
                   <label className="block text-sm font-bold text-gray-700">원가 (마진계산용, 고객미노출)</label>
-                  <input type="number" name="costPrice" value={formData.costPrice} onChange={handleChange} className="w-full p-2.5 border border-red-200 bg-red-50 rounded-lg focus:border-red-500 focus:outline-none" />
+                  <input type="number" name="costPrice" defaultValue={formData.costPrice} onChange={handleChange} className="w-full p-2.5 border border-red-200 bg-red-50 rounded-lg focus:border-red-500 focus:outline-none" />
                 </div>
                 <div className="flex-1 space-y-1">
                   <label className="block text-sm font-bold text-gray-700">소비자가 (할인표시용)</label>
-                  <input type="number" name="originalPrice" value={formData.originalPrice} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                  <input type="number" name="originalPrice" defaultValue={formData.originalPrice} onChange={handleChange} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <label className="block text-sm font-bold text-gray-700">용량</label>
-                <input type="text" name="capacity" value={formData.capacity} onChange={handleChange} placeholder="예: 3kVA" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                <input type="text" name="capacity" defaultValue={formData.capacity} onChange={handleChange} placeholder="예: 3kVA" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </div>
               <div className="space-y-1 flex gap-2">
                 <div className="flex-1 space-y-1">
                   <label className="block text-sm font-bold text-gray-700">입력전압</label>
-                  <input type="text" name="inputVoltage" value={formData.inputVoltage} onChange={handleChange} placeholder="220V" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                  <input type="text" name="inputVoltage" defaultValue={formData.inputVoltage} onChange={handleChange} placeholder="220V" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
                 </div>
                 <div className="flex-1 space-y-1">
                   <label className="block text-sm font-bold text-gray-700">출력전압</label>
-                  <input type="text" name="outputVoltage" value={formData.outputVoltage} onChange={handleChange} placeholder="110V" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
+                  <input type="text" name="outputVoltage" defaultValue={formData.outputVoltage} onChange={handleChange} placeholder="110V" className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
                 </div>
               </div>
             </div>
 
             <div className="space-y-1">
               <label className="block text-sm font-bold text-gray-700">상세 설명</label>
-              <textarea name="description" value={formData.description} onChange={handleChange} rows={4} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none" placeholder="제품에 대한 상세한 설명을 입력하세요..."></textarea>
+              <textarea name="description" defaultValue={formData.description} onChange={handleChange} rows={4} className="w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none" placeholder="제품에 대한 상세한 설명을 입력하세요..."></textarea>
             </div>
 
             {/* Detail Image Upload Area */}
