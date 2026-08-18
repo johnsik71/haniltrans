@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { X, Upload, Save, Loader2 } from 'lucide-react';
 
 interface ProductFormProps {
@@ -27,8 +27,8 @@ export default function ProductForm({ product, onClose, onSave }: ProductFormPro
     detailImage: product?.detailImage || '',
   });
 
-  const formDataRef = React.useRef(formData);
-  React.useEffect(() => {
+  const formDataRef = useRef(formData);
+  useEffect(() => {
     formDataRef.current = formData;
   }, [formData]);
 
