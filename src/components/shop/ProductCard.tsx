@@ -5,6 +5,10 @@ import { Star, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ProductCard({ product }: { product: Product | any }) {
+  const discountRate = product.originalPrice && product.price 
+    ? Math.floor(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : 0;
+
   return (
     <>
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group relative">
@@ -16,11 +20,18 @@ export default function ProductCard({ product }: { product: Product | any }) {
               alt={product.name}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            {product.badge && (
-              <span className="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-black px-2.5 py-1 rounded-lg shadow-md">
-                {product.badge}
-              </span>
-            )}
+            <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
+              {product.badge && (
+                <span className="bg-red-600 text-white text-[11px] font-black px-2.5 py-1 rounded-lg shadow-md w-fit">
+                  {product.badge}
+                </span>
+              )}
+              {discountRate > 0 && (
+                <span className="bg-red-600 text-white text-[11px] font-black px-2.5 py-1 rounded-lg shadow-md w-fit">
+                  {discountRate}% 할인
+                </span>
+              )}
+            </div>
             {product.isFreeShipping && (
               <span className="absolute top-3 right-3 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
                 무료배송
@@ -65,7 +76,8 @@ export default function ProductCard({ product }: { product: Product | any }) {
               {product.originalPrice.toLocaleString()}원
             </span>
           )}
-          <div className="text-base sm:text-lg font-black text-gray-900 leading-tight">
+          <div className="text-base sm:text-lg font-black text-gray-900 leading-tight flex items-center gap-1.5">
+            {discountRate > 0 && <span className="text-red-500">{discountRate}%</span>}
             {product.price ? product.price.toLocaleString() : '0'}<span className="text-xs sm:text-sm font-bold ml-0.5">원</span>
           </div>
         </div>

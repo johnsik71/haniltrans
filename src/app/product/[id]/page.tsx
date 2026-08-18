@@ -130,15 +130,24 @@ export default function ProductDetailPage() {
             <div className="border-t border-b border-gray-100 py-6 mb-6 space-y-4">
               <div className="flex justify-between items-end">
                 <span className="text-gray-500 font-bold">판매가</span>
-                <div className="text-right">
+                <div className="text-right flex items-end gap-2">
                   {product.originalPrice && (
-                    <span className="text-sm text-gray-400 line-through block">
-                      {product.originalPrice.toLocaleString()}원
-                    </span>
+                    <div className="flex flex-col items-end justify-end mb-1">
+                      <span className="text-sm text-gray-400 line-through block leading-none">
+                        {product.originalPrice.toLocaleString()}원
+                      </span>
+                    </div>
                   )}
-                  <span className="text-2xl md:text-3xl font-black text-gray-900">
-                    {product.price ? product.price.toLocaleString() : 0}<span className="text-lg md:text-xl font-bold ml-1">원</span>
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {product.originalPrice && product.price && Math.floor(((product.originalPrice - product.price) / product.originalPrice) * 100) > 0 && (
+                      <span className="text-2xl md:text-3xl font-black text-red-500">
+                        {Math.floor(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                      </span>
+                    )}
+                    <span className="text-2xl md:text-3xl font-black text-gray-900">
+                      {product.price ? product.price.toLocaleString() : 0}<span className="text-lg md:text-xl font-bold ml-1">원</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
