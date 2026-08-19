@@ -153,32 +153,24 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
            
            <div className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-gray-100">
              <p className="text-xs md:text-sm font-bold text-gray-400 mb-6 md:mb-8 uppercase tracking-widest">주요 납품 파트너</p>
-             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <span className="text-2xl md:text-3xl font-black tracking-tighter" style={{ color: '#1428A0', fontFamily: 'Arial, Helvetica, sans-serif' }}>SAMSUNG</span>
-               </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex items-center gap-1">
-                 <div className="w-6 h-6 rounded-full border-2 border-[#002C5F] flex items-center justify-center skew-x-[-15deg]">
-                   <span className="text-[#002C5F] font-black text-xs">H</span>
-                 </div>
-                 <span className="text-xl md:text-2xl font-black tracking-tight" style={{ color: '#002C5F' }}>HYUNDAI</span>
-               </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex items-center gap-2">
-                 <div className="w-7 h-7 rounded-full bg-[#A50034] flex items-center justify-center relative overflow-hidden">
-                    <span className="text-white text-[10px] font-bold absolute left-1 bottom-1">L</span>
-                    <span className="text-white text-xs font-bold absolute right-1 top-1">G</span>
-                 </div>
-                 <span className="text-xl md:text-2xl font-bold text-gray-800">Display</span>
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="SAMSUNG" className="h-4 md:h-6" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <span className="text-2xl md:text-3xl font-bold tracking-widest" style={{ color: '#005aab', fontFamily: 'Impact, sans-serif' }}>POSCO</span>
-               </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex items-center gap-1">
-                 <span className="text-2xl md:text-3xl font-black text-[#E1002A]">SK</span>
-                 <span className="text-xl md:text-2xl font-bold text-orange-500">hynix</span>
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Hyundai_Motor_Company_logo.svg" alt="HYUNDAI" className="h-6 md:h-8" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <span className="text-2xl md:text-3xl font-black tracking-tighter" style={{ color: '#0055A6' }}>KEPCO</span>
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg" alt="LG" className="h-8 md:h-10" />
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/POSCO_logo.svg" alt="POSCO" className="h-5 md:h-7" />
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/SK_hynix_logo.svg" alt="SK Hynix" className="h-6 md:h-8" />
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Korea_Electric_Power_Corporation_logo.svg" alt="KEPCO" className="h-8 md:h-10" />
                </div>
              </div>
            </div>
