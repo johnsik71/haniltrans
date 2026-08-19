@@ -151,26 +151,55 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
               </div>
            </div>
            
-           <div className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-gray-100">
-             <p className="text-xs md:text-sm font-bold text-gray-400 mb-6 md:mb-8 uppercase tracking-widest">주요 납품 파트너</p>
-             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="/images/logos/samsung.svg" alt="SAMSUNG" className="h-4 md:h-6" />
+           <div className="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-gray-100">
+             <div className="text-center mb-12">
+               <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-blue-600 bg-blue-50 rounded-full">
+                 40 YEARS OF HERITAGE
+               </span>
+               <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">40년 장인정신, 차원이 다른 제조 노하우</h2>
+               <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                 한일트랜스는 40년간 오직 변압기 한 분야만을 연구해 왔습니다. 
+                 고객의 사용 환경에 맞춰 단권형과 복권형 트랜스를 최적의 설계로 직접 제조합니다.
+               </p>
+             </div>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 text-left mb-12">
+               {/* 단권형 설명 */}
+               <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+                 <div className="flex items-center gap-3 mb-4">
+                   <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-lg">단</div>
+                   <h3 className="text-xl font-bold text-gray-900">단권형 트랜스 (Auto Transformer)</h3>
+                 </div>
+                 <p className="text-gray-600 leading-relaxed text-sm">
+                   1차 코일과 2차 코일의 일부를 공통으로 사용하는 경제적인 방식입니다. 
+                   크기가 작고 가벼우며 효율이 높아 일반적인 전압 승압/강압 용도로 가장 널리 사용됩니다.
+                   동일 용량 대비 원가가 저렴하여 가성비가 매우 뛰어납니다.
+                 </p>
                </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="/images/logos/hyundai.svg" alt="HYUNDAI" className="h-6 md:h-8" />
+
+               {/* 복권형 설명 */}
+               <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+                 <div className="flex items-center gap-3 mb-4">
+                   <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-black text-lg">복</div>
+                   <h3 className="text-xl font-bold text-gray-900">복권형 트랜스 (Isolation Transformer)</h3>
+                 </div>
+                 <p className="text-gray-600 leading-relaxed text-sm">
+                   1차 코일과 2차 코일이 완전히 분리되어 절연된 고급형 방식입니다. 
+                   입력측의 노이즈나 서지(Surge)가 출력측으로 전달되지 않아, 정밀 의료기기, 반도체 장비, 통신 장비 등 고가의 민감한 장비 보호에 필수적이며 감전 위험을 완벽히 차단합니다.
+                 </p>
                </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="/images/logos/lg.svg" alt="LG" className="h-8 md:h-10" />
+             </div>
+
+             {/* 공장 사진 갤러리 */}
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
+                 <img src="/images/factory/factory1.jpg" alt="한일트랜스 공장 제조 현장 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'} />
                </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="/images/logos/posco.svg" alt="POSCO" className="h-5 md:h-7" />
+               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
+                 <img src="/images/factory/factory2.jpg" alt="한일트랜스 공장 제조 현장 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800'} />
                </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="/images/logos/sk.svg" alt="SK Hynix" className="h-6 md:h-8" />
-               </div>
-               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="/images/logos/kepco.svg" alt="KEPCO" className="h-8 md:h-10" />
+               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
+                 <img src="/images/factory/factory3.jpg" alt="한일트랜스 공장 제조 현장 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=800'} />
                </div>
              </div>
            </div>
