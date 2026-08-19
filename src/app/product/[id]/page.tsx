@@ -243,6 +243,7 @@ export default function ProductDetailPage() {
               </div>
             </div>
           </div>
+        </div>
 
         {/* Product Details Section with Tabs */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-12">
