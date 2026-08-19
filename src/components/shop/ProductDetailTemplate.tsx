@@ -155,22 +155,22 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
              <p className="text-xs md:text-sm font-bold text-gray-400 mb-6 md:mb-8 uppercase tracking-widest">주요 납품 파트너</p>
              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="SAMSUNG" className="h-4 md:h-6" />
+                 <img src="/images/logos/samsung.svg" alt="SAMSUNG" className="h-4 md:h-6" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Hyundai_Motor_Company_logo.svg" alt="HYUNDAI" className="h-6 md:h-8" />
+                 <img src="/images/logos/hyundai.svg" alt="HYUNDAI" className="h-6 md:h-8" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg" alt="LG" className="h-8 md:h-10" />
+                 <img src="/images/logos/lg.svg" alt="LG" className="h-8 md:h-10" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/POSCO_logo.svg" alt="POSCO" className="h-5 md:h-7" />
+                 <img src="/images/logos/posco.svg" alt="POSCO" className="h-5 md:h-7" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/SK_hynix_logo.svg" alt="SK Hynix" className="h-6 md:h-8" />
+                 <img src="/images/logos/sk.svg" alt="SK Hynix" className="h-6 md:h-8" />
                </div>
                <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Korea_Electric_Power_Corporation_logo.svg" alt="KEPCO" className="h-8 md:h-10" />
+                 <img src="/images/logos/kepco.svg" alt="KEPCO" className="h-8 md:h-10" />
                </div>
              </div>
            </div>
