@@ -190,16 +190,50 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
                </div>
              </div>
 
-             {/* 공장 사진 갤러리 */}
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-                 <img src="/images/factory/factory1.jpg" alt="한일트랜스 공장 제조 현장 1" className="w-full h-full object-cover sepia-[.7] hover:sepia-0 hover:scale-105 transition-all duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'} />
+             {/* 공장 스토리 갤러리 (4-Block) */}
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
+               {/* 1. Factory */}
+               <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
+                 <img src="/images/factory/factory7.jpg" alt="공장 시설" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                 <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                   <span className="inline-block px-3 py-1 bg-blue-600/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">설비 인프라</span>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">40년 전통의 전용 공장</h3>
+                   <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">최고의 부품과 철저한 품질 관리 시스템이 갖춰진 자체 생산 라인에서 한일트랜스의 모든 제품이 탄생합니다.</p>
+                 </div>
                </div>
-               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-                 <img src="/images/factory/factory2.jpg" alt="한일트랜스 공장 제조 현장 2" className="w-full h-full object-cover sepia-[.7] hover:sepia-0 hover:scale-105 transition-all duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800'} />
+
+               {/* 2. Manufacturing */}
+               <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
+                 <img src="/images/factory/factory3.jpg" alt="수작업 제작 공정" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                 <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                   <span className="inline-block px-3 py-1 bg-emerald-600/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">수작업 공정</span>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">장인의 정밀한 권선 공정</h3>
+                   <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">최상급 구리 코일과 규소 강판을 사용하여 숙련된 장인이 한 땀 한 땀 수작업으로 정밀하게 권선(Winding)합니다.</p>
+                 </div>
                </div>
-               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-                 <img src="/images/factory/factory3.jpg" alt="한일트랜스 공장 제조 현장 3" className="w-full h-full object-cover sepia-[.7] hover:sepia-0 hover:scale-105 transition-all duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=800'} />
+
+               {/* 3. Testing */}
+               <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
+                 <img src="/images/factory/factory4.png" alt="초정밀 계측 및 테스트" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                 <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                   <span className="inline-block px-3 py-1 bg-amber-500/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">품질 검증</span>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">초정밀 계측 및 전수 검사</h3>
+                   <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">첨단 계측 장비를 동원하여 출고 전 모든 제품의 부하 테스트 및 절연 내력 검사를 100% 실시해 불량률 0%에 도전합니다.</p>
+                 </div>
+               </div>
+
+               {/* 4. High-End Audio */}
+               <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
+                 <img src="/images/factory/factory6.png" alt="하이엔드 오디오 정전압 트랜스" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
+                 <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                   <span className="inline-block px-3 py-1 bg-purple-600/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">프리미엄 라인업</span>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">하이엔드 오디오 정전압</h3>
+                   <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">미세한 전기적 노이즈마저 완벽하게 차폐시켜 극강의 깨끗한 음질을 구현하는 오디오파일 전용 특수 트랜스포머입니다.</p>
+                 </div>
                </div>
              </div>
            </div>
