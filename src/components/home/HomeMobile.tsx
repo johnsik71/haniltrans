@@ -200,42 +200,8 @@ export default function HomeMobile() {
         {/* 3. Spec Finder (Important for mobile) */}
         <SpecFinderWidget />
 
-        {/* 4. Horizontal Scroll Section - 단상 다운트랜스 */}
-        <section className="pt-2">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-black text-gray-900">단상 다운트랜스 베스트</h3>
-            <Link href="/category/home" className="text-xs font-bold text-blue-600 flex items-center">
-              더보기 <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="flex overflow-x-auto snap-x hide-scrollbar gap-4 pb-4 -mx-4 px-4">
-            {homeProducts.map((p) => (
-              <div key={p.id} className="min-w-[160px] max-w-[160px] snap-start">
-                <ProductCard product={p} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 5. Horizontal Scroll Section - AVR */}
-        <section>
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-black text-gray-900">정밀 AVR 자동전압조정기</h3>
-            <Link href="/category/avr" className="text-xs font-bold text-blue-600 flex items-center">
-              더보기 <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="flex overflow-x-auto snap-x hide-scrollbar gap-4 pb-4 -mx-4 px-4">
-            {avrProducts.map((p) => (
-              <div key={p.id} className="min-w-[160px] max-w-[160px] snap-start">
-                <ProductCard product={p} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 6. Mobile Tabbed Products (Grid) */}
-        <section className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 -mx-2">
+        {/* 4. Mobile Tabbed Products (Grid - Industrial) */}
+        <section className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 -mx-2 mt-2">
           <h3 className="text-lg font-black text-gray-900 mb-3 text-center">카테고리별 추천상품</h3>
           <div className="flex overflow-x-auto hide-scrollbar whitespace-nowrap gap-2 mb-4 pb-1">
             {[
@@ -266,6 +232,40 @@ export default function HomeMobile() {
           <button className="w-full mt-4 py-3 bg-gray-100 text-gray-700 font-bold text-sm rounded-xl hover:bg-gray-200">
             {tabbedProducts.length}개 상품 전체보기
           </button>
+        </section>
+
+        {/* 5. Horizontal Scroll Section - AVR */}
+        <section className="pt-2">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-lg font-black text-gray-900">정밀 AVR 자동전압조정기</h3>
+            <Link href="/category/avr" className="text-xs font-bold text-blue-600 flex items-center">
+              더보기 <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="flex overflow-x-auto snap-x hide-scrollbar gap-4 pb-4 -mx-4 px-4">
+            {avrProducts.map((p) => (
+              <div key={p.id} className="min-w-[160px] max-w-[160px] snap-start">
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 6. Horizontal Scroll Section - 단상 다운트랜스 (가정용) */}
+        <section>
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-lg font-black text-gray-900">단상 다운트랜스 베스트</h3>
+            <Link href="/category/home" className="text-xs font-bold text-blue-600 flex items-center">
+              더보기 <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="flex overflow-x-auto snap-x hide-scrollbar gap-4 pb-4 -mx-4 px-4">
+            {homeProducts.map((p) => (
+              <div key={p.id} className="min-w-[160px] max-w-[160px] snap-start">
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
         </section>
 
       </div>
