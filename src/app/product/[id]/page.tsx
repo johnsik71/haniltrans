@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Star, ShieldCheck, Truck, ArrowLeft, Heart, Share2, ShoppingCart } from 'lucide-react';
+import { Star, ShieldCheck, Truck, ArrowLeft, Heart, Share2, ShoppingCart, Gift, MessageCircle } from 'lucide-react';
 import ProductDetailTemplate from '@/components/shop/ProductDetailTemplate';
 import { useCart } from '@/context/CartContext';
 
@@ -176,42 +176,71 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            {/* Mobile responsive fix: flex-col on mobile to prevent squished buttons */}
-            <div className="mt-auto flex flex-col sm:flex-row gap-3">
-              <div className="flex border border-gray-300 rounded-xl overflow-hidden w-full sm:w-32 shrink-0 h-12 sm:h-auto">
-                <button 
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="flex-1 bg-gray-50 hover:bg-gray-100 font-bold text-gray-600 transition-colors"
-                >-</button>
-                <div className="flex-1 flex items-center justify-center font-bold text-gray-900 border-x border-gray-300">
-                  {quantity}
+            {/* Smart Store Style Purchase UI */}
+            <div className="mt-auto flex flex-col gap-4">
+              {/* Options & Quantity Selector */}
+              <div className="border border-gray-200 rounded-lg p-4 bg-gray-50/50 flex flex-col gap-3">
+                <div className="flex justify-between items-center pb-3 border-b border-gray-200">
+                  <span className="text-[13px] font-bold text-gray-700">기본 옵션 (필수)</span>
                 </div>
-                <button 
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="flex-1 bg-gray-50 hover:bg-gray-100 font-bold text-gray-600 transition-colors"
-                >+</button>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] font-medium text-gray-600">수량</span>
+                  <div className="flex border border-gray-300 rounded bg-white overflow-hidden w-[100px] h-8">
+                    <button 
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="flex-1 bg-white hover:bg-gray-50 text-gray-500 font-bold transition-colors"
+                    >-</button>
+                    <div className="flex-1 flex items-center justify-center font-bold text-gray-900 border-x border-gray-300 text-[13px]">
+                      {quantity}
+                    </div>
+                    <button 
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="flex-1 bg-white hover:bg-gray-50 text-gray-500 font-bold transition-colors"
+                    >+</button>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-[13px] font-bold text-gray-500">총 상품금액</span>
+                  <span className="text-lg font-black text-[#f23535]">{(product.price * quantity).toLocaleString()}<span className="text-sm font-bold ml-0.5">원</span></span>
+                </div>
               </div>
-                <button 
-                  onClick={handleAddToCart}
-                  className="flex-1 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-black text-base md:text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm h-12"
-                >
-                  <ShoppingCart className="w-5 h-5" /> 장바구니
-                </button>
-                <button 
-                  onClick={handleBuyNow}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black text-base md:text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-600/30 h-12"
-                >
-                  바로 구매하기
-                </button>
+
+              {/* Purchase Buttons */}
+              <div className="flex flex-col gap-2">
+                {/* Row 1: Gift & Naver Pay */}
+                <div className="flex gap-2">
+                  <button className="flex-1 bg-white border border-[#03C75A] text-[#03C75A] hover:bg-[#03C75A]/5 font-bold text-[15px] rounded-lg py-3.5 flex items-center justify-center gap-1.5 transition-colors">
+                    <Gift className="w-[18px] h-[18px]" /> 선물하기
+                  </button>
+                  <button 
+                    onClick={handleNaverPay}
+                    className="flex-[2] bg-[#03C75A] hover:bg-[#02b350] text-white font-bold text-[15px] rounded-lg py-3.5 flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <div className="bg-white text-[#03C75A] w-4 h-4 rounded-sm flex items-center justify-center -mr-0.5">
+                      <span className="font-black text-[12px] leading-none">N</span>
+                    </div>
+                    구매하기
+                  </button>
+                </div>
+                
+                {/* Row 2: Wish, Talk, Cart */}
+                <div className="flex border border-gray-300 rounded-lg overflow-hidden bg-white">
+                  <button className="flex-1 py-3.5 text-[14px] text-gray-700 font-medium hover:bg-gray-50 flex items-center justify-center gap-1.5 transition-colors">
+                    <Heart className="w-[18px] h-[18px] text-gray-400" /> 찜하기
+                  </button>
+                  <div className="w-[1px] bg-gray-200 my-2.5"></div>
+                  <button className="flex-1 py-3.5 text-[14px] text-gray-700 font-medium hover:bg-gray-50 flex items-center justify-center gap-1.5 transition-colors">
+                    <MessageCircle className="w-[18px] h-[18px] text-gray-400" /> 톡톡문의
+                  </button>
+                  <div className="w-[1px] bg-gray-200 my-2.5"></div>
+                  <button 
+                    onClick={handleAddToCart}
+                    className="flex-1 py-3.5 text-[14px] text-gray-700 font-medium hover:bg-gray-50 flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <ShoppingCart className="w-[18px] h-[18px] text-gray-400" /> 장바구니
+                  </button>
+                </div>
               </div>
-              <button 
-                onClick={handleNaverPay}
-                className="w-full mt-3 bg-[#03C75A] hover:bg-[#02b350] text-white font-black text-lg py-3.5 rounded-xl flex items-center justify-center transition-all shadow-sm"
-              >
-                <span className="font-black text-2xl tracking-tighter mr-0.5">N</span>
-                <span className="font-bold text-2xl tracking-tight mr-1.5">Pay</span>
-                <span>구매</span>
-              </button>
             </div>
           </div>
 
