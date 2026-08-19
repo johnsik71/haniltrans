@@ -194,7 +194,7 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
                {/* 1. Factory */}
                <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
-                 <img src="/images/factory/factory7.jpg" alt="공장 시설" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <img src="/images/factory/factory2.jpg" alt="공장 시설" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                    <span className="inline-block px-3 py-1 bg-blue-600/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">설비 인프라</span>
@@ -205,7 +205,7 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
 
                {/* 2. Manufacturing */}
                <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
-                 <img src="/images/factory/factory3.jpg" alt="수작업 제작 공정" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <img src="/images/factory/factory4.png" alt="수작업 제작 공정" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                    <span className="inline-block px-3 py-1 bg-emerald-600/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">수작업 공정</span>
@@ -216,7 +216,7 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
 
                {/* 3. Testing */}
                <div className="group relative rounded-3xl overflow-hidden bg-gray-900 aspect-[4/3] md:aspect-[3/2]">
-                 <img src="/images/factory/factory4.png" alt="초정밀 계측 및 테스트" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
+                 <img src="/images/factory/factory7.jpg" alt="초정밀 계측 및 테스트" className="absolute inset-0 w-full h-full object-cover sepia-[.5] group-hover:sepia-0 group-hover:scale-110 transition-all duration-700 opacity-60 group-hover:opacity-80" onError={(e) => e.currentTarget.src = '/images/factory/factory2.jpg'} />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                    <span className="inline-block px-3 py-1 bg-amber-500/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">품질 검증</span>
