@@ -214,7 +214,7 @@ export default function ProductDetailPage() {
                   </button>
                   <button 
                     onClick={handleNaverPay}
-                    className="flex-[2] bg-[#03C75A] hover:bg-[#02b350] text-white font-bold text-[15px] rounded-lg py-3.5 flex items-center justify-center gap-1.5 transition-colors"
+                    className="flex-[2] bg-[#03C75A] hover:bg-[#02b350] text-gray-900 font-bold text-[15px] rounded-lg py-3.5 flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <div className="bg-white text-[#03C75A] w-4 h-4 rounded-sm flex items-center justify-center -mr-0.5">
                       <span className="font-black text-[12px] leading-none">N</span>
