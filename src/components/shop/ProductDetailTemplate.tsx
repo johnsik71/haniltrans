@@ -198,7 +198,7 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-90" />
                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                    <span className="inline-block px-3 py-1 bg-blue-600/90 text-white text-[11px] md:text-xs font-bold rounded-lg mb-3">설비 인프라</span>
-                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">40년 전통의 전용 공장</h3>
+                   <h3 className="text-xl md:text-2xl font-bold text-white mb-2">40년 전통의 공법 제조 공장</h3>
                    <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">최고의 부품과 철저한 품질 관리 시스템이 갖춰진 자체 생산 라인에서 한일트랜스의 모든 제품이 탄생합니다.</p>
                  </div>
                </div>
