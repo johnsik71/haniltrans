@@ -193,13 +193,13 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
              {/* 공장 사진 갤러리 */}
              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-                 <img src="/images/factory/factory1.jpg" alt="한일트랜스 공장 제조 현장 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'} />
+                 <img src="/images/factory/factory1.jpg" alt="한일트랜스 공장 제조 현장 1" className="w-full h-full object-cover sepia-[.7] hover:sepia-0 hover:scale-105 transition-all duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'} />
                </div>
                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-                 <img src="/images/factory/factory2.jpg" alt="한일트랜스 공장 제조 현장 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800'} />
+                 <img src="/images/factory/factory2.jpg" alt="한일트랜스 공장 제조 현장 2" className="w-full h-full object-cover sepia-[.7] hover:sepia-0 hover:scale-105 transition-all duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800'} />
                </div>
                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-                 <img src="/images/factory/factory3.jpg" alt="한일트랜스 공장 제조 현장 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=800'} />
+                 <img src="/images/factory/factory3.jpg" alt="한일트랜스 공장 제조 현장 3" className="w-full h-full object-cover sepia-[.7] hover:sepia-0 hover:scale-105 transition-all duration-500" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&q=80&w=800'} />
                </div>
              </div>
            </div>
