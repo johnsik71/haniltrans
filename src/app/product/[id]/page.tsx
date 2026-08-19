@@ -216,7 +216,7 @@ export default function ProductDetailPage() {
                     onClick={handleNaverPay}
                     className="flex-[2] bg-[#03C75A] hover:bg-[#02b350] text-gray-900 font-bold text-[15px] rounded-lg py-3.5 flex items-center justify-center gap-1.5 transition-colors"
                   >
-                    <div className="bg-white text-[#03C75A] w-4 h-4 rounded-sm flex items-center justify-center -mr-0.5">
+                    <div className="bg-white text-gray-900 w-4 h-4 rounded-sm flex items-center justify-center -mr-0.5">
                       <span className="font-black text-[12px] leading-none">N</span>
                     </div>
                     구매하기
@@ -279,15 +279,14 @@ export default function ProductDetailPage() {
                 <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
                   {product.description || '이 변압기는 산업 및 가정 환경에서 안정적인 전압 공급을 위해 설계된 제품입니다. 100% 국내 수작업 제조로 뛰어난 내구성과 품질을 자랑합니다.'}
                 </p>
-                {product.detailImage ? (
+                {product.detailImage && (
                   <div className="mt-12 rounded-2xl overflow-hidden border border-gray-200">
                     <img src={product.detailImage} alt="상세 설명" className="w-full h-auto" />
                   </div>
-                ) : (
-                  <div className="mt-12">
-                    <ProductDetailTemplate product={product} />
-                  </div>
                 )}
+                <div className="mt-12">
+                  <ProductDetailTemplate product={product} />
+                </div>
               </div>
             )}
 
