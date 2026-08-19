@@ -153,13 +153,33 @@ export default function ProductDetailTemplate({ product }: { product: Product | 
            
            <div className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-gray-100">
              <p className="text-xs md:text-sm font-bold text-gray-400 mb-6 md:mb-8 uppercase tracking-widest">주요 납품 파트너</p>
-             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-lg md:text-2xl font-black text-gray-300">
-               <span className="px-4 py-2 hover:text-gray-400 transition-colors cursor-default">SAMSUNG</span>
-               <span className="px-4 py-2 hover:text-gray-400 transition-colors cursor-default">HYUNDAI</span>
-               <span className="px-4 py-2 hover:text-gray-400 transition-colors cursor-default">LG DISPLAY</span>
-               <span className="px-4 py-2 hover:text-gray-400 transition-colors cursor-default">POSCO</span>
-               <span className="px-4 py-2 hover:text-gray-400 transition-colors cursor-default">SK HYNIX</span>
-               <span className="px-4 py-2 hover:text-gray-400 transition-colors cursor-default">KEPCO</span>
+             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                 <span className="text-2xl md:text-3xl font-black tracking-tighter" style={{ color: '#1428A0', fontFamily: 'Arial, Helvetica, sans-serif' }}>SAMSUNG</span>
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex items-center gap-1">
+                 <div className="w-6 h-6 rounded-full border-2 border-[#002C5F] flex items-center justify-center skew-x-[-15deg]">
+                   <span className="text-[#002C5F] font-black text-xs">H</span>
+                 </div>
+                 <span className="text-xl md:text-2xl font-black tracking-tight" style={{ color: '#002C5F' }}>HYUNDAI</span>
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex items-center gap-2">
+                 <div className="w-7 h-7 rounded-full bg-[#A50034] flex items-center justify-center relative overflow-hidden">
+                    <span className="text-white text-[10px] font-bold absolute left-1 bottom-1">L</span>
+                    <span className="text-white text-xs font-bold absolute right-1 top-1">G</span>
+                 </div>
+                 <span className="text-xl md:text-2xl font-bold text-gray-800">Display</span>
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                 <span className="text-2xl md:text-3xl font-bold tracking-widest" style={{ color: '#005aab', fontFamily: 'Impact, sans-serif' }}>POSCO</span>
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex items-center gap-1">
+                 <span className="text-2xl md:text-3xl font-black text-[#E1002A]">SK</span>
+                 <span className="text-xl md:text-2xl font-bold text-orange-500">hynix</span>
+               </div>
+               <div className="group cursor-default p-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                 <span className="text-2xl md:text-3xl font-black tracking-tighter" style={{ color: '#0055A6' }}>KEPCO</span>
+               </div>
              </div>
            </div>
         </div>
