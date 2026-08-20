@@ -239,8 +239,8 @@ export default function ProductDetailPage() {
               {/* Row 1 */}
               <div className="flex gap-1 h-11">
                 <button onClick={handleAddToCart} className="flex-[2] bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">장바구니담기</button>
-                <button className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">관심상품</button>
-                <button className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">메일보내기</button>
+                <button onClick={() => router.push('/wishlist')} className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">관심상품</button>
+                <button onClick={() => window.location.href = 'mailto:contact@haniltrans.com'} className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">메일보내기</button>
               </div>
               
               {/* Row 2 */}
@@ -255,19 +255,19 @@ export default function ProductDetailPage() {
                   <span className="text-[#03C75A] font-black text-sm tracking-tighter">NAVER</span>
                   <span className="text-[11px] text-gray-500 leading-tight tracking-tighter">네이버ID로 간편구매<br/>네이버페이</span>
                 </div>
-                <button onClick={handleNaverPay} className="flex-1 bg-[#03C75A] hover:bg-[#02b350] text-gray-900 font-bold text-base py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm">
-                  <div className="bg-white text-gray-900 w-3.5 h-3.5 rounded-sm flex items-center justify-center mr-1">
-                    <span className="font-black text-[10px] leading-none">N</span>
+                <button onClick={handleNaverPay} className="flex-1 bg-[#00DE5A] hover:bg-[#00c950] text-black font-extrabold text-[15px] py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm tracking-tight">
+                  <div className="bg-black text-[#00DE5A] w-[18px] h-[18px] rounded-full flex items-center justify-center mr-1.5">
+                    <span className="font-black text-[12px] italic leading-none ml-[1px]">N</span>
                   </div>
                   pay 구매
                 </button>
-                <button className="w-[50px] bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold text-[13px] py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm">
+                <button onClick={() => router.push('/wishlist')} className="w-[50px] bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold text-[13px] py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm">
                   찜
                 </button>
               </div>
               
               <div className="text-[12px] text-[#03C75A] mt-1 flex items-center justify-between px-1">
-                <span className="font-medium cursor-pointer hover:underline">이벤트 100% 지급! 최대 1만원 혜택 확인...</span>
+                <span onClick={() => router.push('/event')} className="font-medium cursor-pointer hover:underline">이벤트 100% 지급! 최대 1만원 혜택 확인...</span>
                 <div className="flex border border-gray-200 rounded-sm text-gray-400 bg-white cursor-pointer">
                   <span className="px-1.5 py-0.5 border-r border-gray-200 hover:bg-gray-50">{"<"}</span>
                   <span className="px-1.5 py-0.5 hover:bg-gray-50">{">"}</span>
