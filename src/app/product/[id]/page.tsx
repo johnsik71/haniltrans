@@ -8,6 +8,7 @@ import { Star, ShieldCheck, Truck, ArrowLeft, Heart, Share2, ShoppingCart } from
 import ProductDetailTemplate from '@/components/shop/ProductDetailTemplate';
 import { useCart } from '@/context/CartContext';
 import { useSession } from 'next-auth/react';
+import CartDrawer from '@/components/shop/CartDrawer';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -132,6 +133,7 @@ export default function ProductDetailPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
       <Header />
+      <CartDrawer />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {/* Breadcrumb */}
