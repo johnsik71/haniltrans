@@ -16,6 +16,17 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [selectedOption, setSelectedOption] = useState('');
+  
+  const PRODUCT_OPTIONS = [
+    "220V/380V 단권형",
+    "380V/220V 단권형",
+    "440V/220V 단권형",
+    "220V/380V 복권형 (+170,000원)",
+    "380V/220V 복권형 (+170,000원)",
+    "440V/220V 복권형 (+170,000원)"
+  ];
+  
   type TabType = 'detail' | 'review' | 'qna' | 'delivery';
   const [activeTab, setActiveTab] = useState<TabType>('detail');
 
@@ -176,43 +187,93 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            {/* Mobile responsive fix: flex-col on mobile to prevent squished buttons */}
-            <div className="mt-auto flex flex-col sm:flex-row gap-3">
-              <div className="flex border border-gray-300 rounded-xl overflow-hidden w-full sm:w-32 shrink-0 h-12 sm:h-auto">
-                <button 
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="flex-1 bg-gray-50 hover:bg-gray-100 font-bold text-gray-600 transition-colors"
-                >-</button>
-                <div className="flex-1 flex items-center justify-center font-bold text-gray-900 border-x border-gray-300">
-                  {quantity}
-                </div>
-                <button 
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="flex-1 bg-gray-50 hover:bg-gray-100 font-bold text-gray-600 transition-colors"
-                >+</button>
-              </div>
-                <button 
-                  onClick={handleAddToCart}
-                  className="flex-1 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-black text-base md:text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm h-12"
+            {/* Options Dropdown */}
+            <div className="border-t-2 border-b border-gray-200 py-4 mb-4 mt-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
+                <span className="w-full sm:w-32 text-[13px] text-gray-700 font-bold">입출력 전압 + 권선형식</span>
+                <select 
+                  className="flex-1 border border-gray-300 p-2 text-[13px] focus:outline-none focus:border-blue-500 w-full"
+                  value={selectedOption}
+                  onChange={(e) => setSelectedOption(e.target.value)}
                 >
-                  <ShoppingCart className="w-5 h-5" /> 장바구니
+                  <option value="">-[필수] 옵션을 선택해 주세요-</option>
+                  <optgroup label="-------------------">
+                    {PRODUCT_OPTIONS.map((opt, idx) => (
+                      <option key={idx} value={opt}>{opt}</option>
+                    ))}
+                  </optgroup>
+                </select>
+              </div>
+              <div className="text-[12px] text-gray-500 mb-1.5">(최소주문수량 1개 이상)</div>
+              <div className="text-[12px] text-gray-500 flex items-center gap-1">
+                <span className="border border-gray-300 px-1 text-[10px] font-bold">!</span> 위 옵션선택 박스를 선택하시면 아래에 상품이 추가됩니다.
+              </div>
+            </div>
+
+            {/* Selected Option Display */}
+            {selectedOption && (
+              <div className="bg-[#f8f9fa] border-t border-b border-gray-200 p-4 mb-4">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[13px] text-gray-700">{selectedOption}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="flex border border-gray-300 bg-white overflow-hidden w-[80px] h-7">
+                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="flex-1 hover:bg-gray-50">-</button>
+                    <div className="flex-1 flex items-center justify-center font-bold text-[12px] border-x border-gray-300">{quantity}</div>
+                    <button onClick={() => setQuantity(quantity + 1)} className="flex-1 hover:bg-gray-50">+</button>
+                  </div>
+                  <span className="font-bold text-[14px]">{( ((product?.price || 0) + (selectedOption.includes('+170,000') ? 170000 : 0)) * quantity ).toLocaleString()}원</span>
+                </div>
+              </div>
+            )}
+
+            {/* Total Price Display */}
+            <div className="flex justify-end items-end gap-2 mb-6">
+              <span className="text-[13px] text-gray-700">총 상품금액(수량) :</span>
+              <span className="text-xl md:text-2xl font-black text-[#0066cc]">{( ((product?.price || 0) + (selectedOption.includes('+170,000') ? 170000 : 0)) * quantity ).toLocaleString()}</span>
+              <span className="text-[13px] text-[#0066cc]">({quantity}개)</span>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-2">
+              {/* Row 1 */}
+              <div className="flex gap-1 h-11">
+                <button onClick={handleAddToCart} className="flex-[2] bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">장바구니담기</button>
+                <button className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">관심상품</button>
+                <button className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">메일보내기</button>
+              </div>
+              
+              {/* Row 2 */}
+              <div className="flex gap-1 h-[52px]">
+                <button onClick={() => router.push('/')} className="flex-1 bg-[#9ea7ad] hover:bg-[#8d969c] text-white text-[15px] font-bold transition-colors shadow-sm">쇼핑계속하기</button>
+                <button onClick={handleBuyNow} className="flex-1 bg-[#f39c12] hover:bg-[#e67e22] text-white text-[15px] font-bold transition-colors shadow-sm">바로구매하기</button>
+              </div>
+
+              {/* Row 3 - NPay */}
+              <div className="border-t border-b border-gray-300 py-3 mt-4 flex items-center gap-2">
+                <div className="flex flex-col w-[120px]">
+                  <span className="text-[#03C75A] font-black text-sm tracking-tighter">NAVER</span>
+                  <span className="text-[11px] text-gray-500 leading-tight tracking-tighter">네이버ID로 간편구매<br/>네이버페이</span>
+                </div>
+                <button onClick={handleNaverPay} className="flex-1 bg-[#03C75A] hover:bg-[#02b350] text-gray-900 font-bold text-base py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm">
+                  <div className="bg-white text-gray-900 w-3.5 h-3.5 rounded-sm flex items-center justify-center mr-1">
+                    <span className="font-black text-[10px] leading-none">N</span>
+                  </div>
+                  pay 구매
                 </button>
-                <button 
-                  onClick={handleBuyNow}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black text-base md:text-lg rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-600/30 h-12"
-                >
-                  바로 구매하기
+                <button className="w-[50px] bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold text-[13px] py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm">
+                  찜
                 </button>
               </div>
-              <button 
-                onClick={handleNaverPay}
-                className="w-full mt-3 bg-[#03C75A] hover:bg-[#02b350] text-gray-900 font-bold text-lg py-3.5 rounded-xl flex items-center justify-center transition-all shadow-sm"
-              >
-                <div className="bg-white text-gray-900 w-4 h-4 rounded-sm flex items-center justify-center -mr-0.5">
-                  <span className="font-black text-[12px] leading-none">N</span>
+              
+              <div className="text-[12px] text-[#03C75A] mt-1 flex items-center justify-between px-1">
+                <span className="font-medium cursor-pointer hover:underline">이벤트 100% 지급! 최대 1만원 혜택 확인...</span>
+                <div className="flex border border-gray-200 rounded-sm text-gray-400 bg-white cursor-pointer">
+                  <span className="px-1.5 py-0.5 border-r border-gray-200 hover:bg-gray-50">{"<"}</span>
+                  <span className="px-1.5 py-0.5 hover:bg-gray-50">{">"}</span>
                 </div>
-                <span className="ml-1.5">pay 구매</span>
-              </button>
+              </div>
+            </div>
           </div>
         </div>
 
