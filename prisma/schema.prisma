@@ -24,6 +24,7 @@ model Product {
   description   String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  wishlists     Wishlist[]
 }
 
 model User {
@@ -34,6 +35,7 @@ model User {
   role      String   @default("user")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  wishlists Wishlist[]
 }
 
 model Sale {
@@ -59,4 +61,15 @@ model BannerAd {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Wishlist {
+  id        String   @id @default(uuid())
+  userId    String
+  productId String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
 }

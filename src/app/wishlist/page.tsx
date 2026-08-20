@@ -1,12 +1,56 @@
+"use client";
+
+import { useEffect, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Sidebar from '@/components/layout/Sidebar';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import { Heart, ShoppingBag } from 'lucide-react';
+import ProductCard from '@/components/shop/ProductCard';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function WishlistPage() {
-  // In a real app, this would fetch from a WishlistContext or API
-  const wishlistItems: any[] = [];
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [wishlistItems, setWishlistItems] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      alert("로그인이 필요한 서비스입니다.");
+      router.push('/login');
+    }
+  }, [status, router]);
+
+  useEffect(() => {
+    if (session) {
+      fetch('/api/wishlist')
+        .then(res => res.json())
+        .then(data => {
+          if (data.items) {
+            setWishlistItems(data.items);
+          }
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error(err);
+          setLoading(false);
+        });
+    }
+  }, [session]);
+
+  if (status === 'loading' || loading) {
+    return (
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <Header />
+        <main className="flex-1 flex justify-center items-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -48,8 +92,10 @@ export default function WishlistPage() {
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {/* ProductCards would go here */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+              {wishlistItems.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
           )}
         </div>

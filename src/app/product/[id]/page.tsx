@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import { Star, ShieldCheck, Truck, ArrowLeft, Heart, Share2, ShoppingCart } from 'lucide-react';
 import ProductDetailTemplate from '@/components/shop/ProductDetailTemplate';
 import { useCart } from '@/context/CartContext';
+import { useSession } from 'next-auth/react';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -17,6 +18,8 @@ export default function ProductDetailPage() {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedOption, setSelectedOption] = useState('');
+  const { data: session } = useSession();
+  const [isWishlisted, setIsWishlisted] = useState(false);
   
   const PRODUCT_OPTIONS = [
     "220V/380V 단권형",
@@ -48,6 +51,18 @@ export default function ProductDetailPage() {
         setLoading(false);
       });
   }, [id]);
+
+  useEffect(() => {
+    if (session && id) {
+      fetch('/api/wishlist')
+        .then(res => res.json())
+        .then(data => {
+          if (data.items) {
+            setIsWishlisted(data.items.some((item: any) => item.id === id));
+          }
+        });
+    }
+  }, [session, id]);
 
   if (loading) {
     return (
@@ -88,6 +103,30 @@ export default function ProductDetailPage() {
   const handleNaverPay = () => {
     handleAddToCart();
     router.push('/checkout');
+  };
+
+  const handleToggleWish = async () => {
+    if (!session) {
+      alert("로그인이 필요한 서비스입니다.");
+      router.push('/login');
+      return;
+    }
+    
+    try {
+      const res = await fetch('/api/wishlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId: id })
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        setIsWishlisted(data.isWishlisted);
+        alert(data.message === 'Added to wishlist' ? '관심상품에 등록되었습니다.' : '관심상품에서 제거되었습니다.');
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -239,7 +278,7 @@ export default function ProductDetailPage() {
               {/* Row 1 */}
               <div className="flex gap-1 h-11">
                 <button onClick={handleAddToCart} className="flex-[2] bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">장바구니담기</button>
-                <button onClick={() => router.push('/wishlist')} className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">관심상품</button>
+                <button onClick={handleToggleWish} className={`flex-1 bg-white border ${isWishlisted ? 'border-pink-500 text-pink-500' : 'border-gray-300 text-gray-700 hover:bg-gray-50'} text-[13px] font-bold transition-colors shadow-sm`}>관심상품</button>
                 <button onClick={() => window.location.href = 'mailto:contact@haniltrans.com'} className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-bold transition-colors shadow-sm">메일보내기</button>
               </div>
               
@@ -261,13 +300,13 @@ export default function ProductDetailPage() {
                   </div>
                   pay 구매
                 </button>
-                <button onClick={() => router.push('/wishlist')} className="w-[50px] bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold text-[13px] py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm">
+                <button onClick={handleToggleWish} className={`w-[50px] bg-white border ${isWishlisted ? 'border-pink-500 text-pink-500' : 'border-gray-300 text-gray-700 hover:bg-gray-50'} font-bold text-[13px] py-3 rounded-sm flex items-center justify-center transition-colors shadow-sm`}>
                   찜
                 </button>
               </div>
               
               <div className="text-[12px] text-[#03C75A] mt-1 flex items-center justify-between px-1">
-                <span onClick={() => router.push('/event')} className="font-medium cursor-pointer hover:underline">이벤트 100% 지급! 최대 1만원 혜택 확인...</span>
+                <span onClick={() => router.push('/discount')} className="font-medium cursor-pointer hover:underline">할인품목 - 할인 진행중인 상품을 확인하세요!</span>
                 <div className="flex border border-gray-200 rounded-sm text-gray-400 bg-white cursor-pointer">
                   <span className="px-1.5 py-0.5 border-r border-gray-200 hover:bg-gray-50">{"<"}</span>
                   <span className="px-1.5 py-0.5 hover:bg-gray-50">{">"}</span>
