@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 import QuickWing from "@/components/layout/QuickWing";
 import AuthProvider from "@/components/providers/AuthProvider";
 import LeftWing from "@/components/layout/LeftWing";
@@ -22,11 +23,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900 font-sans">
         <AuthProvider>
-          <CartProvider>
-            {children}
-            <QuickWing />
-            <LeftWing />
-          </CartProvider>
+          <WishlistProvider>
+            <CartProvider>
+              {children}
+              <QuickWing />
+              <LeftWing />
+            </CartProvider>
+          </WishlistProvider>
         </AuthProvider>
       </body>
     </html>

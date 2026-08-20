@@ -1,18 +1,21 @@
 "use client";
 
 import { Product } from '@/types/mall';
-import { Star, Zap } from 'lucide-react';
+import { Star, Zap, Heart } from 'lucide-react';
 import Link from 'next/link';
+import { useWishlist } from '@/context/WishlistContext';
 
 export default function ProductCard({ product }: { product: Product | any }) {
+  const { wishlistIds, toggleWishlist } = useWishlist();
+  const isWishlisted = wishlistIds.includes(product.id);
+
   const discountRate = product.originalPrice && product.price 
     ? Math.floor(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
 
   return (
-    <>
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group relative">
-        <Link href={`/product/${product.id}`} className="block flex-1 cursor-pointer">
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group relative">
+      <Link href={`/product/${product.id}`} className="block flex-1 cursor-pointer relative z-0">
           {/* Product Image Container */}
           <div className="relative w-full pt-[100%] bg-gray-100 overflow-hidden shrink-0">
             <img
@@ -32,11 +35,6 @@ export default function ProductCard({ product }: { product: Product | any }) {
                 </span>
               )}
             </div>
-            {product.isFreeShipping && (
-              <span className="absolute top-3 right-3 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
-                무료배송
-              </span>
-            )}
           </div>
 
           {/* Product Info */}
@@ -81,7 +79,26 @@ export default function ProductCard({ product }: { product: Product | any }) {
             {product.price ? product.price.toLocaleString() : '0'}<span className="text-xs sm:text-sm font-bold ml-0.5">원</span>
           </div>
         </div>
-      </div>
-    </>
+      {/* Heart Button Overlay */}
+      <button 
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleWishlist(product.id);
+        }}
+        className={`absolute top-3 right-3 z-10 p-2 rounded-full backdrop-blur-md shadow-sm transition-all duration-300 
+          ${isWishlisted 
+            ? 'bg-white/90 text-pink-500 hover:bg-white' 
+            : 'bg-black/20 text-white hover:bg-black/40'}`}
+      >
+        <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-current' : ''}`} />
+      </button>
+      
+      {product.isFreeShipping && (
+        <span className="absolute top-12 right-3 z-10 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
+          무료배송
+        </span>
+      )}
+    </div>
   );
 }
