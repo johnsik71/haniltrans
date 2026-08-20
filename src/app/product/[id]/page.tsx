@@ -91,9 +91,19 @@ export default function ProductDetailPage() {
   }
 
   const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product);
+    if (!selectedOption) {
+      alert("옵션을 선택해 주세요.");
+      return;
     }
+
+    const priceModifier = selectedOption.includes('+170,000') ? 170000 : 0;
+    const optionObj = {
+      id: selectedOption,
+      name: selectedOption,
+      priceModifier
+    };
+
+    addToCart(product, optionObj, quantity);
   };
 
   const handleBuyNow = () => {
